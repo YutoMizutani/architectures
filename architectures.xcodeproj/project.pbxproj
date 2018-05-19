@@ -16,6 +16,11 @@
 		99178B2720AFE8F4008E7407 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99178B2520AFE8F4008E7407 /* LaunchScreen.storyboard */; };
 		99178B3220AFE8F4008E7407 /* architecturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99178B3120AFE8F4008E7407 /* architecturesTests.swift */; };
 		99178B3D20AFE8F4008E7407 /* architecturesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99178B3C20AFE8F4008E7407 /* architecturesUITests.swift */; };
+		99178B4C20AFECE7008E7407 /* SplitViewControlelr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99178B4B20AFECE7008E7407 /* SplitViewControlelr.swift */; };
+		99178B5120AFEE13008E7407 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99178B5020AFEE13008E7407 /* MasterViewController.swift */; };
+		99178B5320AFEE62008E7407 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99178B5220AFEE62008E7407 /* DetailsViewController.swift */; };
+		99178B5620AFF017008E7407 /* MasterViewControllerEureka.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99178B5520AFF017008E7407 /* MasterViewControllerEureka.swift */; };
+		99178B5B20AFF4AE008E7407 /* MVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99178B5A20AFF4AE008E7407 /* MVCViewController.swift */; };
 		EA9D3F9839DF9177A8F4B530 /* Pods_architectures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +59,11 @@
 		99178B3820AFE8F4008E7407 /* architecturesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = architecturesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99178B3C20AFE8F4008E7407 /* architecturesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = architecturesUITests.swift; sourceTree = "<group>"; };
 		99178B3E20AFE8F4008E7407 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99178B4B20AFECE7008E7407 /* SplitViewControlelr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewControlelr.swift; sourceTree = "<group>"; };
+		99178B5020AFEE13008E7407 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		99178B5220AFEE62008E7407 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		99178B5520AFF017008E7407 /* MasterViewControllerEureka.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewControllerEureka.swift; sourceTree = "<group>"; };
+		99178B5A20AFF4AE008E7407 /* MVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVCViewController.swift; sourceTree = "<group>"; };
 		9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_architectures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C26A8A79362503D7C6040E3 /* Pods-architecturesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesTests/Pods-architecturesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB1C98A2DB87E9322CF21174 /* Pods-architecturesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesUITests/Pods-architecturesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +137,7 @@
 		99178B1B20AFE8F3008E7407 /* architectures */ = {
 			isa = PBXGroup;
 			children = (
+				99178B4A20AFECBD008E7407 /* App */,
 				99178B1C20AFE8F3008E7407 /* AppDelegate.swift */,
 				99178B1E20AFE8F3008E7407 /* ViewController.swift */,
 				99178B2020AFE8F3008E7407 /* Main.storyboard */,
@@ -153,6 +164,58 @@
 				99178B3E20AFE8F4008E7407 /* Info.plist */,
 			);
 			path = architecturesUITests;
+			sourceTree = "<group>";
+		};
+		99178B4A20AFECBD008E7407 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				99178B5420AFEEC0008E7407 /* Architectures */,
+				99178B4D20AFEDEE008E7407 /* Split */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		99178B4D20AFEDEE008E7407 /* Split */ = {
+			isa = PBXGroup;
+			children = (
+				99178B4F20AFEE05008E7407 /* Master */,
+				99178B4E20AFEDF6008E7407 /* Detail */,
+				99178B4B20AFECE7008E7407 /* SplitViewControlelr.swift */,
+			);
+			path = Split;
+			sourceTree = "<group>";
+		};
+		99178B4E20AFEDF6008E7407 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				99178B5220AFEE62008E7407 /* DetailsViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		99178B4F20AFEE05008E7407 /* Master */ = {
+			isa = PBXGroup;
+			children = (
+				99178B5020AFEE13008E7407 /* MasterViewController.swift */,
+				99178B5520AFF017008E7407 /* MasterViewControllerEureka.swift */,
+			);
+			path = Master;
+			sourceTree = "<group>";
+		};
+		99178B5420AFEEC0008E7407 /* Architectures */ = {
+			isa = PBXGroup;
+			children = (
+				99178B5920AFF4A1008E7407 /* MVC */,
+			);
+			path = Architectures;
+			sourceTree = "<group>";
+		};
+		99178B5920AFF4A1008E7407 /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				99178B5A20AFF4AE008E7407 /* MVCViewController.swift */,
+			);
+			path = MVC;
 			sourceTree = "<group>";
 		};
 		BEF3CDA49603687D9C024AD6 /* Frameworks */ = {
@@ -431,8 +494,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99178B5120AFEE13008E7407 /* MasterViewController.swift in Sources */,
 				99178B1F20AFE8F3008E7407 /* ViewController.swift in Sources */,
 				99178B1D20AFE8F3008E7407 /* AppDelegate.swift in Sources */,
+				99178B4C20AFECE7008E7407 /* SplitViewControlelr.swift in Sources */,
+				99178B5620AFF017008E7407 /* MasterViewControllerEureka.swift in Sources */,
+				99178B5B20AFF4AE008E7407 /* MVCViewController.swift in Sources */,
+				99178B5320AFEE62008E7407 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,6 +676,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y3FSN97W3M;
+				GCC_OPTIMIZATION_LEVEL = fast;
 				INFOPLIST_FILE = architectures/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -615,6 +684,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ym.architectures;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

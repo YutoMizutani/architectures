@@ -10,6 +10,7 @@ pod 'RxSwift'
 pod 'RxCocoa'
 pod 'Alamofire'
 pod 'SwiftyJSON'
+pod 'Eureka'
 
   target 'architecturesTests' do
     inherit! :search_paths
@@ -25,6 +26,7 @@ pod 'SwiftyJSON'
     # Pods for testing
 pod 'RxSwift'
 pod 'RxCocoa'
+pod 'Eureka'
   end
 
 end

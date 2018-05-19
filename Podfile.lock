@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.7.2)
+  - Eureka (4.1.1)
   - RxCocoa (4.1.2):
     - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
@@ -7,6 +8,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - Eureka
   - RxCocoa
   - RxSwift
   - SwiftyJSON
@@ -14,16 +16,18 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - Eureka
     - RxCocoa
     - RxSwift
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 0a307ff63bd826a49d756d90fefe377dd09f1b5d
+PODFILE CHECKSUM: d52a6ee768ead093abfd19c8d865d74566620c37
 
 COCOAPODS: 1.5.2

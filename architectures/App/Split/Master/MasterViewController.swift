@@ -61,31 +61,54 @@ extension MasterViewController {
         switch indexPath.section {
         case 0:
             switch indexPath.row {
-            // MVC
+            // Procedural Programming
             case 0:
-                let nextViewController = MVCViewController()
+                break
+            // Fat ViewController
+            case 1:
+                break
+            // MVC
+            case 2:
+                let nextViewController = MVCBuilder().build()
                 nextViewController.navigationItem.title = MasterViewControllerEurekaTags.mvc.rawValue
                 let nextNavigationController = UINavigationController(rootViewController: nextViewController)
                 self.splitViewController?.showDetailViewController(nextNavigationController, sender: self)
                 break
             // MVP
-            case 1:
-                let nextViewController = MVCViewController()
+            case 3:
+                let nextViewController = MVPBuilder().build()
                 nextViewController.navigationItem.title = MasterViewControllerEurekaTags.mvp.rawValue
                 let nextNavigationController = UINavigationController(rootViewController: nextViewController)
                 self.splitViewController?.showDetailViewController(nextNavigationController, sender: self)
                 break
             // MVVM
-            case 2:
-                let nextViewController = MVCViewController()
+            case 4:
+                let nextViewController = MVVMBuilder().build()
                 nextViewController.navigationItem.title = MasterViewControllerEurekaTags.mvvm.rawValue
                 let nextNavigationController = UINavigationController(rootViewController: nextViewController)
                 self.splitViewController?.showDetailViewController(nextNavigationController, sender: self)
                 break
+            // DDD
+            case 5:
+                let nextViewController = DDDBuilder().build()
+                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.ddd.rawValue
+                let nextNavigationController = UINavigationController(rootViewController: nextViewController)
+                self.splitViewController?.showDetailViewController(nextNavigationController, sender: self)
+                break
+            // FP
+            case 6:
+                break
             // Clean Architecture
-            case 3:
-                let nextViewController = MVCViewController()
+            case 7:
+                let nextViewController = CABuilder().build()
                 nextViewController.navigationItem.title = MasterViewControllerEurekaTags.cleanArchitecture.rawValue
+                let nextNavigationController = UINavigationController(rootViewController: nextViewController)
+                self.splitViewController?.showDetailViewController(nextNavigationController, sender: self)
+                break
+            // RVC
+            case 8:
+                let nextViewController = RVCBuilder().build()
+                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.rvc.rawValue
                 let nextNavigationController = UINavigationController(rootViewController: nextViewController)
                 self.splitViewController?.showDetailViewController(nextNavigationController, sender: self)
                 break

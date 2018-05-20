@@ -48,41 +48,32 @@ fileprivate struct CreateFooter {
 
 // MARK:- Eureka tag Enum
 private typealias EurekaTag = MasterViewControllerEurekaTags
-enum MasterViewControllerEurekaTags: String {
-    case architecturesSection = "Architectures"
-
+enum MasterViewControllerEurekaTags: String, EnumCollection {
+    case pp = "Procedural Programming"
+    case fvc = "Fat ViewController"
     case mvc = "MVC"
     case mvp = "MVP"
     case mvvm = "MVVM"
+    case ddd = "DDD"
+    case fp = "Functional Programming"
     case cleanArchitecture = "Clean Architecture"
+    case rvc = "Realistic ViewController"
 }
 
 extension MasterViewController {
     private func architecturesSection() {
         form
-            +++ Section(EurekaTag.architecturesSection.rawValue) { section in
+            +++ Section() { section in
                 section.header = CreateFooter.create()
                 section.footer = CreateFooter.create()
-            }
 
-            <<< LabelRow(EurekaTag.mvc.rawValue) {
-                // Title
-                $0.title = $0.tag
-            }
-
-            <<< LabelRow(EurekaTag.mvp.rawValue) {
-                // Title
-                $0.title = $0.tag
-            }
-
-            <<< LabelRow(EurekaTag.mvvm.rawValue) {
-                // Title
-                $0.title = $0.tag
-            }
-
-            <<< LabelRow(EurekaTag.cleanArchitecture.rawValue) {
-                // Title
-                $0.title = $0.tag
+                for tag in EurekaTag.cases() {
+                    section
+                        <<< LabelRow(tag.rawValue) {
+                            // Title
+                            $0.title = $0.tag
+                    }
+                }
             }
     }
 

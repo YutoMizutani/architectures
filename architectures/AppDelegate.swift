@@ -13,28 +13,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-//    let firstViewController: UIViewController = SplitViewController.init(
-//        masterNavigationController: UINavigationController(rootViewController:
-//            { () -> UIViewController in
-//                let viewContoller = MasterViewController()
-//                viewContoller.navigationItem.title = MasterViewControllerEurekaTags.architecturesSection.rawValue
-//                return viewContoller
-//            }()
-//        ),
-//        detailNavigationController: UINavigationController(rootViewController: DetailViewController())
-//    )
+    let firstViewController: UIViewController = SplitViewController.init(
+        masterNavigationController: UINavigationController(rootViewController:
+            { () -> UIViewController in
+                let viewContoller = MasterViewController()
+                viewContoller.navigationItem.title = "Architectures"
+                return viewContoller
+            }()
+        ),
+        detailNavigationController: UINavigationController(rootViewController: DetailViewController())
+    )
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let viewContoller = MasterViewController()
-        viewContoller.navigationItem.title = MasterViewControllerEurekaTags.architecturesSection.rawValue
-        let firstViewController: UIViewController = SplitViewController.init(
-            masterNavigationController: UINavigationController(rootViewController: viewContoller),
-            detailNavigationController: UINavigationController(rootViewController: DetailViewController())
-        )
-
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = firstViewController
+        self.window?.rootViewController = self.firstViewController
         self.window!.backgroundColor = UIColor.white
         self.window?.makeKeyAndVisible()
         return true

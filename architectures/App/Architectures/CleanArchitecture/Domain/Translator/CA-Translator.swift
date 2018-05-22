@@ -15,9 +15,9 @@ protocol CATranslator {
 
 struct CATranslatorImpl: CATranslator {
     func translate(from model: CAModel) -> CAEntity {
-        return CAEntityImpl(id: model.id)
+        return CAEntityImpl(name: model.name, balance: model.balance.value)
     }
     func translate(from entity: CAEntity) -> CAModel {
-        return CAModelImpl(id: entity.id)
+        return CAModelImpl(name: entity.name, balance: entity.balance)
     }
 }

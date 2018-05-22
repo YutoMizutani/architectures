@@ -11,7 +11,9 @@ import RxSwift
 import RxCocoa
 
 protocol CAViewInput: class {
+    func presentAlert(_ error: Error)
 
+    func setModel(_ user: UserList, model: CAModel)
 }
 
 
@@ -21,7 +23,8 @@ class CAViewController: UIViewController {
     private var presenter: presenterType?
     private var subview: CAView?
 
-    private let disposeBag = DisposeBag()
+    private var aModel: CAModel = CAModelImpl.init(name: "a", balance: 0)
+    private var bModel: CAModel = CAModelImpl.init(name: "b", balance: 0)
 
     internal func inject(
         presenter: presenterType
@@ -34,7 +37,7 @@ class CAViewController: UIViewController {
 
         configureView()
         layoutView()
-        binding()
+        addAction()
     }
 
     override func viewDidLayoutSubviews() {
@@ -52,7 +55,7 @@ extension CAViewController {
             self.view.backgroundColor = UIColor.white
         }
         subview: do {
-            self.subview = CAView(frame: self.view.bounds)
+            self.subview = CAView()
             if self.subview != nil {
                 self.view.addSubview(self.subview!)
             }
@@ -63,14 +66,42 @@ extension CAViewController {
             self.subview?.frame = self.view.bounds
         }
     }
+    private func addAction() {
+        self.subview?.transferButton.addTarget(self, action: #selector(transfer), for: .touchUpInside)
+        self.subview?.resetButton.addTarget(self, action: #selector(reset), for: .touchUpInside)
+//        self.subview?.rx.tap
+//            .
+    }
 }
 
 extension CAViewController {
-    private func binding() {
+    func getA() -> CAModel? {
+        return self.aModel
+    }
+    func getB() -> CAModel? {
+        return self.bModel
+    }
 
+    @IBAction func transfer() {
+        self.presenter?.transfer(from: getA(), to: getB(), amount: 100)
+    }
+
+    @IBAction func reset() {
+        self.presenter?.reset()
     }
 }
 
 extension CAViewController: CAViewInput {
+    func presentAlert(_ error: Error) {
+        UIAlertController.present(self, error: error)
+    }
 
+    func setModel(_ user: UserList, model: CAModel) {
+        switch user {
+        case .a:
+            self.aModel = model
+        case .b:
+            self.bModel = model
+        }
+    }
 }

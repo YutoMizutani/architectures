@@ -23,6 +23,13 @@ class View: UIView {
 
         configureView()
     }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        layoutView()
+
+        self.layoutIfNeeded()
+    }
 }
 
 extension View {

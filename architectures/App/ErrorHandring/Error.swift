@@ -9,6 +9,9 @@
 import Foundation
 
 public enum ErrorTransfer: Error {
+    // 口座履歴が存在しない場合
+    case noContent
+
     // 用意されていない口座情報を取得しようとした場合
     case userNotFound
 

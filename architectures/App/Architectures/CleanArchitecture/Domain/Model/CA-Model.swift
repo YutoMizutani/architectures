@@ -7,12 +7,21 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 protocol CAModel {
-   var id: Int { get }
+    var name: String { get }
+    var balance: BehaviorRelay<Int> { get }
 }
 
 
 struct CAModelImpl: CAModel {
-    let id: Int
+    let name: String
+    private(set) var balance: BehaviorRelay<Int>
+
+    init(name: String, balance: Int) {
+        self.name = name
+        self.balance = BehaviorRelay(value: balance)
+    }
 }

@@ -508,8 +508,8 @@
 		99178BC320B01792008E7407 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				99178BC420B01792008E7407 /* UI */,
 				99178BC920B01792008E7407 /* Presenter */,
+				99178BC420B01792008E7407 /* UI */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";

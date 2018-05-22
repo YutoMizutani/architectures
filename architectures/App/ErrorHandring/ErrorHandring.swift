@@ -29,6 +29,9 @@ extension UIAlertController {
         }
 
         switch error {
+        case .noContent:
+            UIAlertController.present(delegate, message: "取引履歴が存在しません")
+            return
         case .userNotFound:
             UIAlertController.present(delegate, message: "登録されていない口座情報です")
             return

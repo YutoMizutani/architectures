@@ -26,7 +26,7 @@ extension DDDInfrastructure {
         return try self.translate(dictionary)
     }
 
-    public func commit(_ collections: Accounts) {
+    public func commit(_ collections: [DDDDomain]) {
         let dictionary = self.translate(collections)
         self.update(dictionary)
     }
@@ -37,11 +37,16 @@ extension DDDInfrastructure {
         var domains: [DDDDomain] = []
 
         for d in dictionary {
-            if type(of: d.value) != Int.self {
+
+            guard let user = UserList.find(d.key) else {
+                throw ErrorTransfer.userNotFound
+            }
+
+            guard let balance = d.value as? Int else {
                 throw ErrorTransfer.storedTypeInvalid
             }
 
-            let domain = DDDDomain(name: d.key, balance: d.value as! Int)
+            let domain = DDDDomain(user: user, balance: balance)
 
             domains.append(domain)
         }
@@ -51,11 +56,11 @@ extension DDDInfrastructure {
 }
 
 extension DDDInfrastructure {
-    private func translate(_ collections: Accounts) -> Dictionary<String, Any> {
+    private func translate(_ collections: [DDDDomain]) -> Dictionary<String, Any> {
         var dictionary: Dictionary<String, Any> = [:]
 
         for c in collections {
-            dictionary[c.key] = c.value
+            dictionary[c.user.rawValue] = c.balance
         }
 
         return dictionary

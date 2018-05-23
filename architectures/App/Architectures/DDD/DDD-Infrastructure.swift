@@ -21,10 +21,6 @@ class DDDInfrastructure {
 }
 
 extension DDDInfrastructure {
-    public func beginTranaction() throws {
-        try self.beginLocking()
-    }
-
     public func getDomains() throws -> [DDDDomain] {
         guard let dictionary = self.fetch() else { throw ErrorTransfer.userNotFound }
         return try self.translate(dictionary)
@@ -67,25 +63,6 @@ extension DDDInfrastructure {
 }
 
 extension DDDInfrastructure {
-    private func beginLocking() throws {
-        let userDefaults: UserDefaults = UserDefaults.standard
-        let key = UserDefaultsKeys.lockingState.rawValue
-
-        let state = userDefaults.bool(forKey: key)
-        if state {
-            throw ErrorTransfer.transactionLocking
-        }
-
-        userDefaults.set(true, forKey: key)
-    }
-
-    private func endLocking() {
-        let userDefaults: UserDefaults = UserDefaults.standard
-        let key = UserDefaultsKeys.lockingState.rawValue
-
-        userDefaults.set(false, forKey: key)
-    }
-
     private func fetch() -> Dictionary<String, Any>? {
         let userDefaults: UserDefaults = UserDefaults.standard
         let key = UserDefaultsKeys.account.rawValue

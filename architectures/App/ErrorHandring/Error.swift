@@ -24,9 +24,6 @@ public enum ErrorTransfer: Error {
     // 残高が不足した場合
     case insufficientFunds
 
-    // 取引にロックがかかっていた(他の取引中に実行しようとした)場合
-    case transactionLocking
-
-    // 口座情報の更新が失敗した場合
+    // 口座情報の更新に失敗した場合
     case updateFailed
 }

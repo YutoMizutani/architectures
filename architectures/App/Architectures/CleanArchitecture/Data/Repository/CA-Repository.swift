@@ -10,13 +10,9 @@ import Foundation
 import RxSwift
 
 protocol CARepository {
-    func beginLocking() -> Observable<Any>
-    func endLocking() -> Observable<Any>
-
     func fetch() -> Observable<[CAEntity]>
-    func commit(_ entities: [CAEntity]) -> Observable<Any>
+    func commit(_ entities: [CAEntity]) -> Observable<Void>
 }
-
 
 struct CARepositoryImpl {
     typealias dataStoreType = CADataStore
@@ -31,19 +27,11 @@ struct CARepositoryImpl {
 }
 
 extension CARepositoryImpl: CARepository {
-    func beginLocking() -> Observable<Any> {
-        return self.dataStore.beginLocking()
-    }
-
-    func endLocking() -> Observable<Any> {
-        return self.endLocking()
-    }
-
     func fetch() -> Observable<[CAEntity]> {
         return self.dataStore.fetch()
     }
 
-    func commit(_ entities: [CAEntity]) -> Observable<Any> {
+    func commit(_ entities: [CAEntity]) -> Observable<Void> {
         return self.dataStore.update(entities)
     }
 }

@@ -113,6 +113,10 @@ extension MasterViewController {
                 self.splitViewController?.showDetailViewController(nextNavigationController, sender: self)
                 break
             default:
+                let nextViewController = TBuilder().build()
+                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.rvc.rawValue
+                let nextNavigationController = UINavigationController(rootViewController: nextViewController)
+                self.splitViewController?.showDetailViewController(nextNavigationController, sender: self)
                 break
             }
             break

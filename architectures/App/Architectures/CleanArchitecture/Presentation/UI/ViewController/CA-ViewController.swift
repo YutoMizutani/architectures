@@ -26,6 +26,8 @@ class CAViewController: UIViewController {
     private var aModel: CAModel = CAModelImpl.init(name: "a", balance: 0)
     private var bModel: CAModel = CAModelImpl.init(name: "b", balance: 0)
 
+    private let disposeBag = DisposeBag()
+
     internal func inject(
         presenter: presenterType
         ) {
@@ -37,7 +39,8 @@ class CAViewController: UIViewController {
 
         configureView()
         layoutView()
-        addAction()
+        binding()
+        reset()
     }
 
     override func viewDidLayoutSubviews() {
@@ -66,11 +69,38 @@ extension CAViewController {
             self.subview?.frame = self.view.bounds
         }
     }
-    private func addAction() {
-        self.subview?.transferButton.addTarget(self, action: #selector(transfer), for: .touchUpInside)
-        self.subview?.resetButton.addTarget(self, action: #selector(reset), for: .touchUpInside)
-//        self.subview?.rx.tap
-//            .
+    private func binding() {
+        if let balanceToLabel = self.subview?.balanceToLabel.rx.text {
+            self.aModel.balance
+                .asObservable()
+                .map { "\($0)" }
+                .asDriver(onErrorJustReturn: "")
+                .drive(balanceToLabel)
+                .disposed(by: disposeBag)
+        }
+        
+        if let balanceFromLabel = self.subview?.balanceFromLabel.rx.text {
+            self.bModel.balance
+                .asObservable()
+                .map { "\($0)" }
+                .asDriver(onErrorJustReturn: "")
+                .drive(balanceFromLabel)
+                .disposed(by: disposeBag)
+        }
+
+        self.subview?.transferButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.presenter?.transfer(from: self?.getA(), to: self?.getB(), amount: 100)
+//                self?.presenter?.begin()
+            })
+            .disposed(by: disposeBag)
+
+        self.subview?.resetButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.presenter?.reset()
+//                self?.presenter?.end()
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -91,9 +121,9 @@ extension CAViewController {
     }
 }
 
-extension CAViewController: CAViewInput {
+extension CAViewController: CAViewInput, ErrorShowable {
     func presentAlert(_ error: Error) {
-        UIAlertController.present(self, error: error)
+        self.showAlert(error: error)
     }
 
     func setModel(_ user: UserList, model: CAModel) {

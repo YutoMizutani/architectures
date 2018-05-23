@@ -9,8 +9,8 @@
 import UIKit
 
 class View: UIView {
-    var balanceALabel: UILabel!
-    var balanceBLabel: UILabel!
+    var balanceToLabel: UILabel!
+    var balanceFromLabel: UILabel!
     var transferButton: UIButton!
     var resetButton: UIButton!
 
@@ -39,26 +39,26 @@ extension View {
             self.translatesAutoresizingMaskIntoConstraints = false
         }
 
-        balanceALabel: do {
-            self.balanceALabel = { () -> UILabel in
+        balanceToLabel: do {
+            self.balanceToLabel = { () -> UILabel in
                 let label = UILabel()
                 label.textAlignment = .center
                 label.textColor = .black
                 label.font = UIFont(name: "Times New Roman", size: 50)
                 return label
             }()
-            self.addSubview(self.balanceALabel)
+            self.addSubview(self.balanceToLabel)
         }
 
-        balanceBLabel: do {
-            self.balanceBLabel = { () -> UILabel in
+        balanceFromLabel: do {
+            self.balanceFromLabel = { () -> UILabel in
                 let label = UILabel()
                 label.textAlignment = .center
                 label.textColor = .black
                 label.font = UIFont(name: "Times New Roman", size: 50)
                 return label
             }()
-            self.addSubview(self.balanceBLabel)
+            self.addSubview(self.balanceFromLabel)
         }
 
         transferButton: do {
@@ -87,14 +87,14 @@ extension View {
 
 extension View {
     public func layoutView() {
-        balanceALabel: do {
-            self.balanceALabel.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
-            self.balanceALabel.center = CGPoint(x: self.center.x, y: self.center.y - 200)
+        balanceToLabel: do {
+            self.balanceToLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
+            self.balanceToLabel.center = CGPoint(x: self.center.x, y: self.center.y - 200)
         }
 
-        balanceBLabel: do {
-            self.balanceBLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
-            self.balanceBLabel.center = CGPoint(x: self.center.x, y: self.center.y - 100)
+        balanceFromLabel: do {
+            self.balanceFromLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
+            self.balanceFromLabel.center = CGPoint(x: self.center.x, y: self.center.y - 100)
         }
 
         transferButton: do {

@@ -10,44 +10,11 @@ import Foundation
 import RxSwift
 
 protocol CADataStore {
-    func beginLocking() -> Observable<Any>
-    func endLocking() -> Observable<Any>
-
     func fetch() -> Observable<[CAEntity]>
-    func update(_ entities: [CAEntity]) -> Observable<Any>
+    func update(_ entities: [CAEntity]) -> Observable<Void>
 }
 
 struct CADataStoreImpl: CADataStore {
-    func beginLocking() -> Observable<Any> {
-        let userDefaults: UserDefaults = UserDefaults.standard
-        let key = UserDefaultsKeys.lockingState.rawValue
-
-        return Observable.create { observer in
-
-            let state = userDefaults.bool(forKey: key)
-            if state {
-                observer.onError(ErrorTransfer.transactionLocking)
-            } else {
-                userDefaults.set(true, forKey: key)
-                observer.onCompleted()
-            }
-
-            return Disposables.create()
-        }
-    }
-
-    func endLocking() -> Observable<Any> {
-        let userDefaults: UserDefaults = UserDefaults.standard
-        let key = UserDefaultsKeys.lockingState.rawValue
-
-        return Observable.create { observer in
-            userDefaults.set(false, forKey: key)
-            observer.onCompleted()
-
-            return Disposables.create()
-        }
-    }
-
     func fetch() -> Observable<[CAEntity]> {
         let userDefaults: UserDefaults = UserDefaults.standard
         let key = UserDefaultsKeys.account.rawValue
@@ -64,7 +31,6 @@ struct CADataStoreImpl: CADataStore {
                     let entities = try self.parse(dictionary)
 
                     observer.onNext(entities)
-                    observer.onCompleted()
 
                 } catch let e {
 
@@ -76,17 +42,20 @@ struct CADataStoreImpl: CADataStore {
                 observer.onError(ErrorTransfer.noContent)
             }
 
+            observer.onCompleted()
+
             return Disposables.create()
         }
     }
 
-    func update(_ entities: [CAEntity]) -> Observable<Any> {
+    func update(_ entities: [CAEntity]) -> Observable<Void> {
         let userDefaults: UserDefaults = UserDefaults.standard
 
         return Observable.create { observer in
             let dictionary = self.stringify(entities)
 
             userDefaults.set(dictionary, forKey: UserDefaultsKeys.account.rawValue)
+            observer.onNext()
             observer.onCompleted()
 
             return Disposables.create()

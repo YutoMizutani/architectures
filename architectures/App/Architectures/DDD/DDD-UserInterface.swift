@@ -61,12 +61,12 @@ extension DDDUserInterface {
     }
 }
 
-extension DDDUserInterface {
+extension DDDUserInterface: ErrorShowable {
     @IBAction func transfer() {
         do {
             try self.application.transfer(100, from: UserList.a.rawValue, to: UserList.b.rawValue)
         } catch let e {
-            UIAlertController.present(self, error: e)
+            self.showAlert(error: e)
         }
     }
 

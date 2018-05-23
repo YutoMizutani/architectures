@@ -34,7 +34,7 @@ public enum UserList: String, EnumCollection {
         case .takahashi:
             return 0
         case .watanabe:
-            return 10000
+            return 1000
         }
     }
 }

@@ -10,11 +10,8 @@ import Foundation
 import RxSwift
 
 protocol CAUseCase {
-    func fetch() -> Observable<[CAModel]>
-    func reset() -> Observable<Void>
-
-    func begin() -> Observable<Void>
-    func end() -> Observable<Void>
+    func fetch(_ models: [CAModel]) -> Observable<[CAModel]>
+    func reset(_ models: [CAModel]) -> Observable<Void>
 
     func transfer(from: CAModel, to: CAModel, amount: Int) -> Observable<Void>
 }
@@ -37,62 +34,34 @@ struct CAUseCaseImpl {
 }
 
 extension CAUseCaseImpl: CAUseCase {
-    func fetch() -> Observable<[CAModel]> {
+    func fetch(_ models: [CAModel]) -> Observable<[CAModel]> {
         return self.repository.fetch().map({ entities -> [CAModel] in
             var models: [CAModel] = []
 
             for entity in entities {
-                let model = self.translator.translate(from: entity)
-                models.append(model)
+                if let model = try? self.translator.translate(from: entity) {
+                    models.append(model)
+                }
             }
 
             return models
         })
     }
 
-    func reset() -> Observable<Void> {
-        let a = CAModelImpl(name: UserList.a.rawValue, balance: 0)
-        let b = CAModelImpl(name: UserList.b.rawValue, balance: 1000)
+    func reset(_ models: [CAModel]) -> Observable<Void> {
+        let collections = models.map{ self.translator.translate(from: $0) }
 
-        let collections = [a, b].map{ self.translator.translate(from: $0) }
-
-        return self.repository.beginLocking()
-            .concat(self.repository.commit(collections))
-            .concat(self.repository.endLocking())
+        return self.repository.commit(collections)
     }
 
     func transfer(from: CAModel, to: CAModel, amount: Int) -> Observable<Void> {
-        return self.repository.beginLocking()
-            .concat(self.credit(from, amount: amount))
-            .concat(self.debit(from, amount: amount))
-            .concat(self.debit(from, amount: amount))
-            .concat(
+        return self.credit(to, amount: amount)
+            .flatMap{ self.debit(from, amount: amount)}
+            .flatMap{
                 self.repository.commit(
                     [from, to].map{ self.translator.translate(from: $0) }
-                    )
-            )
-            .concat(self.repository.endLocking())
-    }
-    
-    func begin() -> Observable<Void> {
-        return self.repository.beginLocking()
-    }
-
-    func end() -> Observable<Void> {
-        return self.repository.endLocking()
-    }
-}
-
-extension CAUseCaseImpl {
-    func getInitModel() -> Observable<[CAModel]> {
-        return Observable.create({ observer -> Disposable in
-            let a = CAModelImpl(name: UserList.a.rawValue, balance: 0)
-            let b = CAModelImpl(name: UserList.b.rawValue, balance: 1000)
-            observer.onNext([a, b])
-            observer.onCompleted()
-
-            return Disposables.create()
-        })
+                )
+            }
     }
 }
 

@@ -23,8 +23,8 @@ class CAViewController: UIViewController {
     private var presenter: presenterType?
     private var subview: CAView?
 
-    private var aModel: CAModel = CAModelImpl.init(name: "a", balance: 0)
-    private var bModel: CAModel = CAModelImpl.init(name: "b", balance: 0)
+    private var takahashi: CAModel?
+    private var watanabe: CAModel?
 
     private let disposeBag = DisposeBag()
 
@@ -38,6 +38,7 @@ class CAViewController: UIViewController {
         super.viewDidLoad()
 
         configureView()
+        configureModel()
         layoutView()
         binding()
         reset()
@@ -64,14 +65,25 @@ extension CAViewController {
             }
         }
     }
+
+    private func configureModel() {
+        takahashi: do {
+            self.takahashi = CAModelImpl(user: .takahashi, balance: 0)
+        }
+        watanabe: do {
+            self.watanabe = CAModelImpl(user: .watanabe, balance: 0)
+        }
+    }
+
     private func layoutView() {
         subview: do {
             self.subview?.frame = self.view.bounds
         }
     }
+
     private func binding() {
         if let balanceToLabel = self.subview?.balanceToLabel.rx.text {
-            self.aModel.balance
+            self.takahashi?.balance
                 .asObservable()
                 .map { "\($0)" }
                 .asDriver(onErrorJustReturn: "")
@@ -80,7 +92,7 @@ extension CAViewController {
         }
         
         if let balanceFromLabel = self.subview?.balanceFromLabel.rx.text {
-            self.bModel.balance
+            self.watanabe?.balance
                 .asObservable()
                 .map { "\($0)" }
                 .asDriver(onErrorJustReturn: "")
@@ -90,34 +102,29 @@ extension CAViewController {
 
         self.subview?.transferButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
-                self?.presenter?.transfer(from: self?.getA(), to: self?.getB(), amount: 100)
-//                self?.presenter?.begin()
+                self?.transfer()
             })
             .disposed(by: disposeBag)
 
         self.subview?.resetButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
-                self?.presenter?.reset()
-//                self?.presenter?.end()
+                self?.reset()
             })
             .disposed(by: disposeBag)
     }
 }
 
 extension CAViewController {
-    func getA() -> CAModel? {
-        return self.aModel
-    }
-    func getB() -> CAModel? {
-        return self.bModel
-    }
-
     @IBAction func transfer() {
-        self.presenter?.transfer(from: getA(), to: getB(), amount: 100)
+        guard let takehashi = self.takahashi else { return }
+        guard let watanabe = self.watanabe else { return }
+        self.presenter?.transfer(from: takehashi, to: watanabe, amount: Assets.amount)
     }
 
     @IBAction func reset() {
-        self.presenter?.reset()
+        guard let takehashi = self.takahashi else { return }
+        guard let watanabe = self.watanabe else { return }
+        self.presenter?.reset([takehashi, watanabe])
     }
 }
 
@@ -128,10 +135,10 @@ extension CAViewController: CAViewInput, ErrorShowable {
 
     func setModel(_ user: UserList, model: CAModel) {
         switch user {
-        case .a:
-            self.aModel = model
-        case .b:
-            self.bModel = model
+        case .takahashi:
+            self.takahashi = model
+        case .watanabe:
+            self.watanabe = model
         }
     }
 }

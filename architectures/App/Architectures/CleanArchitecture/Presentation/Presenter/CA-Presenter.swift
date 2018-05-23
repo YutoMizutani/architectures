@@ -10,12 +10,9 @@ import Foundation
 import RxSwift
 
 protocol CAPresenter: class {
-    func fetch()
-    func reset()
+    func fetch(_ models: [CAModel])
+    func reset(_ models: [CAModel])
     func transfer(from: CAModel?, to: CAModel?, amount: Int)
-
-    func begin()
-    func end()
 }
 
 
@@ -42,37 +39,28 @@ class CAPresenterImpl {
 }
 
 extension CAPresenterImpl: CAPresenter {
-    func fetch() {
-        let fetch = self.useCase.fetch().asObservable().share()
+    func fetch(_ models: [CAModel]) {
+        let fetch = self.useCase.fetch(models).asObservable().share()
 
-        fetch.map{ $0.filter{ $0.name == UserList.a.rawValue }.first }
-            .filter{ $0 != nil }.map{ $0! }
-            .subscribe(onNext: { [weak self] model in
-                print("onNext")
-                self?.viewInput?.setModel(.a, model: model)
-            }, onError: { [weak self] e in
-                print("onError")
-                self?.viewInput?.presentAlert(e)
-            })
-            .disposed(by: disposeBag)
-
-        fetch.map{ $0.filter{ $0.name == UserList.b.rawValue }.first }
-            .filter{ $0 != nil }.map{ $0! }
-            .subscribe(onNext: { [weak self] model in
-                print("onNext")
-                self?.viewInput?.setModel(.b, model: model)
-            }, onError: { [weak self] e in
-                print("onError")
-                self?.viewInput?.presentAlert(e)
-            })
-            .disposed(by: disposeBag)
+        for model in models {
+            fetch.map{ $0.filter{ $0.user == model.user }.first }
+                .filter{ $0 != nil }.map{ $0! }
+                .subscribe(onNext: { [weak self] model in
+                    print("onNext")
+                    self?.viewInput?.setModel(model.user, model: model)
+                    }, onError: { [weak self] e in
+                        print("onError")
+                        self?.viewInput?.presentAlert(e)
+                })
+                .disposed(by: disposeBag)
+        }
     }
 
-    func reset() {
-        self.useCase.reset().asObservable()
+    func reset(_ models: [CAModel]) {
+        self.useCase.reset(models).asObservable()
             .subscribe(onNext: { [weak self] _ in
                 print("onNext")
-                self?.fetch()
+                self?.fetch(models)
             }, onError: { [weak self] e in
                 print("onError")
                 self?.viewInput?.presentAlert(e)
@@ -97,38 +85,6 @@ extension CAPresenterImpl: CAPresenter {
             .asObservable()
             .subscribe(onError: { [weak self] e in
                 self?.viewInput?.presentAlert(e)
-            })
-            .disposed(by: disposeBag)
-    }
-
-    func begin() {
-        self.useCase.begin()
-            .asObservable()
-            .subscribe(onNext: { [weak self] _ in
-                print("onNext")
-            }, onError: { [weak self] e in
-                print("onError")
-                self?.viewInput?.presentAlert(e)
-            }, onCompleted: {
-                print("onCompleted")
-            }, onDisposed: {
-                print("onDisposed")
-            })
-            .disposed(by: disposeBag)
-    }
-
-    func end() {
-        self.useCase.end()
-            .asObservable()
-            .subscribe(onNext: { [weak self] _ in
-                print("onNext")
-            }, onError: { [weak self] e in
-                print("onError")
-                self?.viewInput?.presentAlert(e)
-            }, onCompleted: {
-                print("onCompleted")
-            }, onDisposed: {
-                print("onDisposed")
             })
             .disposed(by: disposeBag)
     }

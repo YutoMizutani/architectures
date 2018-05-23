@@ -64,7 +64,7 @@ extension DDDUserInterface {
 extension DDDUserInterface: ErrorShowable {
     @IBAction func transfer() {
         do {
-            try self.application.transfer(100, from: UserList.a.rawValue, to: UserList.b.rawValue)
+            try self.application.transfer(Assets.amount, from: UserList.a.rawValue, to: UserList.b.rawValue)
         } catch let e {
             self.showAlert(error: e)
         }

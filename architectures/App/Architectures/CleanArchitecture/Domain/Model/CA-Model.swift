@@ -11,17 +11,17 @@ import RxSwift
 import RxCocoa
 
 protocol CAModel {
-    var name: String { get }
+    var user: UserList { get }
     var balance: BehaviorRelay<Int> { get }
 }
 
 
 struct CAModelImpl: CAModel {
-    let name: String
+    let user: UserList
     private(set) var balance: BehaviorRelay<Int>
 
-    init(name: String, balance: Int) {
-        self.name = name
+    init(user: UserList, balance: Int) {
+        self.user = user
         self.balance = BehaviorRelay(value: balance)
     }
 }

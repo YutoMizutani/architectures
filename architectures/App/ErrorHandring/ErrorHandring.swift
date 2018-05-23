@@ -50,9 +50,6 @@ extension ErrorShowable {
         case .insufficientFunds:
             UIAlertController.present(self, message: "残高が不足しています")
             return
-        case .transactionLocking:
-            UIAlertController.present(self, message: "他の取引が実行中です")
-            return
         case .updateFailed:
             UIAlertController.present(self, message: "口座情報の更新に失敗しました。取引を中止します", actionTitle: "OK")
             return

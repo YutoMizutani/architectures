@@ -60,6 +60,8 @@
 		99178BE020B04C2A008E7407 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99178BDF20B04C2A008E7407 /* View.swift */; };
 		99178BE220B04CE8008E7407 /* DDD-Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99178BE120B04CE8008E7407 /* DDD-Builder.swift */; };
 		9940CEBF20B16BF400260A36 /* RVC-Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEBE20B16BF400260A36 /* RVC-Builder.swift */; };
+		9940CEC220B457C800260A36 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEC120B457C800260A36 /* TestViewController.swift */; };
+		9940CEC420B45B1D00260A36 /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEC320B45B1D00260A36 /* RxSwift+.swift */; };
 		EA9D3F9839DF9177A8F4B530 /* Pods_architectures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +144,8 @@
 		99178BDF20B04C2A008E7407 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		99178BE120B04CE8008E7407 /* DDD-Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DDD-Builder.swift"; sourceTree = "<group>"; };
 		9940CEBE20B16BF400260A36 /* RVC-Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RVC-Builder.swift"; sourceTree = "<group>"; };
+		9940CEC120B457C800260A36 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		9940CEC320B45B1D00260A36 /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
 		9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_architectures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C26A8A79362503D7C6040E3 /* Pods-architecturesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesTests/Pods-architecturesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB1C98A2DB87E9322CF21174 /* Pods-architecturesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesUITests/Pods-architecturesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				9915FCDD20B14C9000DEE8A1 /* EnumCollection.swift */,
+				9940CEC320B45B1D00260A36 /* RxSwift+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -355,6 +360,7 @@
 		99178B5420AFEEC0008E7407 /* Architectures */ = {
 			isa = PBXGroup;
 			children = (
+				9940CEC020B457B000260A36 /* Test */,
 				9915FCD920B1474100DEE8A1 /* RVC */,
 				9915FCCD20B0578A00DEE8A1 /* ProceduralProgramming */,
 				9915FCCC20B0577400DEE8A1 /* FunctionalProgramming */,
@@ -508,8 +514,8 @@
 		99178BC320B01792008E7407 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				99178BC420B01792008E7407 /* UI */,
 				99178BC920B01792008E7407 /* Presenter */,
+				99178BC420B01792008E7407 /* UI */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -557,6 +563,14 @@
 				99178BDD20B04BBD008E7407 /* DDD-Infrastructure.swift */,
 			);
 			path = DDD;
+			sourceTree = "<group>";
+		};
+		9940CEC020B457B000260A36 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				9940CEC120B457C800260A36 /* TestViewController.swift */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 		BEF3CDA49603687D9C024AD6 /* Frameworks */ = {
@@ -836,7 +850,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				99178BD320B01792008E7407 /* CA-View.swift in Sources */,
+				9940CEC420B45B1D00260A36 /* RxSwift+.swift in Sources */,
 				9915FCCF20B0583C00DEE8A1 /* PP-Builder.swift in Sources */,
+				9940CEC220B457C800260A36 /* TestViewController.swift in Sources */,
 				99178B5120AFEE13008E7407 /* MasterViewController.swift in Sources */,
 				99178BE220B04CE8008E7407 /* DDD-Builder.swift in Sources */,
 				99178BD020B01792008E7407 /* CA-Translator.swift in Sources */,

@@ -9,10 +9,11 @@
 import Foundation
 
 protocol CAEntity {
-    var id: Int { get }
+    var name: String { get }
+    var balance: Int { get }
 }
 
-
 struct CAEntityImpl: CAEntity {
-    let id: Int
+    let name: String
+    let balance: Int
 }

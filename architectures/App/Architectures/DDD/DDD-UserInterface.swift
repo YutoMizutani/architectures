@@ -18,7 +18,7 @@
 import UIKit
 
 class DDDUserInterface: UIViewController {
-    var myview: MVCView = MVCView()
+    var myview: View = View()
     var application: DDDApplication = DDDApplication()
 }
 
@@ -58,16 +58,15 @@ extension DDDUserInterface {
 
     private func layoutView() {
         self.myview.frame = self.view.frame
-        self.myview.layoutView()
     }
 }
 
-extension DDDUserInterface {
+extension DDDUserInterface: ErrorShowable {
     @IBAction func transfer() {
         do {
-            try self.application.transfer(100, from: UserList.a.rawValue, to: UserList.b.rawValue)
+            try self.application.transfer(Assets.amount, from: .takahashi, to: .watanabe)
         } catch let e {
-            UIAlertController.present(self, error: e)
+            self.showAlert(error: e)
         }
     }
 

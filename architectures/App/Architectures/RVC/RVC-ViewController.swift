@@ -58,7 +58,6 @@ extension RVCViewController {
 
     private func layoutView() {
         self.myview.frame = self.view.frame
-        self.myview.layoutView()
     }
 
     private func binding() {
@@ -66,14 +65,14 @@ extension RVCViewController {
             .asObservable()
             .map { "\($0)" }
             .asDriver(onErrorJustReturn: "")
-            .drive(self.myview.balanceALabel.rx.text)
+            .drive(self.myview.balanceToLabel.rx.text)
             .disposed(by: disposeBag)
         
         self.bBalance
             .asObservable()
             .map { "\($0)" }
             .asDriver(onErrorJustReturn: "")
-            .drive(self.myview.balanceBLabel.rx.text)
+            .drive(self.myview.balanceFromLabel.rx.text)
             .disposed(by: disposeBag)
 
         self.myview.transferButton.rx.tap
@@ -92,11 +91,11 @@ extension RVCViewController {
     }
 }
 
-extension RVCViewController {
+extension RVCViewController: ErrorShowable {
     /// aからbに送金を行う
     private func transfer() {
         if self.bBalance.value - 100 < 0 {
-            UIAlertController.present(self, error: ErrorTransfer.insufficientFunds)
+            self.showAlert(error: ErrorTransfer.insufficientFunds)
             return
         }
 

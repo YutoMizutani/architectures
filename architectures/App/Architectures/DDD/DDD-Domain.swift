@@ -18,11 +18,11 @@
 import Foundation
 
 class DDDDomain {
-    public let name: String
+    public let user: UserList
     public private(set) var balance: Int
 
-    init(name: String, balance: Int) {
-        self.name = name
+    init(user: UserList, balance: Int) {
+        self.user = user
         self.balance = balance
     }
 }

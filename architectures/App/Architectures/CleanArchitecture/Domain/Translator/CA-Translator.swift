@@ -10,14 +10,17 @@ import Foundation
 
 protocol CATranslator {
     func translate(from model: CAModel) -> CAEntity
-    func translate(from entity: CAEntity) -> CAModel
+    func translate(from entity: CAEntity) throws -> CAModel
 }
 
 struct CATranslatorImpl: CATranslator {
     func translate(from model: CAModel) -> CAEntity {
-        return CAEntityImpl(id: model.id)
+        return CAEntityImpl(name: model.user.rawValue, balance: model.balance.value)
     }
-    func translate(from entity: CAEntity) -> CAModel {
-        return CAModelImpl(id: entity.id)
+    func translate(from entity: CAEntity) throws -> CAModel {
+        guard let user = UserList.find(entity.name) else {
+            throw ErrorTransfer.userNotFound
+        }
+        return CAModelImpl(user: user, balance: entity.balance)
     }
 }

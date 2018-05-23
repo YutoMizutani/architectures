@@ -24,15 +24,16 @@ class DDDApplication {
 }
 
 extension DDDApplication {
-    public func transfer(_ amount: Int, from: String, to: String) throws {
-        try self.infrastructure.beginTranaction()
+    public func transfer(_ amount: Int, from: UserList, to: UserList) throws {
 
         let fromDomain = try self.getDomain(from)
         let toDomain = try self.getDomain(to)
 
         try fromDomain.transfer(to: toDomain, amount: amount)
 
-//        self.infrastructure.commit()
+        let collection = [fromDomain, toDomain]
+
+        self.commit(collection)
     }
 }
 
@@ -41,9 +42,9 @@ extension DDDApplication {
         return try self.infrastructure.getDomains()
     }
 
-    private func getDomain(_ name: String) throws -> DDDDomain {
+    private func getDomain(_ user: UserList) throws -> DDDDomain {
         for domain in self.domains {
-            if domain.name == name {
+            if domain.user == user {
                 return domain
             }
         }
@@ -57,7 +58,7 @@ extension DDDApplication {
 //        return DDDInfrastructure()
     }
 
-    private func commit() {
-//        return DDDInfrastructure()
+    private func commit(_ domains: [DDDDomain]) {
+        self.infrastructure.commit(domains)
     }
 }

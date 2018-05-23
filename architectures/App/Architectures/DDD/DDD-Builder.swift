@@ -10,6 +10,6 @@ import UIKit
 
 class DDDBuilder {
     func build() -> UIViewController {
-        return UIViewController()
+        return DDDUserInterface()
     }
 }

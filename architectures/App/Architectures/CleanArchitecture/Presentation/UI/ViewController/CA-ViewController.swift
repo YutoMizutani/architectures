@@ -11,7 +11,9 @@ import RxSwift
 import RxCocoa
 
 protocol CAViewInput: class {
+    func presentAlert(_ error: Error)
 
+    func setModel(_ user: UserList, model: CAModel)
 }
 
 
@@ -20,6 +22,9 @@ class CAViewController: UIViewController {
 
     private var presenter: presenterType?
     private var subview: CAView?
+
+    private var takahashi: CAModel?
+    private var watanabe: CAModel?
 
     private let disposeBag = DisposeBag()
 
@@ -33,8 +38,10 @@ class CAViewController: UIViewController {
         super.viewDidLoad()
 
         configureView()
+        configureModel()
         layoutView()
         binding()
+        reset()
     }
 
     override func viewDidLayoutSubviews() {
@@ -52,25 +59,86 @@ extension CAViewController {
             self.view.backgroundColor = UIColor.white
         }
         subview: do {
-            self.subview = CAView(frame: self.view.bounds)
+            self.subview = CAView()
             if self.subview != nil {
                 self.view.addSubview(self.subview!)
             }
         }
     }
+
+    private func configureModel() {
+        takahashi: do {
+            self.takahashi = CAModelImpl(user: .takahashi, balance: 0)
+        }
+        watanabe: do {
+            self.watanabe = CAModelImpl(user: .watanabe, balance: 0)
+        }
+    }
+
     private func layoutView() {
         subview: do {
             self.subview?.frame = self.view.bounds
         }
     }
-}
 
-extension CAViewController {
     private func binding() {
+        if let balanceToLabel = self.subview?.balanceToLabel.rx.text {
+            self.takahashi?.balance
+                .asObservable()
+                .map { "\($0)" }
+                .asDriver(onErrorJustReturn: "")
+                .drive(balanceToLabel)
+                .disposed(by: disposeBag)
+        }
+        
+        if let balanceFromLabel = self.subview?.balanceFromLabel.rx.text {
+            self.watanabe?.balance
+                .asObservable()
+                .map { "\($0)" }
+                .asDriver(onErrorJustReturn: "")
+                .drive(balanceFromLabel)
+                .disposed(by: disposeBag)
+        }
 
+        self.subview?.transferButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.transfer()
+            })
+            .disposed(by: disposeBag)
+
+        self.subview?.resetButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.reset()
+            })
+            .disposed(by: disposeBag)
     }
 }
 
-extension CAViewController: CAViewInput {
+extension CAViewController {
+    @IBAction func transfer() {
+        guard let takehashi = self.takahashi else { return }
+        guard let watanabe = self.watanabe else { return }
+        self.presenter?.transfer(from: takehashi, to: watanabe, amount: Assets.amount)
+    }
 
+    @IBAction func reset() {
+        guard let takehashi = self.takahashi else { return }
+        guard let watanabe = self.watanabe else { return }
+        self.presenter?.reset([takehashi, watanabe])
+    }
+}
+
+extension CAViewController: CAViewInput, ErrorShowable {
+    func presentAlert(_ error: Error) {
+        self.showAlert(error: error)
+    }
+
+    func setModel(_ user: UserList, model: CAModel) {
+        switch user {
+        case .takahashi:
+            self.takahashi = model
+        case .watanabe:
+            self.watanabe = model
+        }
+    }
 }

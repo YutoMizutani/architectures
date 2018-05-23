@@ -43,6 +43,5 @@ extension MVCController {
     
     private func layoutView() {
         self.myview.frame = self.view.frame
-        self.myview.layoutView()
     }
 }

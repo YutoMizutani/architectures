@@ -21,7 +21,7 @@ import RxCocoa
 
 class MVVMViewModel: UIViewController {
     var myview: MVVMView = MVVMView()
-    var model: MVVMModel = MVVMModel()
+    var model: MVVMModel?
 
     let disposeBag = DisposeBag()
 }
@@ -31,6 +31,7 @@ extension MVVMViewModel {
         super.viewDidLoad()
 
         configureView()
+        configureModel()
         layoutView()
         binding()
     }
@@ -55,30 +56,40 @@ extension MVVMViewModel {
         self.view.addSubview(self.myview)
     }
 
+    private func configureModel() {
+        let users: [UserList] = [.takahashi, .watanabe]
+        self.model = MVVMModel.init(users: users)
+        self.model?.fetch()
+    }
+
     private func layoutView() {
         self.myview.frame = self.view.frame
-        self.myview.layoutView()
     }
     
     private func binding() {
-        count: do {
-//            self.model.count
-//                .map { "\($0)" }
-//                .asDriver(onErrorJustReturn: "Rx binding error!")
-//                .drive(self.myview.displayLabel.rx.text)
-//                .disposed(by: self.disposeBag)
-//
-//            self.myview.countButton.rx.tap
-//                .asObservable()
-//                .subscribe(onNext: { [weak self] _ in
-//                    self?.model.countUp()
-//                })
-//                .disposed(by: self.disposeBag)
+        self.model?.users.filter{ $0.user == .takahashi }.first?.balance
+            .map{ "\($0)" }
+            .asDriver(onErrorJustReturn: "Rx binding error!")
+            .drive(self.myview.balanceToLabel.rx.text)
+            .disposed(by: self.disposeBag)
+
+        self.model?.users.filter{ $0.user == .watanabe }.first?.balance
+            .map{ "\($0)" }
+            .asDriver(onErrorJustReturn: "Rx binding error!")
+            .drive(self.myview.balanceFromLabel.rx.text)
+            .disposed(by: self.disposeBag)
+
+        if let model = model {
+            self.myview.transferButton.rx.tap
+                .asObservable()
+                .flatMap{ return model.transfer(from: .watanabe, to: .takahashi, amount: Assets.amount) }
+                .subscribe()
+                .disposed(by: self.disposeBag)
 
             self.myview.resetButton.rx.tap
                 .asObservable()
-                .subscribe(onNext: { [weak self] _ in
-                    self?.model.resetCount()
+                .subscribe(onNext: { _ in
+                    model.reset()
                 })
                 .disposed(by: self.disposeBag)
         }

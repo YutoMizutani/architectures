@@ -39,6 +39,5 @@ class PPViewController: UIViewController {
 
     private func layoutView() {
         self.myview.frame = self.view.frame
-        self.myview.layoutView()
     }
 }

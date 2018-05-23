@@ -88,12 +88,12 @@ extension View {
 extension View {
     public func layoutView() {
         balanceToLabel: do {
-            self.balanceToLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
+            self.balanceToLabel.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
             self.balanceToLabel.center = CGPoint(x: self.center.x, y: self.center.y - 200)
         }
 
         balanceFromLabel: do {
-            self.balanceFromLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
+            self.balanceFromLabel.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
             self.balanceFromLabel.center = CGPoint(x: self.center.x, y: self.center.y - 100)
         }
 

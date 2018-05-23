@@ -76,7 +76,7 @@ extension MVVMViewModel {
         self.model?.users.filter{ $0.user == .watanabe }.first?.balance
             .map{ "\($0)" }
             .asDriver(onErrorJustReturn: "Rx binding error!")
-            .drive(self.myview.balanceToLabel.rx.text)
+            .drive(self.myview.balanceFromLabel.rx.text)
             .disposed(by: self.disposeBag)
 
         if let model = model {

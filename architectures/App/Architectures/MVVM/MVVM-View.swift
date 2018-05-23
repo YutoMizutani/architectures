@@ -15,8 +15,4 @@
 
  */
 
-import UIKit
-import RxSwift
-import RxCocoa
-
 class MVVMView: View {}

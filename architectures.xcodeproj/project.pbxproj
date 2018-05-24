@@ -401,8 +401,8 @@
 			children = (
 				99178B6C20B001FD008E7407 /* MVVM-Builder.swift */,
 				99178B6A20B001FD008E7407 /* MVVM-Model.swift */,
-				99178B6B20B001FD008E7407 /* MVVM-View.swift */,
 				99178B6920B001FD008E7407 /* MVVM-ViewModel.swift */,
+				99178B6B20B001FD008E7407 /* MVVM-View.swift */,
 			);
 			path = MVVM;
 			sourceTree = "<group>";

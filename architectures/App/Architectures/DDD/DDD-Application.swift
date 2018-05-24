@@ -24,6 +24,14 @@ class DDDApplication {
 }
 
 extension DDDApplication {
+    public func fetch() throws -> [DDDDomain] {
+        return try self.infrastructure.getDomains()
+    }
+
+    public func reset() {
+        
+    }
+
     public func transfer(_ amount: Int, from: UserList, to: UserList) throws {
 
         let fromDomain = try self.getDomain(from)
@@ -38,10 +46,6 @@ extension DDDApplication {
 }
 
 extension DDDApplication {
-    private func fetchDomain() throws -> [DDDDomain] {
-        return try self.infrastructure.getDomains()
-    }
-
     private func getDomain(_ user: UserList) throws -> DDDDomain {
         for domain in self.domains {
             if domain.user == user {
@@ -54,10 +58,6 @@ extension DDDApplication {
 }
 
 extension DDDApplication {
-    private func beginTransaction() {
-//        return DDDInfrastructure()
-    }
-
     private func commit(_ domains: [DDDDomain]) {
         self.infrastructure.commit(domains)
     }

@@ -58,19 +58,23 @@ extension MVVMModel {
 
     public func transfer(from: UserList, to: UserList, amount: Int) -> Observable<Void> {
         return Observable.create({ observer -> Disposable in
+            print("transfer observable")
             let from: UserEntity? = self.users.filter{ $0.user == from }.first
             let to: UserEntity? = self.users.filter{ $0.user == to }.first
 
             if from == nil || to == nil {
                 observer.onError(ErrorTransfer.userNotFound)
+                return Disposables.create()
             }
 
-            if !self.checkAmountOverflow(to!, amount: amount) {
+            if self.willValueAmountOverflow(to!, amount: amount) {
                 observer.onError(ErrorTransfer.amountOverflow)
+                return Disposables.create()
             }
 
-            if !self.checkInsufficientFunds(from!, amount: amount) {
-                observer.onError(ErrorTransfer.amountOverflow)
+            if self.willValueInsufficientFunds(from!, amount: amount) {
+                observer.onError(ErrorTransfer.insufficientFunds)
+                return Disposables.create()
             }
 
             self.credit(to!, amount: amount)
@@ -81,18 +85,15 @@ extension MVVMModel {
 
             return Disposables.create()
         })
-
-
-
     }
 }
 
 extension MVVMModel {
-    private func checkAmountOverflow(_ user: UserEntity, amount: Int) -> Bool {
+    private func willValueAmountOverflow(_ user: UserEntity, amount: Int) -> Bool {
         // 入金後の残高がIntの最大値を超過するかの判断を行う
         return user.balance.value > Int.max - amount
     }
-    private func checkInsufficientFunds(_ user: UserEntity, amount: Int) -> Bool {
+    private func willValueInsufficientFunds(_ user: UserEntity, amount: Int) -> Bool {
         // 出金後の残高が0を下回るかの判断を行う
         return user.balance.value - amount < 0
     }

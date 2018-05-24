@@ -51,7 +51,7 @@ extension MVVMViewModel {
     }
 }
 
-extension MVVMViewModel {
+extension MVVMViewModel: ErrorShowable {
     private func configureView() {
         self.view.addSubview(self.myview)
     }
@@ -80,11 +80,17 @@ extension MVVMViewModel {
             .disposed(by: self.disposeBag)
 
         if let model = model {
-            self.myview.transferButton.rx.tap
-                .asObservable()
-                .flatMap{ return model.transfer(from: .watanabe, to: .takahashi, amount: Assets.amount) }
-                .subscribe()
-                .disposed(by: self.disposeBag)
+            func bindingErrorable() {
+                self.myview.transferButton.rx.tap
+                    .asObservable()
+                    .flatMap{ model.transfer(from: .watanabe, to: .takahashi, amount: Assets.amount) }
+                    .subscribe(onError: { [unowned self] e in
+                        self.showAlert(error: e)
+                        bindingErrorable()
+                    })
+                    .disposed(by: self.disposeBag)
+            }
+            bindingErrorable()
 
             self.myview.resetButton.rx.tap
                 .asObservable()

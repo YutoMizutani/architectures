@@ -65,14 +65,14 @@ extension RVCViewController {
             .asObservable()
             .map { "\($0)" }
             .asDriver(onErrorJustReturn: "")
-            .drive(self.myview.balanceToLabel.rx.text)
+            .drive(self.myview.toView.valueLabel.rx.text)
             .disposed(by: disposeBag)
         
         self.bBalance
             .asObservable()
             .map { "\($0)" }
             .asDriver(onErrorJustReturn: "")
-            .drive(self.myview.balanceFromLabel.rx.text)
+            .drive(self.myview.fromView.valueLabel.rx.text)
             .disposed(by: disposeBag)
 
         self.myview.transferButton.rx.tap

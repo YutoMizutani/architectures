@@ -82,7 +82,7 @@ extension CAViewController {
     }
 
     private func binding() {
-        if let balanceToLabel = self.subview?.balanceToLabel.rx.text {
+        if let balanceToLabel = self.subview?.toView.valueLabel.rx.text {
             self.takahashi?.balance
                 .asObservable()
                 .map { "\($0)" }
@@ -91,7 +91,7 @@ extension CAViewController {
                 .disposed(by: disposeBag)
         }
         
-        if let balanceFromLabel = self.subview?.balanceFromLabel.rx.text {
+        if let balanceFromLabel = self.subview?.fromView.valueLabel.rx.text {
             self.watanabe?.balance
                 .asObservable()
                 .map { "\($0)" }

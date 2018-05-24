@@ -62,6 +62,7 @@
 		9940CEBF20B16BF400260A36 /* RVC-Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEBE20B16BF400260A36 /* RVC-Builder.swift */; };
 		9940CEC220B457C800260A36 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEC120B457C800260A36 /* TestViewController.swift */; };
 		9940CEC420B45B1D00260A36 /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEC320B45B1D00260A36 /* RxSwift+.swift */; };
+		9940CEC920B6CC7800260A36 /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEC820B6CC7800260A36 /* BalanceView.swift */; };
 		EA9D3F9839DF9177A8F4B530 /* Pods_architectures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */; };
 /* End PBXBuildFile section */
 
@@ -146,6 +147,7 @@
 		9940CEBE20B16BF400260A36 /* RVC-Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RVC-Builder.swift"; sourceTree = "<group>"; };
 		9940CEC120B457C800260A36 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		9940CEC320B45B1D00260A36 /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
+		9940CEC820B6CC7800260A36 /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
 		9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_architectures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C26A8A79362503D7C6040E3 /* Pods-architecturesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesTests/Pods-architecturesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB1C98A2DB87E9322CF21174 /* Pods-architecturesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesUITests/Pods-architecturesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 		9915FCE120B14CCB00DEE8A1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				9940CEC820B6CC7800260A36 /* BalanceView.swift */,
 				99178BDF20B04C2A008E7407 /* View.swift */,
 				9915FCD220B074AE00DEE8A1 /* Accounts.swift */,
 			);
@@ -894,6 +897,7 @@
 				9915FCC920B054B000DEE8A1 /* FVC-View.swift in Sources */,
 				9915FCCB20B054C300DEE8A1 /* FVC-ViewController.swift in Sources */,
 				99178BD820B04B8C008E7407 /* DDD-UserInterface.swift in Sources */,
+				9940CEC920B6CC7800260A36 /* BalanceView.swift in Sources */,
 				99178BD420B01792008E7407 /* CA-ViewController.swift in Sources */,
 				99178B7C20B001FD008E7407 /* MVVM-Model.swift in Sources */,
 			);

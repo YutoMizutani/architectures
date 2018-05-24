@@ -53,6 +53,8 @@ extension MVVMViewModel {
 
 extension MVVMViewModel: ErrorShowable {
     private func configureView() {
+        self.myview.toView.nameLabel.text = "\(UserList.takahashi.rawValue): "
+        self.myview.fromView.nameLabel.text = "\(UserList.watanabe.rawValue): "
         self.view.addSubview(self.myview)
     }
 
@@ -70,13 +72,13 @@ extension MVVMViewModel: ErrorShowable {
         self.model?.users.filter{ $0.user == .takahashi }.first?.balance
             .map{ "\($0)" }
             .asDriver(onErrorJustReturn: "Rx binding error!")
-            .drive(self.myview.balanceToLabel.rx.text)
+            .drive(self.myview.toView.valueLabel.rx.text)
             .disposed(by: self.disposeBag)
 
         self.model?.users.filter{ $0.user == .watanabe }.first?.balance
             .map{ "\($0)" }
             .asDriver(onErrorJustReturn: "Rx binding error!")
-            .drive(self.myview.balanceFromLabel.rx.text)
+            .drive(self.myview.fromView.valueLabel.rx.text)
             .disposed(by: self.disposeBag)
 
         if let model = model {

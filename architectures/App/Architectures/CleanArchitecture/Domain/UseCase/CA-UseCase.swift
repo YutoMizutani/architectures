@@ -70,7 +70,7 @@ extension CAUseCaseImpl {
      入金処理を行う
 
      - Parameters:
-     - amount: 金額(Int)
+     - amount: 金額
 
      - throws: Intの最大値を超過する場合
      */
@@ -94,7 +94,7 @@ extension CAUseCaseImpl {
      出金処理を行う
 
      - Parameters:
-     - amount: 金額(Int)
+     - amount: 金額
 
      - throws: Intの最大値を超過する場合
      */

@@ -24,10 +24,11 @@ class MVVMViewModel: UIViewController {
     var subview: MVVMView = MVVMView()
     var model: MVVMModel?
 
-    // Rx bindingを解除するDisposeBag。
+    /// Rx bindingを解除するためのDisposeBag。
     let disposeBag = DisposeBag()
 }
 
+// MARK:- Override methods
 extension MVVMViewModel {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,7 @@ extension MVVMViewModel {
     }
 }
 
+// MARK:- Private methods about settings
 extension MVVMViewModel: ErrorShowable {
     /// Viewの構成を行う。
     private func configureView() {
@@ -82,7 +84,7 @@ extension MVVMViewModel: ErrorShowable {
         self.subview.frame = self.view.frame
     }
 
-    /// View要素とBuisiness logicのバインディングを行う。
+    /// View要素とBusiness logicのバインディングを行う。
     private func binding() {
         // Takahashiさんの残高をラベルにバインドする。
         self.model?.users.filter{ $0.user == .takahashi }.first?.balance

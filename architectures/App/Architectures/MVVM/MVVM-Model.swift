@@ -69,7 +69,7 @@ extension MVVMModel {
      残高を取得する。
 
      - Parameters:
-        - _users: 取得が必要なユーザーのリスト。省略した場合は全てのユーザーが指定される。
+        - _users: 取得を行うユーザーのリスト。省略した場合は全てのユーザーが指定される。
      */
     public func fetch(_ _users: [UserList]=UserList.allValues) {
         self.fetchBalance(_users)
@@ -79,7 +79,7 @@ extension MVVMModel {
      残高をリセットする。
 
      - Parameters:
-        - _users: リセットが必要なユーザーのリスト。省略した場合は全てのユーザーが指定される。
+        - _users: リセットを行うユーザーのリスト。省略した場合は全てのユーザーが指定される。
      */
     public func reset(_ _users: [UserList]=UserList.allValues) {
         self.resetBalance(_users)
@@ -98,29 +98,36 @@ extension MVVMModel {
      */
     public func transfer(from: UserList, to: UserList, amount: Int) -> Observable<Void> {
         return Observable.create({ observer -> Disposable in
-            print("transfer observable")
+            // ユーザー情報をリストから取得する。
             let from: UserEntity? = self.users.filter{ $0.user == from }.first
             let to: UserEntity? = self.users.filter{ $0.user == to }.first
 
+            // 取引者がインスタンスに含まれるか判断する。
             if from == nil || to == nil {
                 observer.onError(ErrorTransfer.userNotFound)
                 return Disposables.create()
             }
 
+            // 取引先の残高が超過しないかチェックを行う。
             if self.willValueAmountOverflow(to!, amount: amount) {
                 observer.onError(ErrorTransfer.amountOverflow)
                 return Disposables.create()
             }
 
+            // 取引元の残高が不足しないかチェックを行う。
             if self.willValueInsufficientFunds(from!, amount: amount) {
                 observer.onError(ErrorTransfer.insufficientFunds)
                 return Disposables.create()
             }
 
+            // 入金を行う。
             self.credit(to!, amount: amount)
+            // 出金を行う。
             self.debit(from!, amount: amount)
 
+            // 取引の完了を通知する。
             observer.onNext()
+            // 取引の終了を通知する。
             observer.onCompleted()
 
             return Disposables.create()
@@ -166,6 +173,7 @@ extension MVVMModel {
      入金処理を行う。
 
      - Parameters:
+        - user: 対象ユーザー
         - amount: 金額
      */
     private func credit(_ user: UserEntity, amount: Int) {
@@ -177,6 +185,7 @@ extension MVVMModel {
      出金処理を行う。
 
      - Parameters:
+        - user: 対象ユーザー
         - amount: 金額
      */
     private func debit(_ user: UserEntity, amount: Int) {
@@ -191,32 +200,36 @@ extension MVVMModel {
      保存されている残高情報の取得を行う。
 
      - Parameters:
-        - _users: 取得が必要なユーザーのリスト。省略した場合は全てのユーザーが指定される。
+        - _users: 取得を行うユーザーのリスト。省略した場合は全てのユーザーが指定される。
      */
     private func fetchBalance(_ _users: [UserList]=UserList.allValues) {
-        let userDefaults: UserDefaults = UserDefaults.standard
-        let key = UserDefaultsKeys.account.rawValue
+        let userDefaults = UserDefaults.standard
 
-        var stored: Dictionary<String, Any>? {
-            return userDefaults.dictionary(forKey: key)
-        }
-
-        guard let dictionary = stored else {
+        // 口座情報を取得する。
+        guard let dictionary = userDefaults.fetch() else {
+            //  登録情報が存在しない場合，リセットを行う。
             self.resetBalance(_users)
             return
         }
 
+        // 口座の取得に失敗したユーザーを格納するリスト。
         var failedUsers: [UserList] = []
 
         for _user in _users {
+
+            // 口座情報からユーザーを指定して残高情報を取り出す。
             guard let newValue = dictionary[_user.rawValue] as? Int else {
+                // 取得した口座情報が存在しない場合は口座取得失敗ユーザーに追加する。
                 failedUsers.append(_user)
                 continue
             }
 
+            // user entityに対して残高を更新する。
             self.users.filter{ $0.user == _user }.first?.balance.accept(newValue)
+
         }
 
+        //  口座情報が存在しないユーザーに対し，リセットを行う。
         self.resetBalance(failedUsers)
     }
 
@@ -224,7 +237,7 @@ extension MVVMModel {
      残高をリセットする。
 
      - Parameters:
-        - _users: リセットが必要なユーザーのリスト。省略した場合は全てのユーザーが指定される。
+        - _users: リセットを行うユーザーのリスト。省略した場合は全てのユーザーが指定される。
      */
     private func resetBalance(_ _users: [UserList]=UserList.allValues) {
         // ユーザーごとに処理する。
@@ -247,20 +260,43 @@ extension MVVMModel {
      */
     private func update(_ entity: UserEntity) {
         let userDefaults: UserDefaults = UserDefaults.standard
-        let key = UserDefaultsKeys.account.rawValue
-
-        // keyを元にdictionaryを取り出す。
-        var stored: Dictionary<String, Any>? {
-            return userDefaults.dictionary(forKey: key)
-        }
 
         // UserDefaultsに保存されていなかった場合は空のDictionaryを生成する。
-        var dictionary: Dictionary<String, Any> = stored ?? Dictionary()
+        var dictionary: Dictionary<String, Any> = userDefaults.fetch() ?? Dictionary()
 
         // 引数に受け取ったユーザーの情報を反映する。
         dictionary[entity.user.rawValue] = entity.balance.value
 
         // 更新を保存する。
-        userDefaults.set(dictionary, forKey: key)
+        userDefaults.update(dictionary)
+    }
+}
+
+private extension UserDefaults {
+    /// 口座情報のキー
+    var key: String {
+        return UserDefaultsKeys.account.rawValue
+    }
+
+    /**
+     口座情報を取得する。
+
+     - Returns:
+        Dictionary\<String, Any\>?
+     */
+    func fetch() -> Dictionary<String, Any>? {
+        // keyを元にdictionaryを取り出す。
+        return self.dictionary(forKey: key)
+    }
+
+    /**
+     口座情報を更新する。
+
+     - Parameters:
+        - dictionary: 保存する辞書型口座情報
+     */
+    func update(_ dictionary: Dictionary<String, Any>) {
+        // keyを元に保存する。
+        self.set(dictionary, forKey: key)
     }
 }

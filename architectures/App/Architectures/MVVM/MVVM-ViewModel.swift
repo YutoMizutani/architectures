@@ -86,8 +86,8 @@ extension MVVMViewModel: ErrorShowable {
                 self.subview.transferButton.rx.tap
                     .asObservable()
                     .flatMap{ model.transfer(from: .watanabe, to: .takahashi, amount: Assets.amount) }
-                    .subscribe(onError: { [unowned self] e in
-                        self.showAlert(error: e)
+                    .subscribe(onError: { [weak self] e in
+                        self?.showAlert(error: e)
                         bindingErrorable()
                     })
                     .disposed(by: self.disposeBag)

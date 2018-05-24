@@ -18,7 +18,7 @@
 import UIKit
 
 class DDDUserInterface: UIViewController {
-    var myview: View = View()
+    var subview: View = View()
     var application: DDDApplication = DDDApplication()
 }
 
@@ -48,16 +48,16 @@ extension DDDUserInterface {
 
 extension DDDUserInterface {
     private func configureView() {
-        self.view.addSubview(self.myview)
+        self.view.addSubview(self.subview)
     }
 
     private func configureControl() {
-        self.myview.transferButton.addTarget(self, action: #selector(self.transfer), for: .touchUpInside)
-        self.myview.resetButton.addTarget(self, action: #selector(self.reset), for: .touchUpInside)
+        self.subview.transferButton.addTarget(self, action: #selector(self.transfer), for: .touchUpInside)
+        self.subview.resetButton.addTarget(self, action: #selector(self.reset), for: .touchUpInside)
     }
 
     private func layoutView() {
-        self.myview.frame = self.view.frame
+        self.subview.frame = self.view.frame
     }
 }
 

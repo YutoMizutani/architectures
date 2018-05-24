@@ -9,7 +9,7 @@
 import UIKit
 
 class MVCController: UIViewController {
-    var myview: MVCView = MVCView()
+    var subview: MVCView = MVCView()
     var model: MVCModel = MVCModel()
 }
 
@@ -38,10 +38,10 @@ extension MVCController {
 
 extension MVCController {
     private func configureView() {
-        self.view.addSubview(self.myview)
+        self.view.addSubview(self.subview)
     }
     
     private func layoutView() {
-        self.myview.frame = self.view.frame
+        self.subview.frame = self.view.frame
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class PPViewController: UIViewController {
-    var myview: MVCView = MVCView()
+    var subview: MVCView = MVCView()
     var model: MVCModel = MVCModel()
 
     override func viewDidLoad() {
@@ -34,10 +34,10 @@ class PPViewController: UIViewController {
     }
 
     private func configureView() {
-        self.view.addSubview(self.myview)
+        self.view.addSubview(self.subview)
     }
 
     private func layoutView() {
-        self.myview.frame = self.view.frame
+        self.subview.frame = self.view.frame
     }
 }

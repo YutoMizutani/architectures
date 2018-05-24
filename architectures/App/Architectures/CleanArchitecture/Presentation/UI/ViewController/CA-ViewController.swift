@@ -60,8 +60,10 @@ extension CAViewController {
         }
         subview: do {
             self.subview = CAView()
-            if self.subview != nil {
-                self.view.addSubview(self.subview!)
+            if let subview = self.subview {
+                subview.toView.nameLabel.text = "\(UserList.takahashi.rawValue): "
+                subview.fromView.nameLabel.text = "\(UserList.watanabe.rawValue): "
+                self.view.addSubview(subview)
             }
         }
     }
@@ -82,21 +84,21 @@ extension CAViewController {
     }
 
     private func binding() {
-        if let balanceToLabel = self.subview?.balanceToLabel.rx.text {
+        if let balanceToLabel = self.subview?.toView.valueLabel {
             self.takahashi?.balance
                 .asObservable()
                 .map { "\($0)" }
                 .asDriver(onErrorJustReturn: "")
-                .drive(balanceToLabel)
+                .drive(balanceToLabel.rx.text)
                 .disposed(by: disposeBag)
         }
         
-        if let balanceFromLabel = self.subview?.balanceFromLabel.rx.text {
+        if let balanceFromLabel = self.subview?.fromView.valueLabel {
             self.watanabe?.balance
                 .asObservable()
                 .map { "\($0)" }
                 .asDriver(onErrorJustReturn: "")
-                .drive(balanceFromLabel)
+                .drive(balanceFromLabel.rx.text)
                 .disposed(by: disposeBag)
         }
 

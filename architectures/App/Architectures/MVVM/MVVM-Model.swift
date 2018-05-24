@@ -93,8 +93,8 @@ extension MVVMModel {
         return user.balance.value > Int.max - amount
     }
     private func checkInsufficientFunds(_ user: UserEntity, amount: Int) -> Bool {
-        // 出金後の残高が0を下回かの判断を行う
-        return user.balance.value - amount > 0
+        // 出金後の残高が0を下回るかの判断を行う
+        return user.balance.value - amount < 0
     }
 
     /**

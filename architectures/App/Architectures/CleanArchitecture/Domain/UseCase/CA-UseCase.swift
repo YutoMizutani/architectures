@@ -100,8 +100,8 @@ extension CAUseCaseImpl {
      */
     private func debit(_ model: CAModel, amount: Int) -> Observable<Void> {
         return Observable.create({ observer in
-            // 出金後の残高が0を下回かの判断を行う
-            if model.balance.value - amount > 0 {
+            // 出金後の残高が0を下回るかの判断を行う
+            if model.balance.value - amount < 0 {
                 observer.onError(ErrorTransfer.insufficientFunds)
             }
 

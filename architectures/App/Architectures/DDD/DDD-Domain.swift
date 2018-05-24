@@ -74,8 +74,8 @@ extension DDDDomain {
      - throws: Intの最大値を超過する場合
      */
     private func debit(_ amount: Int) throws {
-        // 出金後の残高が0を下回かの判断を行う
-        if self.balance - amount > 0 {
+        // 出金後の残高が0を下回るかの判断を行う
+        if self.balance - amount < 0 {
             throw ErrorTransfer.insufficientFunds
         }
 

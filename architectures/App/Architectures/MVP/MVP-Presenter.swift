@@ -21,7 +21,7 @@ import RxCocoa
 import Eureka
 
 class MVPPresenter: UIViewController {
-    var myview: MVPView = MVPView()
+    var subview: MVPView = MVPView()
     var model: MVPModel? = nil
 }
 
@@ -52,23 +52,23 @@ extension MVPPresenter {
 
 extension MVPPresenter {
     private func configureView() {
-        self.view.addSubview(self.myview)
+        self.view.addSubview(self.subview)
     }
 
     private func layoutView() {
-        self.myview.frame = self.view.frame
+        self.subview.frame = self.view.frame
     }
 
     private func addAction() {
-//        self.myview.transferButton.addTarget(self, action: #selector(self.transfer), for: .touchUpInside)
-//        self.myview.resetButton.addTarget(self, action: #selector(self.resetCount), for: .touchUpInside)
+//        self.subview.transferButton.addTarget(self, action: #selector(self.transfer), for: .touchUpInside)
+//        self.subview.resetButton.addTarget(self, action: #selector(self.resetCount), for: .touchUpInside)
     }
 
     private func setFirstValue() {
         let accounts = ""
 
         DispatchQueue.main.async {
-//            self.myview..text = "0"
+//            self.subview..text = "0"
         }
     }
 }
@@ -84,7 +84,7 @@ extension MVPPresenter {
 //        let text = "\(self.model.countUp())"
 //
 //        DispatchQueue.main.async {
-//            self.myview.displayLabel.text = text
+//            self.subview.displayLabel.text = text
 //        }
     }
 
@@ -92,7 +92,7 @@ extension MVPPresenter {
 //        let text = "\(self.model.resetCount())"
 //
 //        DispatchQueue.main.async {
-//            self.myview.displayLabel.text = text
+//            self.subview.displayLabel.text = text
 //        }
     }
 }

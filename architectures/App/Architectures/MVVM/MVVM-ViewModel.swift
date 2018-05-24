@@ -20,7 +20,7 @@ import RxSwift
 import RxCocoa
 
 class MVVMViewModel: UIViewController {
-    var myview: MVVMView = MVVMView()
+    var subview: MVVMView = MVVMView()
     var model: MVVMModel?
 
     let disposeBag = DisposeBag()
@@ -53,9 +53,9 @@ extension MVVMViewModel {
 
 extension MVVMViewModel: ErrorShowable {
     private func configureView() {
-        self.myview.toView.nameLabel.text = "\(UserList.takahashi.rawValue): "
-        self.myview.fromView.nameLabel.text = "\(UserList.watanabe.rawValue): "
-        self.view.addSubview(self.myview)
+        self.subview.toView.nameLabel.text = "\(UserList.takahashi.rawValue): "
+        self.subview.fromView.nameLabel.text = "\(UserList.watanabe.rawValue): "
+        self.view.addSubview(self.subview)
     }
 
     private func configureModel() {
@@ -65,25 +65,25 @@ extension MVVMViewModel: ErrorShowable {
     }
 
     private func layoutView() {
-        self.myview.frame = self.view.frame
+        self.subview.frame = self.view.frame
     }
     
     private func binding() {
         self.model?.users.filter{ $0.user == .takahashi }.first?.balance
             .map{ "\($0)" }
             .asDriver(onErrorJustReturn: "Rx binding error!")
-            .drive(self.myview.toView.valueLabel.rx.text)
+            .drive(self.subview.toView.valueLabel.rx.text)
             .disposed(by: self.disposeBag)
 
         self.model?.users.filter{ $0.user == .watanabe }.first?.balance
             .map{ "\($0)" }
             .asDriver(onErrorJustReturn: "Rx binding error!")
-            .drive(self.myview.fromView.valueLabel.rx.text)
+            .drive(self.subview.fromView.valueLabel.rx.text)
             .disposed(by: self.disposeBag)
 
         if let model = model {
             func bindingErrorable() {
-                self.myview.transferButton.rx.tap
+                self.subview.transferButton.rx.tap
                     .asObservable()
                     .flatMap{ model.transfer(from: .watanabe, to: .takahashi, amount: Assets.amount) }
                     .subscribe(onError: { [unowned self] e in
@@ -94,7 +94,7 @@ extension MVVMViewModel: ErrorShowable {
             }
             bindingErrorable()
 
-            self.myview.resetButton.rx.tap
+            self.subview.resetButton.rx.tap
                 .asObservable()
                 .subscribe(onNext: { _ in
                     model.reset()

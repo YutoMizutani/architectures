@@ -17,7 +17,7 @@ class TBuilder {
 }
 
 class TViewController: UIViewController {
-    var myview: View = View()
+    var subview: View = View()
 
     let firstValue: (a: Int, b: Int) = (0, 1000)
 
@@ -59,11 +59,11 @@ extension TViewController {
 
 extension TViewController {
     private func configureView() {
-        self.view.addSubview(self.myview)
+        self.view.addSubview(self.subview)
     }
 
     private func layoutView() {
-        self.myview.frame = self.view.frame
+        self.subview.frame = self.view.frame
     }
 
     private func binding() {
@@ -71,24 +71,24 @@ extension TViewController {
             .asObservable()
             .map { "\($0)" }
             .asDriver(onErrorJustReturn: "")
-            .drive(self.myview.toView.valueLabel.rx.text)
+            .drive(self.subview.toView.valueLabel.rx.text)
             .disposed(by: disposeBag)
 
         self.bBalance
             .asObservable()
             .map { "\($0)" }
             .asDriver(onErrorJustReturn: "")
-            .drive(self.myview.fromView.valueLabel.rx.text)
+            .drive(self.subview.fromView.valueLabel.rx.text)
             .disposed(by: disposeBag)
 
-//        self.myview.transferButton.rx.tap
+//        self.subview.transferButton.rx.tap
 //            .asObservable()
 //            .subscribe(onNext: { [weak self] _ in
 //                self?.transfer()
 //            })
 //            .disposed(by: disposeBag)
 //
-//        self.myview.resetButton.rx.tap
+//        self.subview.resetButton.rx.tap
 //            .asObservable()
 //            .subscribe(onNext: { [weak self] _ in
 //                self?.reset()
@@ -96,14 +96,14 @@ extension TViewController {
 //            .disposed(by: disposeBag)
 
 
-        self.myview.transferButton.rx.tap
+        self.subview.transferButton.rx.tap
             .asObservable()
             .subscribe(onNext: {
                 self.completed()
             })
             .disposed(by: disposeBag)
 
-        self.myview.resetButton.rx.tap
+        self.subview.resetButton.rx.tap
             .asObservable()
             .subscribe(onNext: {
                 self.next()

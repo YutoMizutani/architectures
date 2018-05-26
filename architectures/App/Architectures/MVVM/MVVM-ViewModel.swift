@@ -21,8 +21,8 @@ import RxCocoa
 
 class MVVMViewModel: UIViewController {
     // ViewとModelを保持する。
-    var subview: MVVMView = MVVMView()
-    var model: MVVMModel?
+    var subview: MVVMView!
+    var model: MVVMModel!
 
     /// Rx bindingを解除するためのDisposeBag。
     let disposeBag = DisposeBag()
@@ -58,6 +58,9 @@ extension MVVMViewModel {
 extension MVVMViewModel: ErrorShowable {
     /// Viewの構成を行う。
     private func configureView() {
+        // Viewを作成する。
+        self.subview = MVVMView()
+
         // Viewに表示されるラベルの名前を設定する。
         self.subview.toView.nameLabel.text = "\(UserList.takahashi.rawValue): "
         self.subview.fromView.nameLabel.text = "\(UserList.watanabe.rawValue): "
@@ -100,39 +103,35 @@ extension MVVMViewModel: ErrorShowable {
             .drive(self.subview.fromView.valueLabel.rx.text)
             .disposed(by: self.disposeBag)
 
-        // バインド対象のModelがOptional型なのでバインド前にif letで絞り込む。
-        if let model = model {
-
-            // 送金処理をボタンにバインドする。
-            // この時，onErrorが発生するとRxの購読が解除されてしまうため，onError発生時に再帰的に再購読を行う。
-            func bindingErrorable() {
-                self.subview.transferButton.rx.tap
-                    .asObservable()
-                    // WatanabeさんからTakahashiさんに送金を行う。
-                    .flatMap{ model.transfer(from: .watanabe, to: .takahashi, amount: Assets.amount) }
-                    .subscribe(onError: { [weak self] e in
-
-                        // アラートを表示する。
-                        self?.showAlert(error: e)
-
-                        // 再帰的に再購読を行う。
-                        bindingErrorable()
-
-                    })
-                    .disposed(by: self.disposeBag)
-            }
-            bindingErrorable()
-
-            // 残高のリセット処理をボタンにバインドする。
-            self.subview.resetButton.rx.tap
+        // 送金処理をボタンにバインドする。
+        // この時，onErrorが発生するとRxの購読が解除されてしまうため，onError発生時に再帰的に再購読を行う。
+        func bindingErrorable() {
+            self.subview.transferButton.rx.tap
                 .asObservable()
-                .subscribe(onNext: { _ in
+                // WatanabeさんからTakahashiさんに送金を行う。
+                .flatMap{ self.model.transfer(from: .watanabe, to: .takahashi, amount: Assets.amount) }
+                .subscribe(onError: { [weak self] e in
 
-                    // 残高のリセットを行う。
-                    model.reset()
+                    // アラートを表示する。
+                    self?.showAlert(error: e)
+
+                    // 再帰的に再購読を行う。
+                    bindingErrorable()
 
                 })
                 .disposed(by: self.disposeBag)
         }
+        bindingErrorable()
+
+        // 残高のリセット処理をボタンにバインドする。
+        self.subview.resetButton.rx.tap
+            .asObservable()
+            .subscribe(onNext: { [weak self] _ in
+
+                // 残高のリセットを行う。
+                self?.model.reset()
+
+            })
+            .disposed(by: self.disposeBag)
     }
 }

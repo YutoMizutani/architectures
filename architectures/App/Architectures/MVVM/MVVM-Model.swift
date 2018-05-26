@@ -177,7 +177,7 @@ extension MVVMModel {
         - amount: 金額
      */
     private func credit(_ user: UserEntity, amount: Int) {
-        // 金額を減算する
+        // 金額を加算する。
         user.balance.accept(user.balance.value + amount)
     }
 
@@ -189,7 +189,7 @@ extension MVVMModel {
         - amount: 金額
      */
     private func debit(_ user: UserEntity, amount: Int) {
-        // 金額を加算する
+        // 金額を減算する。
         user.balance.accept(user.balance.value - amount)
     }
 }
@@ -261,7 +261,7 @@ extension MVVMModel {
     private func update(_ entity: UserEntity) {
         let userDefaults: UserDefaults = UserDefaults.standard
 
-        // UserDefaultsに保存されていなかった場合は空のDictionaryを生成する。
+        // UserDefaultsから全ての口座情報を取得する。保存されていなかった場合は空のDictionaryを生成する。
         var dictionary: Dictionary<String, Any> = userDefaults.fetch() ?? Dictionary()
 
         // 引数に受け取ったユーザーの情報を反映する。

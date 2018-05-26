@@ -61,7 +61,7 @@ extension DDDDomain {
             throw ErrorTransfer.amountOverflow
         }
 
-        // 金額を加算する
+        // 金額を加算する。
         self.balance += amount
     }
 
@@ -79,7 +79,7 @@ extension DDDDomain {
             throw ErrorTransfer.insufficientFunds
         }
 
-        // 金額を減算する
+        // 金額を減算する。
         self.balance -= amount
     }
 }

@@ -177,7 +177,7 @@ extension MVVMModel {
         - amount: 金額
      */
     private func credit(_ user: UserEntity, amount: Int) {
-        // 金額を減算する
+        // 金額を加算する。
         user.balance.accept(user.balance.value + amount)
     }
 
@@ -189,7 +189,7 @@ extension MVVMModel {
         - amount: 金額
      */
     private func debit(_ user: UserEntity, amount: Int) {
-        // 金額を加算する
+        // 金額を減算する。
         user.balance.accept(user.balance.value - amount)
     }
 }

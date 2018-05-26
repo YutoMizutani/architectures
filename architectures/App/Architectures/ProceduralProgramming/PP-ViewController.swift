@@ -10,7 +10,6 @@ import UIKit
 
 class PPViewController: UIViewController {
     var subview: MVCView = MVCView()
-    var model: MVCModel = MVCModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()

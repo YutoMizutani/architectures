@@ -58,7 +58,6 @@ enum MasterViewControllerEurekaTags: String, EnumCollection {
     case fp = "Functional Programming"
     case cleanArchitecture = "Clean Architecture"
     case rvc = "Realistic ViewController"
-    case test = "Test"
 }
 
 extension MasterViewController {

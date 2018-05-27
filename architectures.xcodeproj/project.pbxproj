@@ -227,13 +227,13 @@
 			path = DDD;
 			sourceTree = "<group>";
 		};
-		9915FCD920B1474100DEE8A1 /* RVC */ = {
+		9915FCD920B1474100DEE8A1 /* RealisticViewController */ = {
 			isa = PBXGroup;
 			children = (
 				9940CEBE20B16BF400260A36 /* RVC-Builder.swift */,
 				9915FCDA20B1474D00DEE8A1 /* RVC-ViewController.swift */,
 			);
-			path = RVC;
+			path = RealisticViewController;
 			sourceTree = "<group>";
 		};
 		9915FCDC20B14C7100DEE8A1 /* Extensions */ = {
@@ -361,7 +361,7 @@
 		99178B5420AFEEC0008E7407 /* Architectures */ = {
 			isa = PBXGroup;
 			children = (
-				9915FCD920B1474100DEE8A1 /* RVC */,
+				9915FCD920B1474100DEE8A1 /* RealisticViewController */,
 				9915FCCD20B0578A00DEE8A1 /* ProceduralProgramming */,
 				9915FCCC20B0577400DEE8A1 /* FunctionalProgramming */,
 				9915FCC720B0548800DEE8A1 /* FatViewController */,

@@ -10,13 +10,19 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/*
+
+ Realistic ViewController
+ この規模で実装する最低限の機能。保存処理も含めない。
+ この「最低限動く」VCにユーザー管理の分割や保存処理を追加したものが各アーキテクチャで再現される。
+
+ */
+
 class RVCViewController: UIViewController {
     var subview: View = View()
 
-    let firstValue: (a: Int, b: Int) = (0, 1000)
-    
-    var aBalance: BehaviorRelay<Int> = BehaviorRelay(value: 0)
-    var bBalance: BehaviorRelay<Int> = BehaviorRelay(value: 0)
+    let firstValue: (a: Int, b: Int) = (UserList.takahashi.initValue, UserList.watanabe.initValue)
+    let balance: (a: BehaviorRelay<Int>, b: BehaviorRelay<Int>) = (BehaviorRelay(value: 0), BehaviorRelay(value: 0))
 
     let disposeBag = DisposeBag()
 }
@@ -61,14 +67,14 @@ extension RVCViewController {
     }
 
     private func binding() {
-        self.aBalance
+        self.balance.a
             .asObservable()
             .map { "\($0)" }
             .asDriver(onErrorJustReturn: "")
             .drive(self.subview.toView.valueLabel.rx.text)
             .disposed(by: disposeBag)
         
-        self.bBalance
+        self.balance.b
             .asObservable()
             .map { "\($0)" }
             .asDriver(onErrorJustReturn: "")
@@ -92,20 +98,22 @@ extension RVCViewController {
 }
 
 extension RVCViewController: ErrorShowable {
-    /// aからbに送金を行う
+    /// bからaに送金を行う
     private func transfer() {
-        if self.bBalance.value - 100 < 0 {
+        let amount: Int = Assets.amount
+
+        if self.balance.b.value - amount < 0 {
             self.showAlert(error: ErrorTransfer.insufficientFunds)
             return
         }
 
-        self.aBalance.accept(self.aBalance.value + 100)
-        self.bBalance.accept(self.bBalance.value - 100)
+        self.balance.a.accept(self.balance.a.value + amount)
+        self.balance.b.accept(self.balance.b.value - amount)
     }
 
     /// a，bを初期化する
     private func reset() {
-        self.aBalance.accept(firstValue.a)
-        self.bBalance.accept(firstValue.b)
+        self.balance.a.accept(firstValue.a)
+        self.balance.b.accept(firstValue.b)
     }
 }

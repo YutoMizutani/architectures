@@ -1,8 +1,6 @@
 #### YM
 
-# git rm --cached `git ls-files --full-name -i --exclude-from=.gitignore`
-OperantChamberApp/drawable
-OperantChamberApp/notes
+src/icon
 
 #### Xcode
 

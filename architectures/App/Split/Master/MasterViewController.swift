@@ -101,7 +101,7 @@ extension MasterViewController {
             // Clean Architecture
             case 7:
                 let nextViewController = CABuilder().build()
-                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.cleanArchitecture.rawValue
+                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.ca.rawValue
                 let nextNavigationController = UINavigationController(rootViewController: nextViewController)
                 self.splitViewController?.showDetailViewController(nextNavigationController, sender: self)
                 break

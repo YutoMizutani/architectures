@@ -56,7 +56,7 @@ enum MasterViewControllerEurekaTags: String, EnumCollection {
     case mvvm = "MVVM"
     case ddd = "DDD"
     case fp = "Functional Programming"
-    case cleanArchitecture = "Clean Architecture"
+    case ca = "Clean Architecture"
     case rvc = "Realistic ViewController"
 }
 

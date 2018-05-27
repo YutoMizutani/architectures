@@ -62,6 +62,7 @@
 		9940CEBF20B16BF400260A36 /* RVC-Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEBE20B16BF400260A36 /* RVC-Builder.swift */; };
 		9940CEC420B45B1D00260A36 /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEC320B45B1D00260A36 /* RxSwift+.swift */; };
 		9940CEC920B6CC7800260A36 /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEC820B6CC7800260A36 /* BalanceView.swift */; };
+		9940CEE020BA656800260A36 /* DDD-Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEDF20BA656800260A36 /* DDD-Entity.swift */; };
 		EA9D3F9839DF9177A8F4B530 /* Pods_architectures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */; };
 /* End PBXBuildFile section */
 
@@ -146,6 +147,7 @@
 		9940CEBE20B16BF400260A36 /* RVC-Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RVC-Builder.swift"; sourceTree = "<group>"; };
 		9940CEC320B45B1D00260A36 /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
 		9940CEC820B6CC7800260A36 /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
+		9940CEDF20BA656800260A36 /* DDD-Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DDD-Entity.swift"; sourceTree = "<group>"; };
 		9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_architectures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C26A8A79362503D7C6040E3 /* Pods-architecturesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesTests/Pods-architecturesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB1C98A2DB87E9322CF21174 /* Pods-architecturesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesUITests/Pods-architecturesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -560,6 +562,7 @@
 				99178BD720B04B8C008E7407 /* DDD-UserInterface.swift */,
 				99178BD920B04B9F008E7407 /* DDD-Application.swift */,
 				99178BDB20B04BAA008E7407 /* DDD-Domain.swift */,
+				9940CEDF20BA656800260A36 /* DDD-Entity.swift */,
 				99178BDD20B04BBD008E7407 /* DDD-Infrastructure.swift */,
 			);
 			path = DDD;
@@ -842,6 +845,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99178BD320B01792008E7407 /* CA-View.swift in Sources */,
+				9940CEE020BA656800260A36 /* DDD-Entity.swift in Sources */,
 				9940CEC420B45B1D00260A36 /* RxSwift+.swift in Sources */,
 				9915FCCF20B0583C00DEE8A1 /* PP-Builder.swift in Sources */,
 				99178B5120AFEE13008E7407 /* MasterViewController.swift in Sources */,

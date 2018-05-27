@@ -19,46 +19,71 @@
 import Foundation
 
 class DDDApplication {
-    var domains: [DDDDomain] = []
-    let infrastructure: DDDInfrastructure = DDDInfrastructure()
+    /// Domainの定義
+    private(set) var domain: DDDDomain!
+    /// Infrastructureの定義
+    let infrastructure: DDDInfrastructure!
+
+    init(_ users: [UserList]) {
+        self.domain = DDDDomain(users)
+        self.infrastructure = DDDInfrastructure()
+    }
 }
 
 extension DDDApplication {
-    public func fetch() throws -> [DDDDomain] {
-        return try self.infrastructure.getDomains()
+    /**
+     UserListを元に残高を取得する。
+
+     - Parameters:
+        - user: 残高を取得するユーザー
+
+     - returns:
+        - 残高(Optional)
+     */
+    public func getBalance(_ user: UserList) -> Int? {
+        return self.domain.getEntity(user)?.balance
     }
 
+    /**
+     Infrastructure経由でDomainを更新する。
+
+     - throws: Userが見つからなかった場合
+     */
+    public func fetch() throws {
+        // InfrastructureへEntityの取得を依頼する。
+        let entities = try self.infrastructure.fetchEntity()
+
+        // 取得したEntityを元にDomainを更新する。
+        self.domain = DDDDomain(entities)
+    }
+
+    /**
+     Infrastructure経由でDomainを初期化する。
+     */
     public func reset() {
-        
+        // Infrastructureへ初期化されたEntityを依頼する。
+        let entities = self.infrastructure.reset(self.domain.entities)
+
+        // 取得したEntityを元にDomainを更新する。
+        self.domain = DDDDomain(entities)
     }
 
+    /**
+     送金を行う。
+
+     - Parameters:
+         - from: 送金元のユーザー
+         - to: 送金先のユーザー
+         - amount: 金額
+
+     - Throws:
+        ユーザーがリストに含まれない場合，取引元の残高が不足している場合，取引先の残高が超過する場合
+     */
     public func transfer(_ amount: Int, from: UserList, to: UserList) throws {
+        // Domainに送金を依頼する。
+        try self.domain.transfer(from: from, to: to, amount: amount)
 
-        let fromDomain = try self.getDomain(from)
-        let toDomain = try self.getDomain(to)
-
-        try fromDomain.transfer(to: toDomain, amount: amount)
-
-        let collection = [fromDomain, toDomain]
-
-        self.commit(collection)
-    }
-}
-
-extension DDDApplication {
-    private func getDomain(_ user: UserList) throws -> DDDDomain {
-        for domain in self.domains {
-            if domain.user == user {
-                return domain
-            }
-        }
-
-        throw ErrorTransfer.userNotFound
-    }
-}
-
-extension DDDApplication {
-    private func commit(_ domains: [DDDDomain]) {
-        self.infrastructure.commit(domains)
+        // Infrastructureへ更新を依頼する。
+        self.infrastructure.commit(self.domain.entities)
     }
 }

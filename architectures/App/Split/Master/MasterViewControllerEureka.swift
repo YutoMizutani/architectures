@@ -49,13 +49,10 @@ fileprivate struct CreateFooter {
 // MARK:- Eureka tag Enum
 private typealias EurekaTag = MasterViewControllerEurekaTags
 enum MasterViewControllerEurekaTags: String, EnumCollection {
-    case pp = "Procedural Programming"
-    case fvc = "Fat ViewController"
     case mvc = "MVC"
     case mvp = "MVP"
     case mvvm = "MVVM"
     case ddd = "DDD"
-    case fp = "Functional Programming"
     case ca = "Clean Architecture"
     case rvc = "Realistic ViewController"
 }

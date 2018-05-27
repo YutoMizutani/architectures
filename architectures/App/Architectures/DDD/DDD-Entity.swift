@@ -20,10 +20,10 @@ class DDDUserEntity {
 
 class DDDUserFactory {
     /// UserListを元にEntityを作成する。
-    static func create(user: UserList, balance: Int=0) -> DDDUserEntity {
+    static func create(user: UserList, balance: Int?=nil) -> DDDUserEntity {
         /// Entityを作成する。
+        let balance = balance ?? user.initValue
         let entity = DDDUserEntity(user: user, balance: balance)
-        entity.balance = user.initValue
 
         return entity
     }

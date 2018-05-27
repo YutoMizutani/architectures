@@ -40,24 +40,24 @@ class CAPresenterImpl {
 
 extension CAPresenterImpl: CAPresenter {
     func fetch(_ models: [CAModel]) {
-        let fetch = self.useCase.fetch(models).asObservable().share()
+        let fetch = self.useCase.fetch(models).share()
 
         for model in models {
             fetch.map{ $0.filter{ $0.user == model.user }.first }
                 .filter{ $0 != nil }.map{ $0! }
                 .subscribe(onNext: { [weak self] model in
                     print("onNext")
-                    self?.viewInput?.setModel(model.user, model: model)
-                    }, onError: { [weak self] e in
-                        print("onError")
-                        self?.viewInput?.presentAlert(e)
+                    self?.viewInput?.updateModel(model: model)
+                }, onError: { [weak self] e in
+                    print("onError")
+                    self?.viewInput?.presentAlert(e)
                 })
                 .disposed(by: disposeBag)
         }
     }
 
     func reset(_ models: [CAModel]) {
-        self.useCase.reset(models).asObservable()
+        self.useCase.reset(models)
             .subscribe(onNext: { [weak self] _ in
                 print("onNext")
                 self?.fetch(models)
@@ -82,7 +82,6 @@ extension CAPresenterImpl: CAPresenter {
             return
         }
         self.useCase.transfer(from: from, to: to, amount: amount)
-            .asObservable()
             .subscribe(onError: { [weak self] e in
                 self?.viewInput?.presentAlert(e)
             })

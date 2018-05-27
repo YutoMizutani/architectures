@@ -9,9 +9,7 @@
 import UIKit
 
 protocol CAWireframe: class {
-
 }
-
 
 class CAWireframeImpl {
     private weak var viewController: UIViewController?

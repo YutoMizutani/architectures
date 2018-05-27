@@ -26,12 +26,15 @@ struct CARepositoryImpl {
     }
 }
 
+// MARK:- Public methods accessed from other classes
 extension CARepositoryImpl: CARepository {
-    func fetch() -> Observable<[CAEntity]> {
+    /// DataStoreから更新を取得する。
+    public func fetch() -> Observable<[CAEntity]> {
         return self.dataStore.fetch()
     }
 
-    func commit(_ entities: [CAEntity]) -> Observable<Void> {
+    /// DataStoreへ更新を実行する。
+    public func commit(_ entities: [CAEntity]) -> Observable<Void> {
         return self.dataStore.update(entities)
     }
 }

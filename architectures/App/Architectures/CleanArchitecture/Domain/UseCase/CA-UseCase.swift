@@ -16,7 +16,6 @@ protocol CAUseCase {
     func transfer(from: CAModel, to: CAModel, amount: Int) -> Observable<Void>
 }
 
-
 struct CAUseCaseImpl {
     typealias repositoryType = CARepository
     typealias translatorType = CATranslator
@@ -33,8 +32,18 @@ struct CAUseCaseImpl {
     }
 }
 
+// MARK:- Public methods accessed from other classes
 extension CAUseCaseImpl: CAUseCase {
-    func fetch(_ models: [CAModel]) -> Observable<[CAModel]> {
+    /**
+     残高を取得する。
+
+     - Parameters:
+        - model: ユーザー情報
+
+     - returns:
+        更新後のユーザー情報。
+     */
+    public func fetch(_ models: [CAModel]) -> Observable<[CAModel]> {
         return self.repository.fetch().map({ entities -> [CAModel] in
             var models: [CAModel] = []
 
@@ -48,7 +57,16 @@ extension CAUseCaseImpl: CAUseCase {
         })
     }
 
-    func reset(_ models: [CAModel]) -> Observable<Void> {
+    /**
+     初期化を行う。
+
+     - Parameters:
+        - models: ユーザー情報
+
+     - returns:
+        処理の完了を伝える。
+     */
+    public func reset(_ models: [CAModel]) -> Observable<Void> {
         for model in models {
             model.balance.accept(model.user.initValue)
         }
@@ -58,12 +76,26 @@ extension CAUseCaseImpl: CAUseCase {
         return self.repository.commit(collections)
     }
 
-    func transfer(from: CAModel, to: CAModel, amount: Int) -> Observable<Void> {
+
+    /**
+     送金を行う。
+
+     - Parameters:
+         - from: 送金元のユーザー
+         - to: 送金先のユーザー
+         - amount: 金額
+
+     - returns:
+        処理の完了を伝える。
+     */
+    public func transfer(from: CAModel, to: CAModel, amount: Int) -> Observable<Void> {
+        // エラーがなければflatMapで処理を続ける。
         return self.checkAmountOverflow(to, amount: amount)
             .flatMap{ self.checkInsufficientFunds(from, amount: amount) }
             .flatMap{ self.credit(to, amount: amount) }
             .flatMap{ self.debit(from, amount: amount) }
             .flatMap{
+                // 更新を行う。
                 self.repository.commit(
                     [from, to].map{ self.translator.translate(from: $0) }
                 )
@@ -89,6 +121,7 @@ extension CAUseCaseImpl {
                 observer.onError(ErrorTransfer.amountOverflow)
             }
 
+            // 処理の完了後に流す。
             observer.onNext()
             observer.onCompleted()
 
@@ -113,6 +146,7 @@ extension CAUseCaseImpl {
                 observer.onError(ErrorTransfer.insufficientFunds)
             }
 
+            // 処理の完了後に流す。
             observer.onNext()
             observer.onCompleted()
 
@@ -134,6 +168,7 @@ extension CAUseCaseImpl {
             // 金額を加算する。
             model.balance.accept(model.balance.value + amount)
 
+            // 処理の完了後に流す。
             observer.onNext()
             observer.onCompleted()
 
@@ -155,6 +190,7 @@ extension CAUseCaseImpl {
             // 金額を減算する。
             model.balance.accept(model.balance.value - amount)
 
+            // 処理の完了後に流す。
             observer.onNext()
             observer.onCompleted()
 

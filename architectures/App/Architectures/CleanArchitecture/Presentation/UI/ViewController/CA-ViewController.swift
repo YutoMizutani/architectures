@@ -65,6 +65,7 @@ class CAViewController: UIViewController {
     }
 }
 
+// MARK:- Private methods about settings
 extension CAViewController {
     private func configureView() {
         selfview: do {
@@ -93,6 +94,7 @@ extension CAViewController {
         }
     }
 
+    /// 送金先のユーザー情報のバインディングを行う。
     private func toBind() {
         if let balanceToLabel = self.subview?.toView.valueLabel {
             self.models.to.balance
@@ -104,6 +106,7 @@ extension CAViewController {
         }
     }
 
+    /// 送金元のユーザー情報のバインディングを行う。
     private func fromBind() {
         if let balanceFromLabel = self.subview?.fromView.valueLabel {
             self.models.from.balance
@@ -115,16 +118,19 @@ extension CAViewController {
         }
     }
 
+    /// バインディングを行う
     private func binding() {
         self.toBind()
         self.fromBind()
 
+        // 送金ボタンを設定する。
         self.subview?.transferButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 self?.transfer()
             })
             .disposed(by: disposeBag)
 
+        // 初期化ボタンを設定する。
         self.subview?.resetButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 self?.reset()
@@ -133,13 +139,12 @@ extension CAViewController {
     }
 }
 
+// MARK:- Private methods to presenters
 extension CAViewController {
     private func fetch() {
         self.presenter?.fetch([self.models.to, self.models.from])
     }
-}
 
-extension CAViewController {
     @IBAction func transfer() {
         self.presenter?.transfer(from: self.models.from, to: self.models.to, amount: Assets.amount)
     }
@@ -149,6 +154,7 @@ extension CAViewController {
     }
 }
 
+// MARK:- Public methods accessed from other classes
 extension CAViewController: CAViewInput, ErrorShowable {
     public func presentAlert(_ error: Error) {
         self.showAlert(error: error)

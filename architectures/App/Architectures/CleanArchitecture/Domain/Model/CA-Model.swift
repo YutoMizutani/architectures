@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RxSwift
 import RxCocoa
 
 protocol CAModel {
@@ -15,9 +14,10 @@ protocol CAModel {
     var balance: BehaviorRelay<Int> { get }
 }
 
-
 struct CAModelImpl: CAModel {
+    // ユーザー
     let user: UserList
+    // 残高
     private(set) var balance: BehaviorRelay<Int>
 
     init(user: UserList, balance: Int) {

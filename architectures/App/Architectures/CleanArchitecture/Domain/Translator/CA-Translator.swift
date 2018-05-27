@@ -14,9 +14,12 @@ protocol CATranslator {
 }
 
 struct CATranslatorImpl: CATranslator {
+    /// ModelからEntityに変換する。
     func translate(from model: CAModel) -> CAEntity {
         return CAEntityImpl(name: model.user.rawValue, balance: model.balance.value)
     }
+
+    /// EntityからModelに変換する。
     func translate(from entity: CAEntity) throws -> CAModel {
         guard let user = UserList.find(entity.name) else {
             throw ErrorTransfer.userNotFound

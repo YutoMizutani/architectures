@@ -18,34 +18,68 @@
 import Foundation
 
 class DDDDomain {
-    public let user: UserList
-    public private(set) var balance: Int
+    private(set) var entities: [DDDUserEntity]
 
-    init(user: UserList, balance: Int) {
-        self.user = user
-        self.balance = balance
+    init(_ users: [UserList]) {
+        self.entities = DDDUserFactory.create(users: users)
+    }
+
+    init(_ entities: [DDDUserEntity]) {
+        self.entities = entities
     }
 }
 
+// MARK:- Public methods accessed from other classes
 extension DDDDomain {
     /**
-     送金処理を行う
+     UserListでフィルタされたEntityを取得する。
 
      - Parameters:
-        - to: 送金先(DDDomain)
-        - amount: 金額
+        - user: 取得するユーザー
 
-     - throws: 入出金後の残高に過不足が生じた場合
+     - returns:
+        ユーザーのEntity(Optional)
      */
-    public func transfer(to: DDDDomain, amount: Int) throws {
-        // 送信先へ入金処理を行う
-        try to.credit(amount)
+    public func getEntity(_ user: UserList) -> DDDUserEntity? {
+        return self.entities.filter({ entity -> Bool in
+            entity.user == user
+        }).first
+    }
 
-        // 残高から出金処理を行う
-        try self.debit(amount)
+    /**
+     送金を行う。
+     
+     - Parameters:
+         - from: 送金元のユーザー
+         - to: 送金先のユーザー
+         - amount: 金額
+
+     - Throws:
+        ユーザーがリストに含まれない場合，取引元の残高が不足している場合，取引先の残高が超過する場合
+     */
+    public func transfer(from: UserList, to: UserList, amount: Int) throws {
+        let backup = self.entities
+        do {
+            // 送信先へ入金処理を行う
+            try self.credit(to, amount: amount)
+
+            // 残高から出金処理を行う
+            try self.debit(from, amount: amount)
+
+        }catch let e {
+
+            // Error発生時は処理前に巻き戻す。
+            self.entities = backup
+
+            // Errorを上の階層に投げる。
+            throw e
+
+        }
     }
 }
 
+
+// MARK:- Private methods about business logics
 extension DDDDomain {
     /**
      入金処理を行う
@@ -55,14 +89,19 @@ extension DDDDomain {
 
      - throws: Intの最大値を超過する場合
      */
-    private func credit(_ amount: Int) throws {
+    private func credit(_ to: UserList, amount: Int) throws {
+        // Entityに存在するかフィルタリングする。
+        guard let to = self.entities.filter({ entity -> Bool in
+            entity.user == to
+        }).first else { throw ErrorTransfer.userNotFound }
+
         // 入金後の残高がIntの最大値を超過するかの判断を行う
-        if self.balance > Int.max - amount {
+        if to.balance > Int.max - amount {
             throw ErrorTransfer.amountOverflow
         }
 
         // 金額を加算する。
-        self.balance += amount
+        to.balance += amount
     }
 
     /**
@@ -71,15 +110,20 @@ extension DDDDomain {
      - Parameters:
         - amount: 金額
 
-     - throws: Intの最大値を超過する場合
+     - throws: 0を下回る場合
      */
-    private func debit(_ amount: Int) throws {
+    private func debit(_ from: UserList, amount: Int) throws {
+        // Entityに存在するかフィルタリングする。
+        guard let from = self.entities.filter({ entity -> Bool in
+            entity.user == from
+        }).first else { throw ErrorTransfer.userNotFound }
+
         // 出金後の残高が0を下回るかの判断を行う
-        if self.balance - amount < 0 {
+        if from.balance - amount < 0 {
             throw ErrorTransfer.insufficientFunds
         }
 
         // 金額を減算する。
-        self.balance -= amount
+        from.balance -= amount
     }
 }

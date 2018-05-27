@@ -18,3 +18,4 @@ TRANSFERボタンを押すと，Watanabeさんは-100，Takahashiさんは+100�
 
 Watanabeさんが0の場合にTRANSFERボタンを押すとErrorのアラートが表示され，キャンセルされます。
 
+![screenshot](https://github.com/YutoMizutani/architectures/blob/master/src/pic/screenshot.png)

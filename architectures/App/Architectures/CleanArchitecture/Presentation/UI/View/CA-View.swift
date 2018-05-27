@@ -6,6 +6,4 @@
 //  Copyright © 2018 Yuto Mizutani. All rights reserved.
 //
 
-import UIKit
-
 class CAView: View {}

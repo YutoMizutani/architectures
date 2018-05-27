@@ -15,6 +15,4 @@
 
  */
 
-import UIKit
-
 class MVPView: View {}

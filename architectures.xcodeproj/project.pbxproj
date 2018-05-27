@@ -205,13 +205,6 @@
 			path = FatViewController;
 			sourceTree = "<group>";
 		};
-		9915FCCC20B0577400DEE8A1 /* FunctionalProgramming */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FunctionalProgramming;
-			sourceTree = "<group>";
-		};
 		9915FCCD20B0578A00DEE8A1 /* ProceduralProgramming */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,7 +358,7 @@
 			children = (
 				9915FCD920B1474100DEE8A1 /* RealisticViewController */,
 				9915FCCD20B0578A00DEE8A1 /* ProceduralProgramming */,
-				9915FCCC20B0577400DEE8A1 /* FunctionalProgramming */,
+				9940CEE220BAB72800260A36 /* FunctionalProgramming */,
 				9915FCC720B0548800DEE8A1 /* FatViewController */,
 				99178BD620B04B60008E7407 /* DDD */,
 				99178B6D20B001FD008E7407 /* CleanArchitecture */,
@@ -566,6 +559,13 @@
 				99178BDD20B04BBD008E7407 /* DDD-Infrastructure.swift */,
 			);
 			path = DDD;
+			sourceTree = "<group>";
+		};
+		9940CEE220BAB72800260A36 /* FunctionalProgramming */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FunctionalProgramming;
 			sourceTree = "<group>";
 		};
 		BEF3CDA49603687D9C024AD6 /* Frameworks */ = {

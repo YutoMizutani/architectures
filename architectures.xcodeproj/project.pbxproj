@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		00EC0896CB37815605F51DF2 /* Pods_architecturesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4106691E116ED7F4A0307BB3 /* Pods_architecturesUITests.framework */; };
 		23F230EEFA6252D1F9F272C5 /* Pods_architecturesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 094F1EA3778082BA0F00ABAD /* Pods_architecturesTests.framework */; };
-		9915FCC920B054B000DEE8A1 /* FVC-View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9915FCC820B054B000DEE8A1 /* FVC-View.swift */; };
-		9915FCCB20B054C300DEE8A1 /* FVC-ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9915FCCA20B054C300DEE8A1 /* FVC-ViewController.swift */; };
-		9915FCCF20B0583C00DEE8A1 /* PP-Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9915FCCE20B0583C00DEE8A1 /* PP-Builder.swift */; };
-		9915FCD120B058A100DEE8A1 /* PP-ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9915FCD020B058A100DEE8A1 /* PP-ViewController.swift */; };
 		9915FCD320B074AE00DEE8A1 /* Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9915FCD220B074AE00DEE8A1 /* Accounts.swift */; };
 		9915FCD520B0FF4800DEE8A1 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9915FCD420B0FF4800DEE8A1 /* Error.swift */; };
 		9915FCD820B1156D00DEE8A1 /* DDD-InftastructureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9915FCD720B1156D00DEE8A1 /* DDD-InftastructureTests.swift */; };
@@ -88,10 +84,6 @@
 		24E129B6101DE5815AC31525 /* Pods-architecturesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesTests/Pods-architecturesTests.release.xcconfig"; sourceTree = "<group>"; };
 		3A2BED04DF00817809493BA8 /* Pods-architectures.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architectures.release.xcconfig"; path = "Pods/Target Support Files/Pods-architectures/Pods-architectures.release.xcconfig"; sourceTree = "<group>"; };
 		4106691E116ED7F4A0307BB3 /* Pods_architecturesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_architecturesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9915FCC820B054B000DEE8A1 /* FVC-View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FVC-View.swift"; sourceTree = "<group>"; };
-		9915FCCA20B054C300DEE8A1 /* FVC-ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FVC-ViewController.swift"; sourceTree = "<group>"; };
-		9915FCCE20B0583C00DEE8A1 /* PP-Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PP-Builder.swift"; sourceTree = "<group>"; };
-		9915FCD020B058A100DEE8A1 /* PP-ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PP-ViewController.swift"; sourceTree = "<group>"; };
 		9915FCD220B074AE00DEE8A1 /* Accounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accounts.swift; sourceTree = "<group>"; };
 		9915FCD420B0FF4800DEE8A1 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		9915FCD720B1156D00DEE8A1 /* DDD-InftastructureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DDD-InftastructureTests.swift"; sourceTree = "<group>"; };
@@ -194,24 +186,6 @@
 				E38846866D42B522AFED8166 /* Pods-architecturesUITests.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		9915FCC720B0548800DEE8A1 /* FatViewController */ = {
-			isa = PBXGroup;
-			children = (
-				9915FCC820B054B000DEE8A1 /* FVC-View.swift */,
-				9915FCCA20B054C300DEE8A1 /* FVC-ViewController.swift */,
-			);
-			path = FatViewController;
-			sourceTree = "<group>";
-		};
-		9915FCCD20B0578A00DEE8A1 /* ProceduralProgramming */ = {
-			isa = PBXGroup;
-			children = (
-				9915FCCE20B0583C00DEE8A1 /* PP-Builder.swift */,
-				9915FCD020B058A100DEE8A1 /* PP-ViewController.swift */,
-			);
-			path = ProceduralProgramming;
 			sourceTree = "<group>";
 		};
 		9915FCD620B1154E00DEE8A1 /* DDD */ = {
@@ -357,9 +331,6 @@
 			isa = PBXGroup;
 			children = (
 				9915FCD920B1474100DEE8A1 /* RealisticViewController */,
-				9915FCCD20B0578A00DEE8A1 /* ProceduralProgramming */,
-				9940CEE220BAB72800260A36 /* FunctionalProgramming */,
-				9915FCC720B0548800DEE8A1 /* FatViewController */,
 				99178BD620B04B60008E7407 /* DDD */,
 				99178B6D20B001FD008E7407 /* CleanArchitecture */,
 				99178B5920AFF4A1008E7407 /* MVC */,
@@ -559,13 +530,6 @@
 				99178BDD20B04BBD008E7407 /* DDD-Infrastructure.swift */,
 			);
 			path = DDD;
-			sourceTree = "<group>";
-		};
-		9940CEE220BAB72800260A36 /* FunctionalProgramming */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FunctionalProgramming;
 			sourceTree = "<group>";
 		};
 		BEF3CDA49603687D9C024AD6 /* Frameworks */ = {
@@ -847,7 +811,6 @@
 				99178BD320B01792008E7407 /* CA-View.swift in Sources */,
 				9940CEE020BA656800260A36 /* DDD-Entity.swift in Sources */,
 				9940CEC420B45B1D00260A36 /* RxSwift+.swift in Sources */,
-				9915FCCF20B0583C00DEE8A1 /* PP-Builder.swift in Sources */,
 				99178B5120AFEE13008E7407 /* MasterViewController.swift in Sources */,
 				99178BE220B04CE8008E7407 /* DDD-Builder.swift in Sources */,
 				99178BD020B01792008E7407 /* CA-Translator.swift in Sources */,
@@ -864,7 +827,6 @@
 				99178B7D20B001FD008E7407 /* MVVM-View.swift in Sources */,
 				99178B4C20AFECE7008E7407 /* SplitViewControlelr.swift in Sources */,
 				99178B5620AFF017008E7407 /* MasterViewControllerEureka.swift in Sources */,
-				9915FCD120B058A100DEE8A1 /* PP-ViewController.swift in Sources */,
 				99178BDE20B04BBD008E7407 /* DDD-Infrastructure.swift in Sources */,
 				99178BD520B01792008E7407 /* CA-Presenter.swift in Sources */,
 				99178BDA20B04B9F008E7407 /* DDD-Application.swift in Sources */,
@@ -886,8 +848,6 @@
 				99178BCE20B01792008E7407 /* CA-Wireframe.swift in Sources */,
 				99178BDC20B04BAA008E7407 /* DDD-Domain.swift in Sources */,
 				9915FCDB20B1474D00DEE8A1 /* RVC-ViewController.swift in Sources */,
-				9915FCC920B054B000DEE8A1 /* FVC-View.swift in Sources */,
-				9915FCCB20B054C300DEE8A1 /* FVC-ViewController.swift in Sources */,
 				99178BD820B04B8C008E7407 /* DDD-UserInterface.swift in Sources */,
 				9940CEC920B6CC7800260A36 /* BalanceView.swift in Sources */,
 				99178BD420B01792008E7407 /* CA-ViewController.swift in Sources */,

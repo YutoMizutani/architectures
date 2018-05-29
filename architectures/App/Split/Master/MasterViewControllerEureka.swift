@@ -49,12 +49,34 @@ fileprivate struct CreateFooter {
 // MARK:- Eureka tag Enum
 private typealias EurekaTag = MasterViewControllerEurekaTags
 enum MasterViewControllerEurekaTags: String, EnumCollection {
-    case mvc = "MVC"
-    case mvp = "MVP"
-    case mvvm = "MVVM"
-    case ddd = "DDD"
+    case pds = "PDS (Presentation Domain Separation)"
+    case mvc = "MVC (Model View Controller)"
+    case mvp = "MVP (Model View Presentation)"
+    case mvvm = "MVVM (Model View ViewModel)"
+    case ddd = "DDD (Domain Driven Design)"
     case ca = "Clean Architecture"
     case rvc = "Realistic ViewController"
+}
+
+extension MasterViewControllerEurekaTags {
+    var short: String {
+        switch self {
+        case .pds:
+            return "PDS"
+        case .mvc:
+            return "MVC"
+        case .mvp:
+            return "MVP"
+        case .mvvm:
+            return "MVVM"
+        case .ddd:
+            return "DDD"
+        case .ca:
+            return "Clean Architecture"
+        case .rvc:
+            return "Realistic ViewController"
+        }
+    }
 }
 
 extension MasterViewController {

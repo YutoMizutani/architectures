@@ -59,6 +59,9 @@
 		9940CEC420B45B1D00260A36 /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEC320B45B1D00260A36 /* RxSwift+.swift */; };
 		9940CEC920B6CC7800260A36 /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEC820B6CC7800260A36 /* BalanceView.swift */; };
 		9940CEE020BA656800260A36 /* DDD-Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEDF20BA656800260A36 /* DDD-Entity.swift */; };
+		9940CEF020BD979C00260A36 /* PDS-Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEEF20BD979C00260A36 /* PDS-Builder.swift */; };
+		9940CEF220BD97C400260A36 /* PDS-Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEF120BD97C400260A36 /* PDS-Presentation.swift */; };
+		9940CEF420BD97CF00260A36 /* PDS-Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEF320BD97CF00260A36 /* PDS-Domain.swift */; };
 		EA9D3F9839DF9177A8F4B530 /* Pods_architectures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */; };
 /* End PBXBuildFile section */
 
@@ -140,6 +143,9 @@
 		9940CEC320B45B1D00260A36 /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
 		9940CEC820B6CC7800260A36 /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
 		9940CEDF20BA656800260A36 /* DDD-Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DDD-Entity.swift"; sourceTree = "<group>"; };
+		9940CEEF20BD979C00260A36 /* PDS-Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PDS-Builder.swift"; sourceTree = "<group>"; };
+		9940CEF120BD97C400260A36 /* PDS-Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PDS-Presentation.swift"; sourceTree = "<group>"; };
+		9940CEF320BD97CF00260A36 /* PDS-Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PDS-Domain.swift"; sourceTree = "<group>"; };
 		9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_architectures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C26A8A79362503D7C6040E3 /* Pods-architecturesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesTests/Pods-architecturesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB1C98A2DB87E9322CF21174 /* Pods-architecturesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesUITests/Pods-architecturesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -330,6 +336,7 @@
 		99178B5420AFEEC0008E7407 /* Architectures */ = {
 			isa = PBXGroup;
 			children = (
+				9940CEEE20BD978C00260A36 /* PDS */,
 				9915FCD920B1474100DEE8A1 /* RealisticViewController */,
 				99178BD620B04B60008E7407 /* DDD */,
 				99178B6D20B001FD008E7407 /* CleanArchitecture */,
@@ -530,6 +537,16 @@
 				99178BDD20B04BBD008E7407 /* DDD-Infrastructure.swift */,
 			);
 			path = DDD;
+			sourceTree = "<group>";
+		};
+		9940CEEE20BD978C00260A36 /* PDS */ = {
+			isa = PBXGroup;
+			children = (
+				9940CEEF20BD979C00260A36 /* PDS-Builder.swift */,
+				9940CEF120BD97C400260A36 /* PDS-Presentation.swift */,
+				9940CEF320BD97CF00260A36 /* PDS-Domain.swift */,
+			);
+			path = PDS;
 			sourceTree = "<group>";
 		};
 		BEF3CDA49603687D9C024AD6 /* Frameworks */ = {
@@ -804,6 +821,7 @@
 				9940CEE020BA656800260A36 /* DDD-Entity.swift in Sources */,
 				9940CEC420B45B1D00260A36 /* RxSwift+.swift in Sources */,
 				99178B5120AFEE13008E7407 /* MasterViewController.swift in Sources */,
+				9940CEF420BD97CF00260A36 /* PDS-Domain.swift in Sources */,
 				99178BE220B04CE8008E7407 /* DDD-Builder.swift in Sources */,
 				99178BD020B01792008E7407 /* CA-Translator.swift in Sources */,
 				9915FCD320B074AE00DEE8A1 /* Accounts.swift in Sources */,
@@ -822,6 +840,8 @@
 				99178BDE20B04BBD008E7407 /* DDD-Infrastructure.swift in Sources */,
 				99178BD520B01792008E7407 /* CA-Presenter.swift in Sources */,
 				99178BDA20B04B9F008E7407 /* DDD-Application.swift in Sources */,
+				9940CEF020BD979C00260A36 /* PDS-Builder.swift in Sources */,
+				9940CEF220BD97C400260A36 /* PDS-Presentation.swift in Sources */,
 				99178B7E20B001FD008E7407 /* MVVM-Builder.swift in Sources */,
 				99178BCC20B01792008E7407 /* CA-Entity.swift in Sources */,
 				99178B5B20AFF4AE008E7407 /* MVC-Builder.swift in Sources */,

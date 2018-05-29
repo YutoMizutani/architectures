@@ -61,45 +61,52 @@ extension MasterViewController {
         switch indexPath.section {
         case 0:
             switch indexPath.row {
-            // MVC
+            // PDS
             case 0:
+                let nextViewController = PDSBuilder().build()
+                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.pds.short
+                let nextNavigationController = UINavigationController(rootViewController: nextViewController)
+                self.splitViewController?.showDetailViewController(nextNavigationController, sender: self)
+                break
+            // MVC
+            case 1:
                 let nextViewController = MVCBuilder().build()
-                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.mvc.rawValue
+                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.mvc.short
                 let nextNavigationController = UINavigationController(rootViewController: nextViewController)
                 self.splitViewController?.showDetailViewController(nextNavigationController, sender: self)
                 break
             // MVP
-            case 1:
+            case 2:
                 let nextViewController = MVPBuilder().build()
-                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.mvp.rawValue
+                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.mvp.short
                 let nextNavigationController = UINavigationController(rootViewController: nextViewController)
                 self.splitViewController?.showDetailViewController(nextNavigationController, sender: self)
                 break
             // MVVM
-            case 2:
+            case 3:
                 let nextViewController = MVVMBuilder().build()
-                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.mvvm.rawValue
+                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.mvvm.short
                 let nextNavigationController = UINavigationController(rootViewController: nextViewController)
                 self.splitViewController?.showDetailViewController(nextNavigationController, sender: self)
                 break
             // DDD
-            case 3:
+            case 4:
                 let nextViewController = DDDBuilder().build()
-                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.ddd.rawValue
+                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.ddd.short
                 let nextNavigationController = UINavigationController(rootViewController: nextViewController)
                 self.splitViewController?.showDetailViewController(nextNavigationController, sender: self)
                 break
             // Clean Architecture
-            case 4:
+            case 5:
                 let nextViewController = CABuilder().build()
-                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.ca.rawValue
+                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.ca.short
                 let nextNavigationController = UINavigationController(rootViewController: nextViewController)
                 self.splitViewController?.showDetailViewController(nextNavigationController, sender: self)
                 break
             // RVC
-            case 5:
+            case 6:
                 let nextViewController = RVCBuilder().build()
-                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.rvc.rawValue
+                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.rvc.short
                 let nextNavigationController = UINavigationController(rootViewController: nextViewController)
                 self.splitViewController?.showDetailViewController(nextNavigationController, sender: self)
                 break

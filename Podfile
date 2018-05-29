@@ -8,8 +8,6 @@ target 'architectures' do
   # Pods for architectures
 pod 'RxSwift'
 pod 'RxCocoa'
-pod 'Alamofire'
-pod 'SwiftyJSON'
 pod 'Eureka'
 
   target 'architecturesTests' do
@@ -17,8 +15,6 @@ pod 'Eureka'
     # Pods for testing
 pod 'RxSwift'
 pod 'RxCocoa'
-pod 'Alamofire'
-pod 'SwiftyJSON'
   end
 
   target 'architecturesUITests' do

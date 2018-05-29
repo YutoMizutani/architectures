@@ -59,6 +59,10 @@
 		9940CEC420B45B1D00260A36 /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEC320B45B1D00260A36 /* RxSwift+.swift */; };
 		9940CEC920B6CC7800260A36 /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEC820B6CC7800260A36 /* BalanceView.swift */; };
 		9940CEE020BA656800260A36 /* DDD-Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEDF20BA656800260A36 /* DDD-Entity.swift */; };
+		9940CEE720BD66CF00260A36 /* RF-View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEE620BD66CF00260A36 /* RF-View.swift */; };
+		9940CEE920BD66F200260A36 /* RF-State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEE820BD66F200260A36 /* RF-State.swift */; };
+		9940CEEB20BD671700260A36 /* RF-Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEEA20BD671700260A36 /* RF-Event.swift */; };
+		9940CEED20BD67B800260A36 /* RF-ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEEC20BD67B800260A36 /* RF-ViewController.swift */; };
 		EA9D3F9839DF9177A8F4B530 /* Pods_architectures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */; };
 /* End PBXBuildFile section */
 
@@ -140,6 +144,10 @@
 		9940CEC320B45B1D00260A36 /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
 		9940CEC820B6CC7800260A36 /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
 		9940CEDF20BA656800260A36 /* DDD-Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DDD-Entity.swift"; sourceTree = "<group>"; };
+		9940CEE620BD66CF00260A36 /* RF-View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RF-View.swift"; sourceTree = "<group>"; };
+		9940CEE820BD66F200260A36 /* RF-State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RF-State.swift"; sourceTree = "<group>"; };
+		9940CEEA20BD671700260A36 /* RF-Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RF-Event.swift"; sourceTree = "<group>"; };
+		9940CEEC20BD67B800260A36 /* RF-ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RF-ViewController.swift"; sourceTree = "<group>"; };
 		9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_architectures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C26A8A79362503D7C6040E3 /* Pods-architecturesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesTests/Pods-architecturesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB1C98A2DB87E9322CF21174 /* Pods-architecturesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesUITests/Pods-architecturesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -536,6 +544,10 @@
 		9940CEE320BD64E200260A36 /* RxFeedback */ = {
 			isa = PBXGroup;
 			children = (
+				9940CEE620BD66CF00260A36 /* RF-View.swift */,
+				9940CEE820BD66F200260A36 /* RF-State.swift */,
+				9940CEEA20BD671700260A36 /* RF-Event.swift */,
+				9940CEEC20BD67B800260A36 /* RF-ViewController.swift */,
 			);
 			path = RxFeedback;
 			sourceTree = "<group>";
@@ -818,6 +830,7 @@
 				99178B5120AFEE13008E7407 /* MasterViewController.swift in Sources */,
 				99178BE220B04CE8008E7407 /* DDD-Builder.swift in Sources */,
 				99178BD020B01792008E7407 /* CA-Translator.swift in Sources */,
+				9940CEED20BD67B800260A36 /* RF-ViewController.swift in Sources */,
 				9915FCD320B074AE00DEE8A1 /* Accounts.swift in Sources */,
 				9915FCDE20B14C9000DEE8A1 /* EnumCollection.swift in Sources */,
 				99178BCD20B01792008E7407 /* CA-DataStore.swift in Sources */,
@@ -838,6 +851,7 @@
 				99178BCC20B01792008E7407 /* CA-Entity.swift in Sources */,
 				99178B5B20AFF4AE008E7407 /* MVC-Builder.swift in Sources */,
 				99178B5320AFEE62008E7407 /* DetailsViewController.swift in Sources */,
+				9940CEE720BD66CF00260A36 /* RF-View.swift in Sources */,
 				9915FCD520B0FF4800DEE8A1 /* Error.swift in Sources */,
 				99178BCB20B01792008E7407 /* CA-Repository.swift in Sources */,
 				99178B6120AFFC33008E7407 /* MVC-Model.swift in Sources */,
@@ -850,9 +864,11 @@
 				99178B7B20B001FD008E7407 /* MVVM-ViewModel.swift in Sources */,
 				99178BCF20B01792008E7407 /* CA-Builder.swift in Sources */,
 				99178BCE20B01792008E7407 /* CA-Wireframe.swift in Sources */,
+				9940CEEB20BD671700260A36 /* RF-Event.swift in Sources */,
 				99178BDC20B04BAA008E7407 /* DDD-Domain.swift in Sources */,
 				9915FCDB20B1474D00DEE8A1 /* RVC-ViewController.swift in Sources */,
 				99178BD820B04B8C008E7407 /* DDD-UserInterface.swift in Sources */,
+				9940CEE920BD66F200260A36 /* RF-State.swift in Sources */,
 				9940CEC920B6CC7800260A36 /* BalanceView.swift in Sources */,
 				99178BD420B01792008E7407 /* CA-ViewController.swift in Sources */,
 				99178B7C20B001FD008E7407 /* MVVM-Model.swift in Sources */,

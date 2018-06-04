@@ -11,8 +11,24 @@ import RxSwift
 import RxCocoa
 import RxFeedback
 
-public typealias RFUser = (user: UserList, balance: Int)
+/// ユーザー情報。mapできた方が嬉しいためstructで定義。
+public struct RFUser {
+    let user: UserList
+    let balance: Int
+    init(user: UserList, balance: Int) {
+        self.user = user
+        self.balance = balance
+    }
+}
+extension RFUser {
+    public func map(_ transform: @escaping (RFUser) -> RFUser) -> RFUser {
+        return transform(self)
+    }
+}
+
+/// 取引情報。Stateで引き渡しをするのみなのでtypealiasで記述する。
 public typealias RFTransfer = (to: RFUser, from: RFUser)
+
 
 class RFViewController: UIViewController {
     private typealias State = RFState
@@ -20,7 +36,6 @@ class RFViewController: UIViewController {
 
     // ViewとModelを保持する。
     var subview: RFView!
-    private var state: State!
     private let users: (to: UserList, from: UserList) = (.takahashi, .watanabe)
 
     /// Rx bindingを解除するためのDisposeBag。
@@ -35,13 +50,6 @@ extension RFViewController {
         configureView()
         configureFeedback()
         layoutView()
-        binding()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        self.state = State.initialState
     }
 
     override func viewDidLayoutSubviews() {
@@ -74,69 +82,48 @@ extension RFViewController {
         self.view.addSubview(self.subview)
     }
 
-    /// Modelの構成を行う。
+    /// Feedbackの構成を行う。
     private func configureFeedback() {
         let bindUI: (ObservableSchedulerContext<State>) -> Observable<Event> = RxFeedback.bind(self) { (me, state) in
             // 状態変化に伴って変更されうるUIを定義する。
             let subscriptions = [
+                // 残高情報の変更に合わせ，UIを更新する。
                 state
-                    .filter { $0 == State.ready }
-                    .subscribe(onNext: { [weak self] _ in
-                        Event.fetch()
-                    }),
-
-                state
-                    .filter { $0 == State.balanceDidChange }
+                    .filter { $0 == State.balanceDidChange(nil) }
                     .subscribe(onNext: { [weak self] balance in
-                        self?.subview.toView.valueLabel.text = "\(balance.to)"
-                        self?.subview.fromView.valueLabel.text = "\(balance.from)"
+                        self?.subview.toView.valueLabel.text = "\(balance.transfer!.to.balance)"
+                        self?.subview.fromView.valueLabel.text = "\(balance.transfer!.from.balance)"
                     }),
-
-                state
-                    .filter { $0 == State.balanceWillChange }
-                    .subscribe(onNext: { transfer in
-                        Event.update(transfer)
-                    }),
-
-
-//                /// If no contents, write "Observable<Any>.empty().subscribe(),".
-//                // Observable<Any>.empty().subscribe(),
-//                state
-//                    .filter { $0 == State.ending }
-//                    .subscribe(onNext: { _ in
-//                        print("\nEnd of the session")
-//                        self.exit()
-//                    }),
-//                state
-//                    // 最初の .readyが2回呼ばれるため，previousStateでfilter
-//                    .filter { $0 != me.previousState }
-//                    .map { ($0, $0.stateString) }
-//                    .replay(1).refCount() // https://qiita.com/kazu0620/items/bde4a65e82a10bd33f88
-//                    .subscribe(onNext: { state, str in
-//                        me.previousState = state
-//                        print(str)
-//
-//                        // Start command
-//                        DispatchQueue.global().async {
-//                            print("Command?")
-//                            print("> ", terminator: "")
-//                            let text = readLine() ?? ""
-//                            print("> read: \(text)")
-//                            me.previousState = nil
-//                            me.commandText.value = text
-//                        }
-//
-//                    }, onCompleted: {
-//                        // Stateは保持されるのでonCompletedが発火しない
-//                    }),
                 ]
 
             // ObservableからEventを流すユーザーアクションを指定する。
             let events = [
+                // Transferボタンのアクションを登録する。
                 me.subview.transferButton.rx.tap
                     .asObservable()
                     .map { Event.transfer(to: .takahashi, from: .watanabe, amount: Assets.amount) },
+
+                // Resetボタンのアクションを登録する。
+                me.subview.resetButton.rx.tap
+                    .asObservable()
+                    .map { Event.reset },
+
+                // 開始時に更新を行う。
+                state
+                    .filter { $0 == State.begin }
+                    .map { _ in Event.fetch },
+
+                // 残高に変更があった場合にアップデートを呼ぶ。
+                state
+                    .filter { $0 == State.balanceWillChange(nil) }
+                    .map { Event.update($0.transfer!) },
+
+                // 残高の更新終了時に終了イベントを発行する。
+                state
+                    .filter { $0 == State.balanceDidChange(nil) }
+                    .map { _ in Event.stabilize },
                 ]
+
             return Bindings(subscriptions: subscriptions, events: events)
         }
 
@@ -144,26 +131,31 @@ extension RFViewController {
             initialState: State.initialState,
             reduce: { [unowned self] state, event in
                 // in: event, out: state
+
+                // Eventごとに処理を分岐させる。
                 switch event {
+                case .stabilize:
+                    return State.ready
+
                 case .fetch:
                     let balance = self.fetch()
                     return State.balanceWillChange(balance)
+
                 case .update(let t):
                     self.update(t)
                     return State.balanceDidChange(t)
+
                 case .reset:
                     let balance = self.resetted
                     return State.balanceWillChange(balance)
-                case .transfer(let to, let from, let amount):
-                    let balance = self.resetted
 
+                case .transfer(let to, let from, let amount):
+                    let balance = self.transfer(to: to, from: from, amount: amount)
                     return State.balanceWillChange(balance)
                 }
-                return state
             },
             scheduler: MainScheduler.instance,
-            scheduledFeedback:
-            bindUI
+            scheduledFeedback: bindUI
             )
             .subscribe()
             .disposed(by: disposeBag)
@@ -174,76 +166,124 @@ extension RFViewController {
         // subviewのサイズを更新する。
         self.subview.frame = self.view.frame
     }
-
-    /// View要素とBusiness logicのバインディングを行う。
-    private func binding() {
-//        // Takahashiさんの残高をラベルにバインドする。
-//        self.model?.users.filter{ $0.user == .takahashi }.first?.balance
-//            .map{ "\($0)" }
-//            .asDriver(onErrorJustReturn: "Rx binding error!")
-//            .drive(self.subview.toView.valueLabel.rx.text)
-//            .disposed(by: self.disposeBag)
-//
-//        // Watanabeさんの残高をラベルにバインドする。
-//        self.model?.users.filter{ $0.user == .watanabe }.first?.balance
-//            .map{ "\($0)" }
-//            .asDriver(onErrorJustReturn: "Rx binding error!")
-//            .drive(self.subview.fromView.valueLabel.rx.text)
-//            .disposed(by: self.disposeBag)
-//
-//        // 送金処理をボタンにバインドする。
-//        // この時，onErrorが発生するとRxの購読が解除されてしまうため，onError発生時に再帰的に再購読を行う。
-//        func bindingErrorable() {
-//            self.subview.transferButton.rx.tap
-//                .asObservable()
-//                // WatanabeさんからTakahashiさんに送金を行う。
-//                .flatMap{ self.model.transfer(from: .watanabe, to: .takahashi, amount: Assets.amount) }
-//                .subscribe(onError: { [weak self] e in
-//
-//                    // アラートを表示する。
-//                    self?.showAlert(error: e)
-//
-//                    // 再帰的に再購読を行う。
-//                    bindingErrorable()
-//
-//                })
-//                .disposed(by: self.disposeBag)
-//        }
-//        bindingErrorable()
-//
-//        // 残高のリセット処理をボタンにバインドする。
-//        self.subview.resetButton.rx.tap
-//            .asObservable()
-//            .subscribe(onNext: { [weak self] _ in
-//
-//                // 残高のリセットを行う。
-//                self?.model.reset()
-//
-//            })
-//            .disposed(by: self.disposeBag)
-    }
 }
 
 extension RFViewController: ErrorShowable {
+    /**
+     初期化を行う。
+
+     - Returns:
+        取引情報
+     */
     private var resetted: RFTransfer {
         return (
-            to: (user: self.users.to, balance: self.users.to.initValue),
-            from: (user: self.users.from, balance: self.users.from.initValue)
+            to: RFUser(user: self.users.to, balance: self.users.to.initValue),
+            from: RFUser(user: self.users.from, balance: self.users.from.initValue)
         )
     }
 
+    /**
+     更新を行う。
+
+     - Returns:
+        取引情報
+     */
     private func fetch() -> RFTransfer {
         do {
+
             let transfer = try self.fetch(to: self.users.to, from: self.users.from)
             return transfer
+
         }catch let e {
+
             self.showAlert(error: e)
             return self.resetted
+
         }
     }
 
-    private func transfer(to: UserList, from: UserList, amount: Int) {
+    /**
+     更新を行う。
 
+     - Parameters:
+         - to: 取引先のユーザー
+         - from: 取引元のユーザー
+         - amount: 金額
+
+     - Returns:
+        取引情報
+     */
+    private func transfer(to: UserList, from: UserList, amount: Int) -> RFTransfer {
+        // 口座情報の取得を行う。
+        var transfer: RFTransfer!
+        do {
+
+            transfer = try self.fetch(to: to, from: from)
+
+        }catch let e {
+
+            self.showAlert(error: e)
+            return self.resetted
+
+        }
+
+        // 口座情報の取得成功後に取引を行う。
+        do {
+
+            let to = try self.credit(transfer.to, amount: amount)
+            let from = try self.debit(transfer.from, amount: amount)
+            return (to: to, from: from)
+
+        }catch let e {
+
+            self.showAlert(error: e)
+            return transfer
+
+        }
+    }
+}
+
+extension RFViewController {
+    /**
+     入金処理を行う。
+
+     - Parameters:
+         - user: 対象ユーザー
+         - amount: 金額
+
+     - throws:
+        取引後に残高超過に陥る場合
+     - Returns:
+        口座情報
+     */
+    private func credit(_ user: RFUser, amount: Int) throws -> RFUser {
+        // 入金後の残高がIntの最大値を超過するかの判断を行う
+        if user.balance > Int.max - amount {
+            throw ErrorTransfer.amountOverflow
+        }
+        // 金額を加算する。
+        return user.map{ RFUser(user: $0.user, balance: $0.balance + amount) }
+    }
+
+    /**
+     出金処理を行う。
+
+     - Parameters:
+         - user: 対象ユーザー
+         - amount: 金額
+
+     - throws:
+        取引後に残高不足に陥る場合
+     - Returns:
+        口座情報
+     */
+    private func debit(_ user: RFUser, amount: Int) throws -> RFUser {
+        // 出金後の残高が0を下回るかの判断を行う
+        if user.balance - amount < 0 {
+            throw ErrorTransfer.insufficientFunds
+        }
+        // 金額を減算する。
+        return user.map{ RFUser(user: $0.user, balance: $0.balance - amount) }
     }
 }
 
@@ -271,7 +311,7 @@ extension RFViewController {
             throw ErrorTransfer.storedTypeInvalid
         }
 
-        return (to: (user: to, balance: toBalance), from: (user: from, balance: fromBalance))
+        return (to: RFUser(user: to, balance: toBalance), from: RFUser(user: from, balance: fromBalance))
     }
 
     /// UserDefaultsへ更新を実行する。

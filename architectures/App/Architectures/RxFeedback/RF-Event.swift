@@ -9,6 +9,7 @@
 import Foundation
 
 public enum RFEvent {
+    case stabilize
     case fetch
     case update(RFTransfer)
     case reset

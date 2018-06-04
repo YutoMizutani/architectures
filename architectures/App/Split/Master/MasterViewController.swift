@@ -91,20 +91,27 @@ extension MasterViewController {
                 break
             // DDD
             case 4:
+                let nextViewController = RFBuilder().build()
+                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.rf.short
+                let nextNavigationController = UINavigationController(rootViewController: nextViewController)
+                self.splitViewController?.showDetailViewController(nextNavigationController, sender: self)
+                break
+            // RxFeedback
+            case 5:
                 let nextViewController = DDDBuilder().build()
                 nextViewController.navigationItem.title = MasterViewControllerEurekaTags.ddd.short
                 let nextNavigationController = UINavigationController(rootViewController: nextViewController)
                 self.splitViewController?.showDetailViewController(nextNavigationController, sender: self)
                 break
             // Clean Architecture
-            case 5:
+            case 6:
                 let nextViewController = CABuilder().build()
                 nextViewController.navigationItem.title = MasterViewControllerEurekaTags.ca.short
                 let nextNavigationController = UINavigationController(rootViewController: nextViewController)
                 self.splitViewController?.showDetailViewController(nextNavigationController, sender: self)
                 break
             // RVC
-            case 6:
+            case 7:
                 let nextViewController = RVCBuilder().build()
                 nextViewController.navigationItem.title = MasterViewControllerEurekaTags.rvc.short
                 let nextNavigationController = UINavigationController(rootViewController: nextViewController)

@@ -9,31 +9,45 @@
 import Foundation
 
 public enum RFState {
+    case begin
     case ready
 
-    case balanceWillChange(RFTransfer)
-    case balanceDidChange(RFTransfer)
+    case balanceWillChange(RFTransfer?)
+    case balanceDidChange(RFTransfer?)
 }
 
 public extension RFState {
     static var initialState: RFState {
-        return RFState.ready
+        return RFState.begin
     }
 }
 
-extension RFState {
-    private var index: Int {
+public extension RFState {
+    public var index: Int {
         switch self {
-        case .ready:
+        case .begin:
             return 0
-        case .balanceWillChange(_):
+        case .ready:
             return 1
-        case .balanceDidChange(_):
+        case .balanceWillChange(_):
             return 2
+        case .balanceDidChange(_):
+            return 3
         }
     }
 
     public static func == (lhs: RFState, rhs: RFState) -> Bool {
         return lhs.index == rhs.index
+    }
+}
+
+public extension RFState {
+    public var transfer: RFTransfer? {
+        switch self {
+        case .balanceWillChange(let t), .balanceDidChange(let t):
+            return t
+        default:
+            return nil
+        }
     }
 }

@@ -8,6 +8,7 @@ target 'architectures' do
   # Pods for architectures
 pod 'RxSwift'
 pod 'RxCocoa'
+pod 'RxFeedback'
 pod 'Eureka'
 
   target 'architecturesTests' do
@@ -15,6 +16,7 @@ pod 'Eureka'
     # Pods for testing
 pod 'RxSwift'
 pod 'RxCocoa'
+pod 'RxFeedback'
   end
 
   target 'architecturesUITests' do

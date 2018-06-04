@@ -2,24 +2,30 @@ PODS:
   - Eureka (4.1.1)
   - RxCocoa (4.1.2):
     - RxSwift (~> 4.0)
+  - RxFeedback (1.0.2):
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
 
 DEPENDENCIES:
   - Eureka
   - RxCocoa
+  - RxFeedback
   - RxSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Eureka
     - RxCocoa
+    - RxFeedback
     - RxSwift
 
 SPEC CHECKSUMS:
   Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxFeedback: 10a567c755e59a1897daf760578c6bae8c546bd4
   RxSwift: e49536837d9901277638493ea537394d4b55f570
 
-PODFILE CHECKSUM: b76fe2964d205fbeec82f01ae03ae48865d262cf
+PODFILE CHECKSUM: 8ffafce96eea5dce330e8194deeabfefd51d0132
 
 COCOAPODS: 1.5.3

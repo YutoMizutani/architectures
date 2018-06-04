@@ -59,9 +59,14 @@
 		9940CEC420B45B1D00260A36 /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEC320B45B1D00260A36 /* RxSwift+.swift */; };
 		9940CEC920B6CC7800260A36 /* BalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEC820B6CC7800260A36 /* BalanceView.swift */; };
 		9940CEE020BA656800260A36 /* DDD-Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEDF20BA656800260A36 /* DDD-Entity.swift */; };
-		9940CEF020BD979C00260A36 /* PDS-Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEEF20BD979C00260A36 /* PDS-Builder.swift */; };
-		9940CEF220BD97C400260A36 /* PDS-Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEF120BD97C400260A36 /* PDS-Presentation.swift */; };
-		9940CEF420BD97CF00260A36 /* PDS-Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEF320BD97CF00260A36 /* PDS-Domain.swift */; };
+		9940CEE720BD66CF00260A36 /* RF-View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEE620BD66CF00260A36 /* RF-View.swift */; };
+		9940CEE920BD66F200260A36 /* RF-State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEE820BD66F200260A36 /* RF-State.swift */; };
+		9940CEEB20BD671700260A36 /* RF-Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEEA20BD671700260A36 /* RF-Event.swift */; };
+		9940CEED20BD67B800260A36 /* RF-ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEEC20BD67B800260A36 /* RF-ViewController.swift */; };
+		9940CEF920C5475900260A36 /* PDS-Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEF620C5475800260A36 /* PDS-Domain.swift */; };
+		9940CEFA20C5475900260A36 /* PDS-Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEF720C5475800260A36 /* PDS-Presentation.swift */; };
+		9940CEFB20C5475900260A36 /* PDS-Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEF820C5475800260A36 /* PDS-Builder.swift */; };
+		9940CEFD20C5612E00260A36 /* RF-Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEFC20C5612E00260A36 /* RF-Builder.swift */; };
 		EA9D3F9839DF9177A8F4B530 /* Pods_architectures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */; };
 /* End PBXBuildFile section */
 
@@ -143,9 +148,14 @@
 		9940CEC320B45B1D00260A36 /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
 		9940CEC820B6CC7800260A36 /* BalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceView.swift; sourceTree = "<group>"; };
 		9940CEDF20BA656800260A36 /* DDD-Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DDD-Entity.swift"; sourceTree = "<group>"; };
-		9940CEEF20BD979C00260A36 /* PDS-Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PDS-Builder.swift"; sourceTree = "<group>"; };
-		9940CEF120BD97C400260A36 /* PDS-Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PDS-Presentation.swift"; sourceTree = "<group>"; };
-		9940CEF320BD97CF00260A36 /* PDS-Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PDS-Domain.swift"; sourceTree = "<group>"; };
+		9940CEE620BD66CF00260A36 /* RF-View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RF-View.swift"; sourceTree = "<group>"; };
+		9940CEE820BD66F200260A36 /* RF-State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RF-State.swift"; sourceTree = "<group>"; };
+		9940CEEA20BD671700260A36 /* RF-Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RF-Event.swift"; sourceTree = "<group>"; };
+		9940CEEC20BD67B800260A36 /* RF-ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RF-ViewController.swift"; sourceTree = "<group>"; };
+		9940CEF620C5475800260A36 /* PDS-Domain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PDS-Domain.swift"; sourceTree = "<group>"; };
+		9940CEF720C5475800260A36 /* PDS-Presentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PDS-Presentation.swift"; sourceTree = "<group>"; };
+		9940CEF820C5475800260A36 /* PDS-Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PDS-Builder.swift"; sourceTree = "<group>"; };
+		9940CEFC20C5612E00260A36 /* RF-Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RF-Builder.swift"; sourceTree = "<group>"; };
 		9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_architectures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C26A8A79362503D7C6040E3 /* Pods-architecturesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesTests/Pods-architecturesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB1C98A2DB87E9322CF21174 /* Pods-architecturesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesUITests/Pods-architecturesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -336,7 +346,8 @@
 		99178B5420AFEEC0008E7407 /* Architectures */ = {
 			isa = PBXGroup;
 			children = (
-				9940CEEE20BD978C00260A36 /* PDS */,
+				9940CEF520C5475800260A36 /* PDS */,
+				9940CEE320BD64E200260A36 /* RxFeedback */,
 				9915FCD920B1474100DEE8A1 /* RealisticViewController */,
 				99178BD620B04B60008E7407 /* DDD */,
 				99178B6D20B001FD008E7407 /* CleanArchitecture */,
@@ -539,12 +550,24 @@
 			path = DDD;
 			sourceTree = "<group>";
 		};
-		9940CEEE20BD978C00260A36 /* PDS */ = {
+		9940CEE320BD64E200260A36 /* RxFeedback */ = {
 			isa = PBXGroup;
 			children = (
-				9940CEEF20BD979C00260A36 /* PDS-Builder.swift */,
-				9940CEF120BD97C400260A36 /* PDS-Presentation.swift */,
-				9940CEF320BD97CF00260A36 /* PDS-Domain.swift */,
+				9940CEFC20C5612E00260A36 /* RF-Builder.swift */,
+				9940CEE620BD66CF00260A36 /* RF-View.swift */,
+				9940CEE820BD66F200260A36 /* RF-State.swift */,
+				9940CEEA20BD671700260A36 /* RF-Event.swift */,
+				9940CEEC20BD67B800260A36 /* RF-ViewController.swift */,
+			);
+			path = RxFeedback;
+			sourceTree = "<group>";
+		};
+		9940CEF520C5475800260A36 /* PDS */ = {
+			isa = PBXGroup;
+			children = (
+				9940CEF620C5475800260A36 /* PDS-Domain.swift */,
+				9940CEF720C5475800260A36 /* PDS-Presentation.swift */,
+				9940CEF820C5475800260A36 /* PDS-Builder.swift */,
 			);
 			path = PDS;
 			sourceTree = "<group>";
@@ -701,12 +724,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-architectures/Pods-architectures-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxFeedback/RxFeedback.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxFeedback.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -798,11 +823,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-architecturesTests/Pods-architecturesTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxFeedback/RxFeedback.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxFeedback.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -818,12 +845,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				99178BD320B01792008E7407 /* CA-View.swift in Sources */,
+				9940CEFA20C5475900260A36 /* PDS-Presentation.swift in Sources */,
 				9940CEE020BA656800260A36 /* DDD-Entity.swift in Sources */,
 				9940CEC420B45B1D00260A36 /* RxSwift+.swift in Sources */,
 				99178B5120AFEE13008E7407 /* MasterViewController.swift in Sources */,
-				9940CEF420BD97CF00260A36 /* PDS-Domain.swift in Sources */,
 				99178BE220B04CE8008E7407 /* DDD-Builder.swift in Sources */,
 				99178BD020B01792008E7407 /* CA-Translator.swift in Sources */,
+				9940CEED20BD67B800260A36 /* RF-ViewController.swift in Sources */,
 				9915FCD320B074AE00DEE8A1 /* Accounts.swift in Sources */,
 				9915FCDE20B14C9000DEE8A1 /* EnumCollection.swift in Sources */,
 				99178BCD20B01792008E7407 /* CA-DataStore.swift in Sources */,
@@ -832,6 +860,7 @@
 				9940CEBF20B16BF400260A36 /* RVC-Builder.swift in Sources */,
 				99178B5F20AFFC1D008E7407 /* MVC-Controller.swift in Sources */,
 				99178BD220B01792008E7407 /* CA-UseCase.swift in Sources */,
+				9940CEFB20C5475900260A36 /* PDS-Builder.swift in Sources */,
 				99178B1D20AFE8F3008E7407 /* AppDelegate.swift in Sources */,
 				99178BD120B01792008E7407 /* CA-Model.swift in Sources */,
 				99178B7D20B001FD008E7407 /* MVVM-View.swift in Sources */,
@@ -840,17 +869,17 @@
 				99178BDE20B04BBD008E7407 /* DDD-Infrastructure.swift in Sources */,
 				99178BD520B01792008E7407 /* CA-Presenter.swift in Sources */,
 				99178BDA20B04B9F008E7407 /* DDD-Application.swift in Sources */,
-				9940CEF020BD979C00260A36 /* PDS-Builder.swift in Sources */,
-				9940CEF220BD97C400260A36 /* PDS-Presentation.swift in Sources */,
 				99178B7E20B001FD008E7407 /* MVVM-Builder.swift in Sources */,
 				99178BCC20B01792008E7407 /* CA-Entity.swift in Sources */,
 				99178B5B20AFF4AE008E7407 /* MVC-Builder.swift in Sources */,
 				99178B5320AFEE62008E7407 /* DetailsViewController.swift in Sources */,
+				9940CEE720BD66CF00260A36 /* RF-View.swift in Sources */,
 				9915FCD520B0FF4800DEE8A1 /* Error.swift in Sources */,
 				99178BCB20B01792008E7407 /* CA-Repository.swift in Sources */,
 				99178B6120AFFC33008E7407 /* MVC-Model.swift in Sources */,
 				99178B5D20AFFC0E008E7407 /* MVC-View.swift in Sources */,
 				99178B7920B001FD008E7407 /* MVP-View.swift in Sources */,
+				9940CEFD20C5612E00260A36 /* RF-Builder.swift in Sources */,
 				9915FCE320B1591900DEE8A1 /* ErrorHandring.swift in Sources */,
 				99178B7A20B001FD008E7407 /* MVP-Model.swift in Sources */,
 				99178B7820B001FD008E7407 /* MVP-Presenter.swift in Sources */,
@@ -858,11 +887,14 @@
 				99178B7B20B001FD008E7407 /* MVVM-ViewModel.swift in Sources */,
 				99178BCF20B01792008E7407 /* CA-Builder.swift in Sources */,
 				99178BCE20B01792008E7407 /* CA-Wireframe.swift in Sources */,
+				9940CEEB20BD671700260A36 /* RF-Event.swift in Sources */,
 				99178BDC20B04BAA008E7407 /* DDD-Domain.swift in Sources */,
 				9915FCDB20B1474D00DEE8A1 /* RVC-ViewController.swift in Sources */,
 				99178BD820B04B8C008E7407 /* DDD-UserInterface.swift in Sources */,
+				9940CEE920BD66F200260A36 /* RF-State.swift in Sources */,
 				9940CEC920B6CC7800260A36 /* BalanceView.swift in Sources */,
 				99178BD420B01792008E7407 /* CA-ViewController.swift in Sources */,
+				9940CEF920C5475900260A36 /* PDS-Domain.swift in Sources */,
 				99178B7C20B001FD008E7407 /* MVVM-Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

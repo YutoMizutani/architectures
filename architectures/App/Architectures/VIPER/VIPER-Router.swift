@@ -15,8 +15,7 @@ class VIPERRouter: VIPERWireframeProtocol {
     weak var viewController: UIViewController?
 
     static func createModule() -> UIViewController {
-        // Change to get view from storyboard if not using progammatic UI
-        let view = VIPERViewController(nibName: nil, bundle: nil)
+        let view = VIPERViewController()
         let interactor = VIPERInteractor()
         let router = VIPERRouter()
         let presenter = VIPERPresenter(interface: view, interactor: interactor, router: router)

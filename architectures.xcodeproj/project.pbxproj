@@ -73,6 +73,7 @@
 		9940CF0620C7E87200260A36 /* VIPER-Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CF0520C7E87200260A36 /* VIPER-Presenter.swift */; };
 		9940CF0820C7E87E00260A36 /* VIPER-Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CF0720C7E87E00260A36 /* VIPER-Entity.swift */; };
 		9940CF0A20C7E88C00260A36 /* VIPER-Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CF0920C7E88C00260A36 /* VIPER-Router.swift */; };
+		9940CF0C20C7F3A000260A36 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9940CF0B20C7F39F00260A36 /* README.md */; };
 		EA9D3F9839DF9177A8F4B530 /* Pods_architectures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */; };
 /* End PBXBuildFile section */
 
@@ -168,6 +169,7 @@
 		9940CF0520C7E87200260A36 /* VIPER-Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VIPER-Presenter.swift"; sourceTree = "<group>"; };
 		9940CF0720C7E87E00260A36 /* VIPER-Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VIPER-Entity.swift"; sourceTree = "<group>"; };
 		9940CF0920C7E88C00260A36 /* VIPER-Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VIPER-Router.swift"; sourceTree = "<group>"; };
+		9940CF0B20C7F39F00260A36 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_architectures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C26A8A79362503D7C6040E3 /* Pods-architecturesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesTests/Pods-architecturesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB1C98A2DB87E9322CF21174 /* Pods-architecturesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesUITests/Pods-architecturesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 		99178B5420AFEEC0008E7407 /* Architectures */ = {
 			isa = PBXGroup;
 			children = (
+				9940CF2720C7F51700260A36 /* TEST */,
 				9940CEFE20C7E7E600260A36 /* VIPER */,
 				9940CEF520C5475800260A36 /* PDS */,
 				9940CEE320BD64E200260A36 /* RxFeedback */,
@@ -588,6 +591,7 @@
 		9940CEFE20C7E7E600260A36 /* VIPER */ = {
 			isa = PBXGroup;
 			children = (
+				9940CF0B20C7F39F00260A36 /* README.md */,
 				9940CEFF20C7E83800260A36 /* VIPER-Builder.swift */,
 				9940CF0120C7E85000260A36 /* VIPER-View.swift */,
 				9940CF0320C7E86800260A36 /* VIPER-Interactor.swift */,
@@ -596,6 +600,13 @@
 				9940CF0920C7E88C00260A36 /* VIPER-Router.swift */,
 			);
 			path = VIPER;
+			sourceTree = "<group>";
+		};
+		9940CF2720C7F51700260A36 /* TEST */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TEST;
 			sourceTree = "<group>";
 		};
 		BEF3CDA49603687D9C024AD6 /* Frameworks */ = {
@@ -720,6 +731,7 @@
 			files = (
 				99178B2720AFE8F4008E7407 /* LaunchScreen.storyboard in Resources */,
 				99178B2420AFE8F4008E7407 /* Assets.xcassets in Resources */,
+				9940CF0C20C7F3A000260A36 /* README.md in Resources */,
 				99178B2220AFE8F3008E7407 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

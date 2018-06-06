@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+struct VIPEREntity {
+    // ユーザー名
+    let name: String
+    // 残高
+    let balance: Int
+}

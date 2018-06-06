@@ -13,9 +13,56 @@ import UIKit
 class VIPERViewController: UIViewController, VIPERViewProtocol {
 
 	var presenter: VIPERPresenterProtocol?
+    var subview: View!
 
-	override func viewDidLoad() {
+}
+
+extension VIPERViewController {
+    override func viewDidLoad() {
         super.viewDidLoad()
+
+        configureView()
+        layoutView()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        layoutView()
+
+        self.view.layoutIfNeeded()
+    }
+
+    override func viewSafeAreaInsetsDidChange() {
+        super.viewSafeAreaInsetsDidChange()
+
+        layoutView()
+    }
+}
+
+// MARK:- Private methods about settings
+extension VIPERViewController {
+    /// Viewの構成を行う。
+    private func configureView() {
+        // Viewを作成する。
+        self.subview = MVCView()
+
+        // Viewに表示されるラベルの名前を設定する。
+        self.subview.toView.nameLabel.text = "\(UserList.takahashi.rawValue): "
+        self.subview.fromView.nameLabel.text = "\(UserList.watanabe.rawValue): "
+
+        // Viewに追加する。
+        self.view.addSubview(self.subview)
+    }
+
+    /// Viewの更新を行う。
+    private func layoutView() {
+        // subviewのサイズを更新する。
+        self.subview.frame = self.view.frame
+    }
 }

@@ -10,6 +10,6 @@ import UIKit
 
 class VIPERBuilder {
     func build() -> UIViewController {
-        return ViewController()
+        return VIPERRouter.createModule()
     }
 }

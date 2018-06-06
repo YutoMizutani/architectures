@@ -67,6 +67,12 @@
 		9940CEFA20C5475900260A36 /* PDS-Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEF720C5475800260A36 /* PDS-Presentation.swift */; };
 		9940CEFB20C5475900260A36 /* PDS-Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEF820C5475800260A36 /* PDS-Builder.swift */; };
 		9940CEFD20C5612E00260A36 /* RF-Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEFC20C5612E00260A36 /* RF-Builder.swift */; };
+		9940CF0020C7E83800260A36 /* VIPER-Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CEFF20C7E83800260A36 /* VIPER-Builder.swift */; };
+		9940CF0220C7E85000260A36 /* VIPER-View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CF0120C7E85000260A36 /* VIPER-View.swift */; };
+		9940CF0420C7E86800260A36 /* VIPER-Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CF0320C7E86800260A36 /* VIPER-Interactor.swift */; };
+		9940CF0620C7E87200260A36 /* VIPER-Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CF0520C7E87200260A36 /* VIPER-Presenter.swift */; };
+		9940CF0820C7E87E00260A36 /* VIPER-Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CF0720C7E87E00260A36 /* VIPER-Entity.swift */; };
+		9940CF0A20C7E88C00260A36 /* VIPER-Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CF0920C7E88C00260A36 /* VIPER-Router.swift */; };
 		EA9D3F9839DF9177A8F4B530 /* Pods_architectures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */; };
 /* End PBXBuildFile section */
 
@@ -156,6 +162,12 @@
 		9940CEF720C5475800260A36 /* PDS-Presentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PDS-Presentation.swift"; sourceTree = "<group>"; };
 		9940CEF820C5475800260A36 /* PDS-Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PDS-Builder.swift"; sourceTree = "<group>"; };
 		9940CEFC20C5612E00260A36 /* RF-Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RF-Builder.swift"; sourceTree = "<group>"; };
+		9940CEFF20C7E83800260A36 /* VIPER-Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VIPER-Builder.swift"; sourceTree = "<group>"; };
+		9940CF0120C7E85000260A36 /* VIPER-View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VIPER-View.swift"; sourceTree = "<group>"; };
+		9940CF0320C7E86800260A36 /* VIPER-Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VIPER-Interactor.swift"; sourceTree = "<group>"; };
+		9940CF0520C7E87200260A36 /* VIPER-Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VIPER-Presenter.swift"; sourceTree = "<group>"; };
+		9940CF0720C7E87E00260A36 /* VIPER-Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VIPER-Entity.swift"; sourceTree = "<group>"; };
+		9940CF0920C7E88C00260A36 /* VIPER-Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VIPER-Router.swift"; sourceTree = "<group>"; };
 		9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_architectures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C26A8A79362503D7C6040E3 /* Pods-architecturesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesTests/Pods-architecturesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB1C98A2DB87E9322CF21174 /* Pods-architecturesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesUITests/Pods-architecturesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -346,6 +358,7 @@
 		99178B5420AFEEC0008E7407 /* Architectures */ = {
 			isa = PBXGroup;
 			children = (
+				9940CEFE20C7E7E600260A36 /* VIPER */,
 				9940CEF520C5475800260A36 /* PDS */,
 				9940CEE320BD64E200260A36 /* RxFeedback */,
 				9915FCD920B1474100DEE8A1 /* RealisticViewController */,
@@ -570,6 +583,19 @@
 				9940CEF820C5475800260A36 /* PDS-Builder.swift */,
 			);
 			path = PDS;
+			sourceTree = "<group>";
+		};
+		9940CEFE20C7E7E600260A36 /* VIPER */ = {
+			isa = PBXGroup;
+			children = (
+				9940CEFF20C7E83800260A36 /* VIPER-Builder.swift */,
+				9940CF0120C7E85000260A36 /* VIPER-View.swift */,
+				9940CF0320C7E86800260A36 /* VIPER-Interactor.swift */,
+				9940CF0520C7E87200260A36 /* VIPER-Presenter.swift */,
+				9940CF0720C7E87E00260A36 /* VIPER-Entity.swift */,
+				9940CF0920C7E88C00260A36 /* VIPER-Router.swift */,
+			);
+			path = VIPER;
 			sourceTree = "<group>";
 		};
 		BEF3CDA49603687D9C024AD6 /* Frameworks */ = {
@@ -855,6 +881,7 @@
 				9915FCD320B074AE00DEE8A1 /* Accounts.swift in Sources */,
 				9915FCDE20B14C9000DEE8A1 /* EnumCollection.swift in Sources */,
 				99178BCD20B01792008E7407 /* CA-DataStore.swift in Sources */,
+				9940CF0620C7E87200260A36 /* VIPER-Presenter.swift in Sources */,
 				99178BE020B04C2A008E7407 /* View.swift in Sources */,
 				99178B1F20AFE8F3008E7407 /* ViewController.swift in Sources */,
 				9940CEBF20B16BF400260A36 /* RVC-Builder.swift in Sources */,
@@ -864,6 +891,7 @@
 				99178B1D20AFE8F3008E7407 /* AppDelegate.swift in Sources */,
 				99178BD120B01792008E7407 /* CA-Model.swift in Sources */,
 				99178B7D20B001FD008E7407 /* MVVM-View.swift in Sources */,
+				9940CF0020C7E83800260A36 /* VIPER-Builder.swift in Sources */,
 				99178B4C20AFECE7008E7407 /* SplitViewControlelr.swift in Sources */,
 				99178B5620AFF017008E7407 /* MasterViewControllerEureka.swift in Sources */,
 				99178BDE20B04BBD008E7407 /* DDD-Infrastructure.swift in Sources */,
@@ -876,6 +904,7 @@
 				9940CEE720BD66CF00260A36 /* RF-View.swift in Sources */,
 				9915FCD520B0FF4800DEE8A1 /* Error.swift in Sources */,
 				99178BCB20B01792008E7407 /* CA-Repository.swift in Sources */,
+				9940CF0820C7E87E00260A36 /* VIPER-Entity.swift in Sources */,
 				99178B6120AFFC33008E7407 /* MVC-Model.swift in Sources */,
 				99178B5D20AFFC0E008E7407 /* MVC-View.swift in Sources */,
 				99178B7920B001FD008E7407 /* MVP-View.swift in Sources */,
@@ -883,6 +912,7 @@
 				9915FCE320B1591900DEE8A1 /* ErrorHandring.swift in Sources */,
 				99178B7A20B001FD008E7407 /* MVP-Model.swift in Sources */,
 				99178B7820B001FD008E7407 /* MVP-Presenter.swift in Sources */,
+				9940CF0420C7E86800260A36 /* VIPER-Interactor.swift in Sources */,
 				99178B7720B001FD008E7407 /* MVP-Builder.swift in Sources */,
 				99178B7B20B001FD008E7407 /* MVVM-ViewModel.swift in Sources */,
 				99178BCF20B01792008E7407 /* CA-Builder.swift in Sources */,
@@ -892,10 +922,12 @@
 				9915FCDB20B1474D00DEE8A1 /* RVC-ViewController.swift in Sources */,
 				99178BD820B04B8C008E7407 /* DDD-UserInterface.swift in Sources */,
 				9940CEE920BD66F200260A36 /* RF-State.swift in Sources */,
+				9940CF0220C7E85000260A36 /* VIPER-View.swift in Sources */,
 				9940CEC920B6CC7800260A36 /* BalanceView.swift in Sources */,
 				99178BD420B01792008E7407 /* CA-ViewController.swift in Sources */,
 				9940CEF920C5475900260A36 /* PDS-Domain.swift in Sources */,
 				99178B7C20B001FD008E7407 /* MVVM-Model.swift in Sources */,
+				9940CF0A20C7E88C00260A36 /* VIPER-Router.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

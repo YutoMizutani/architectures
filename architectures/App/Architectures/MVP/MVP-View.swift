@@ -17,7 +17,7 @@
 
 import UIKit
 
-protocol MVPViewInterface {
+protocol MVPViewInterface: class {
     func updateView(model: MVPModel)
     func presentError(error: Error)
 }
@@ -25,7 +25,6 @@ protocol MVPViewInterface {
 class MVPView: UIViewController {
     // ViewとModelを保持する。
     var subview: View!
-    var model: MVPModel!
     var presenter: MVPPresenter!
 }
 
@@ -34,7 +33,6 @@ extension MVPView {
         super.viewDidLoad()
 
         configureView()
-        configureModel()
         configurePresenter()
         layoutView()
         addAction()
@@ -83,19 +81,16 @@ extension MVPView {
         self.subview.frame = self.view.frame
     }
 
-    /// Modelの構成を行う。
-    private func configureModel() {
+    // Presenterの構成を行う。
+    private func configurePresenter() {
         // 使用するUserの定義
         let users: [UserList] = [.takahashi, .watanabe]
 
         // UserLisetを元にModelを作成する。
-        self.model = MVPModel(users: users)
-    }
+        let model = MVPModel(users: users)
 
-    // Presenterの構成を行う。
-    private func configurePresenter() {
         // Presenterを作成する。
-        self.presenter = MVPPresenter()
+        self.presenter = MVPPresenter(view: self, model: model)
     }
 
     /// ボタン押下時のアクションを設定する。
@@ -108,36 +103,19 @@ extension MVPView {
 extension MVPView {
     private func fetchValue() {
         // Model要素を更新する。
-        self.model.fetch()
-
-        // Viewを更新する。
-        self.updateView(model: self.model)
+        self.presenter.fetch()
     }
 }
 
 extension MVPView: ErrorShowable {
     @IBAction func transfer() {
-        do {
-
-            // 送金処理を行う。
-            try self.presenter.transfer(self.model)
-
-            // Viewを更新する。
-            self.updateView(model: self.model)
-
-        }catch let e {
-
-            self.presentError(error: e)
-
-        }
+        // 送金処理を行う。
+        self.presenter.transfer()
     }
 
     @IBAction func resetCount() {
         // Userを元にリセットを行う。
-        self.presenter.reset(self.model)
-
-        // Viewを更新する。
-        self.updateView(model: self.model)
+        self.presenter.reset()
     }
 }
 

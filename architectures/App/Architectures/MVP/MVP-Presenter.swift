@@ -18,26 +18,50 @@
 import UIKit
 
 class MVPPresenter {
+    private weak var view: MVPViewInterface?
+    private let model: MVPModel
+
+    init(view: MVPViewInterface, model: MVPModel) {
+        self.view = view
+        self.model = model
+    }
 }
 
 extension MVPPresenter {
-    private func fetchValue(_ model: MVPModel) {
+    /// Model要素を更新する。
+    func fetch() {
         // Model要素を更新する。
-        model.fetch()
-    }
-}
+        self.model.fetch()
 
-extension MVPPresenter {
-    func transfer(_ model: MVPModel) throws {
-        // 送金処理を行う。
-        try model.transfer(from: .watanabe, to: .takahashi, amount: Assets.amount)
+        // Viewを更新する。
+        self.view?.updateView(model: self.model)
     }
 
-    func reset(_ model: MVPModel) {
+    func transfer() {
+        do {
+
+            // 送金処理を行う。
+            try self.model.transfer(from: .watanabe, to: .takahashi, amount: Assets.amount)
+
+            // Viewを更新する。
+            self.view?.updateView(model: self.model)
+
+        } catch let e {
+
+            // エラーをアラートに表示する。
+            self.view?.presentError(error: e)
+
+        }
+    }
+
+    func reset() {
         // 使用するUserの定義
         let users: [UserList] = [.takahashi, .watanabe]
 
         // Userを元にリセットを行う。
-        model.reset(users)
+        self.model.reset(users)
+
+        // Viewを更新する。
+        self.view?.updateView(model: self.model)
     }
 }

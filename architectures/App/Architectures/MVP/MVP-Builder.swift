@@ -10,6 +10,6 @@ import UIKit
 
 class MVPBuilder {
     func build() -> UIViewController {
-        return MVPPresenter()
+        return MVPView()
     }
 }

@@ -1,6 +1,8 @@
 #### YM
 
 src/icon
+architectures/App/Architectures/*/*.md
+architectures/App/Architectures/TEST
 
 #### Xcode
 

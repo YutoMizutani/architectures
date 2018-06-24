@@ -85,6 +85,7 @@ extension DDDDomain {
      入金処理を行う
 
      - Parameters:
+        - to: ユーザー
         - amount: 金額
 
      - throws: Intの最大値を超過する場合
@@ -108,6 +109,7 @@ extension DDDDomain {
      出金処理を行う
 
      - Parameters:
+        - from: ユーザー
         - amount: 金額
 
      - throws: 0を下回る場合

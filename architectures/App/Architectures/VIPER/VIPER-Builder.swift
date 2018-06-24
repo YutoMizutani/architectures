@@ -1,15 +1,15 @@
 //
-//  MVP-Builder.swift
+//  VIPER-Builder.swift
 //  architectures
 //
-//  Created by YutoMizutani on 2018/05/19.
+//  Created by YutoMizutani on 2018/06/06.
 //  Copyright © 2018 Yuto Mizutani. All rights reserved.
 //
 
 import UIKit
 
-class MVPBuilder {
+class VIPERBuilder {
     func build() -> UIViewController {
-        return MVPView()
+        return VIPERRouter.createModule()
     }
 }

@@ -18,12 +18,19 @@ protocol VIPERWireframeProtocol: class {
 protocol VIPERPresenterProtocol: class {
 
     var interactor: VIPERInteractorInputProtocol? { get set }
+
+    func fetch()
+    func transfer()
+    func reset()
 }
 
 //MARK: Interactor -
 protocol VIPERInteractorOutputProtocol: class {
 
     /* Interactor -> Presenter */
+
+    func throwError(_ error: Error)
+    func updateBalance(_ users: (from: VIPEREntity, to: VIPEREntity))
 }
 
 protocol VIPERInteractorInputProtocol: class {
@@ -31,6 +38,12 @@ protocol VIPERInteractorInputProtocol: class {
     var presenter: VIPERInteractorOutputProtocol?  { get set }
 
     /* Presenter -> Interactor */
+
+    func fetchEntity() throws -> [VIPEREntity]
+    func reset(_ collections: [VIPEREntity]) -> [VIPEREntity]
+    func commit(_ collections: [VIPEREntity])
+    func credit(_ to: VIPEREntity, amount: Int) throws -> VIPEREntity
+    func debit(_ from: VIPEREntity, amount: Int) throws -> VIPEREntity
 }
 
 //MARK: View -
@@ -39,4 +52,7 @@ protocol VIPERViewProtocol: class {
     var presenter: VIPERPresenterProtocol?  { get set }
 
     /* Presenter -> ViewController */
+
+    func updateLabel(_ users: (from: VIPEREntity, to: VIPEREntity))
+    func presentAlert(error: Error)
 }

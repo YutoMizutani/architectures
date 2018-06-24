@@ -17,6 +17,11 @@
 
 import UIKit
 
+protocol MVPViewInterface {
+    func updateView(model: MVPModel)
+    func presentError(error: Error)
+}
+
 class MVPView: UIViewController {
     // ViewとModelを保持する。
     var subview: View!
@@ -106,15 +111,7 @@ extension MVPView {
         self.model.fetch()
 
         // Viewを更新する。
-        self.updateView()
-    }
-
-    private func updateView() {
-        // メインスレッドでラベルの値を更新する。
-        DispatchQueue.main.async {
-            self.subview.toView.valueLabel.text = "\(self.model.accounts[UserList.takahashi.rawValue] ?? 0)"
-            self.subview.fromView.valueLabel.text = "\(self.model.accounts[UserList.watanabe.rawValue] ?? 0)"
-        }
+        self.updateView(model: self.model)
     }
 }
 
@@ -126,12 +123,11 @@ extension MVPView: ErrorShowable {
             try self.presenter.transfer(self.model)
 
             // Viewを更新する。
-            self.updateView()
+            self.updateView(model: self.model)
 
         }catch let e {
 
-            // エラーが生じた場合はアラートを表示する。
-            self.showAlert(error: e)
+            self.presentError(error: e)
 
         }
     }
@@ -141,6 +137,22 @@ extension MVPView: ErrorShowable {
         self.presenter.reset(self.model)
 
         // Viewを更新する。
-        self.updateView()
+        self.updateView(model: self.model)
+    }
+}
+
+extension MVPView: MVPViewInterface {
+    /// Viewを更新する。
+    func updateView(model: MVPModel) {
+        // メインスレッドでラベルの値を更新する。
+        DispatchQueue.main.async {
+            self.subview.toView.valueLabel.text = "\(model.accounts[UserList.takahashi.rawValue] ?? 0)"
+            self.subview.fromView.valueLabel.text = "\(model.accounts[UserList.watanabe.rawValue] ?? 0)"
+        }
+    }
+
+    /// エラーが生じた場合にアラートを表示する。
+    func presentError(error: Error) {
+        self.showAlert(error: error)
     }
 }

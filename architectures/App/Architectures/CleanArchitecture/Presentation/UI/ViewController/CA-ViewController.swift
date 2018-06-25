@@ -145,11 +145,11 @@ extension CAViewController {
         self.presenter?.fetch([self.models.to, self.models.from])
     }
 
-    @IBAction func transfer() {
+    private func transfer() {
         self.presenter?.transfer(from: self.models.from, to: self.models.to, amount: Assets.amount)
     }
 
-    @IBAction func reset() {
+    private func reset() {
         self.presenter?.reset([self.models.to, self.models.from])
     }
 }

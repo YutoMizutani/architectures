@@ -362,6 +362,7 @@
 		99178B5420AFEEC0008E7407 /* Architectures */ = {
 			isa = PBXGroup;
 			children = (
+				99FC2CCB20E2327600153F52 /* ReSwift */,
 				9940CF2720C7F51700260A36 /* TEST */,
 				9940CEF520C5475800260A36 /* PDS */,
 				9940CEE320BD64E200260A36 /* RxFeedback */,
@@ -612,6 +613,13 @@
 			path = TEST;
 			sourceTree = "<group>";
 		};
+		99FC2CCB20E2327600153F52 /* ReSwift */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ReSwift;
+			sourceTree = "<group>";
+		};
 		BEF3CDA49603687D9C024AD6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -764,6 +772,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-architectures/Pods-architectures-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxFeedback/RxFeedback.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -771,6 +780,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxFeedback.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",

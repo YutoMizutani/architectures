@@ -17,7 +17,7 @@ func transferReducer(action: RSAction, state: RSState?) -> RSState {
     // エラーはViewControllerで都度処理されるため，Reducerが走る度に初期化する。
     state.error = nil
 
-    if state.from != nil && state.to != nil {
+    if state.from == nil || state.to == nil {
         state.error = ErrorTransfer.userNotFound
         return state
     }

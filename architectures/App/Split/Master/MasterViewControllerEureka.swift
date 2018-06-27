@@ -54,7 +54,7 @@ enum MasterViewControllerEurekaTags: String, EnumCollection {
     case mvp = "MVP (Model View Presentation)"
     case mvvm = "MVVM (Model View ViewModel)"
     case ddd = "DDD (Domain Driven Design)"
-    case re = "ReSwift"
+    case re = "ReSwift (Redux-like implementation)"
     case viper = "VIPER"
     case ca = "Clean Architecture"
     case rf = "RxFeedback"

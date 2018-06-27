@@ -60,8 +60,8 @@ extension RSViewController {
         let users: (to: UserList, from: UserList) = (.takahashi, .watanabe)
 
         self.store.state = RSState(
-            to: (user: users.to, balance: 0),
-            from: (user: users.from, balance: 0),
+            to: (user: users.to, balance: users.to.initValue),
+            from: (user: users.from, balance: users.from.initValue),
             error: nil
         )
         self.fetch()

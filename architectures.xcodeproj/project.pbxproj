@@ -80,7 +80,6 @@
 		99FC2CD220E240F400153F52 /* RS-Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC2CD120E240F400153F52 /* RS-Reducer.swift */; };
 		99FC2CD420E2410D00153F52 /* RS-State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC2CD320E2410D00153F52 /* RS-State.swift */; };
 		99FC2CD620E2412000153F52 /* RS-Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC2CD520E2412000153F52 /* RS-Actions.swift */; };
-		99FC2CD820E2497C00153F52 /* RS-Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC2CD720E2497C00153F52 /* RS-Store.swift */; };
 		EA9D3F9839DF9177A8F4B530 /* Pods_architectures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */; };
 /* End PBXBuildFile section */
 
@@ -183,7 +182,6 @@
 		99FC2CD120E240F400153F52 /* RS-Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RS-Reducer.swift"; sourceTree = "<group>"; };
 		99FC2CD320E2410D00153F52 /* RS-State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RS-State.swift"; sourceTree = "<group>"; };
 		99FC2CD520E2412000153F52 /* RS-Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RS-Actions.swift"; sourceTree = "<group>"; };
-		99FC2CD720E2497C00153F52 /* RS-Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RS-Store.swift"; sourceTree = "<group>"; };
 		9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_architectures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C26A8A79362503D7C6040E3 /* Pods-architecturesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesTests/Pods-architecturesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB1C98A2DB87E9322CF21174 /* Pods-architecturesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesUITests/Pods-architecturesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -633,7 +631,6 @@
 				99FC2CD120E240F400153F52 /* RS-Reducer.swift */,
 				99FC2CD320E2410D00153F52 /* RS-State.swift */,
 				99FC2CD520E2412000153F52 /* RS-Actions.swift */,
-				99FC2CD720E2497C00153F52 /* RS-Store.swift */,
 			);
 			path = ReSwift;
 			sourceTree = "<group>";
@@ -944,7 +941,6 @@
 				99178BD520B01792008E7407 /* CA-Presenter.swift in Sources */,
 				99178BDA20B04B9F008E7407 /* DDD-Application.swift in Sources */,
 				99178B7E20B001FD008E7407 /* MVVM-Builder.swift in Sources */,
-				99FC2CD820E2497C00153F52 /* RS-Store.swift in Sources */,
 				99178BCC20B01792008E7407 /* CA-Entity.swift in Sources */,
 				99178B5B20AFF4AE008E7407 /* MVC-Builder.swift in Sources */,
 				99178B5320AFEE62008E7407 /* DetailsViewController.swift in Sources */,

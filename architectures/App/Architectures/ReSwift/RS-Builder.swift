@@ -6,4 +6,10 @@
 //  Copyright © 2018 Yuto Mizutani. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class RSBuilder {
+    func build() -> UIViewController {
+        return RSViewController()
+    }
+}

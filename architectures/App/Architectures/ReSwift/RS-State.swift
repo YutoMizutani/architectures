@@ -9,7 +9,13 @@
 import ReSwift
 
 struct RSState: StateType {
-    var to: (user: UserList, balance: Int)
-    var from: (user: UserList, balance: Int)
+    var to: (user: UserList, balance: Int)?
+    var from: (user: UserList, balance: Int)?
     var error: Error?
+}
+
+extension RSState {
+    static var empty: RSState {
+        return RSState(to: nil, from: nil, error: nil)
+    }
 }

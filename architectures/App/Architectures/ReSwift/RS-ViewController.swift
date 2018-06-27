@@ -9,12 +9,15 @@
 import UIKit
 import ReSwift
 
-class RSViewController: UIViewController, StoreSubscriber {
+class RSViewController: UIViewController {
     typealias StoreSubscriberStateType = RSState
 
-    // ViewとDomainを保持する。
+    // ViewとStoreを保持する。
     var subview: View!
-    var domain: PDSDomain!
+    let store = Store<RSState>(
+        reducer: transferReducer,
+        state: nil
+    )
 }
 
 extension RSViewController {
@@ -22,7 +25,7 @@ extension RSViewController {
         super.viewDidLoad()
 
         configureView()
-        configureState()
+        configureStore()
         layoutView()
         addAction()
     }
@@ -31,7 +34,7 @@ extension RSViewController {
         super.viewWillAppear(animated)
 
         // 残高を取得する。
-        self.fetch()
+        fetch()
     }
 
     override func viewDidLayoutSubviews() {
@@ -51,14 +54,26 @@ extension RSViewController {
 
 // MARK:- Private methods about settings
 extension RSViewController {
+    /// Stateの構成を行う。
+    private func configureStore() {
+        // 使用するUserの定義
+        let users: (to: UserList, from: UserList) = (.takahashi, .watanabe)
+
+        self.store.state = RSState(
+            to: (user: users.to, balance: 0),
+            from: (user: users.from, balance: 0),
+            error: nil
+        )
+        self.fetch()
+
+        // subscribe to state changes
+        self.store.subscribe(self)
+    }
+
     /// Viewの構成を行う。
     private func configureView() {
         // Viewを作成する。
         self.subview = View()
-
-        // Viewに表示されるラベルの名前を設定する。
-        self.subview.toView.nameLabel.text = "\(UserList.takahashi.rawValue): "
-        self.subview.fromView.nameLabel.text = "\(UserList.watanabe.rawValue): "
 
         // Viewに追加する。
         self.view.addSubview(self.subview)
@@ -70,19 +85,6 @@ extension RSViewController {
         self.subview.frame = self.view.frame
     }
 
-    /// Stateの構成を行う。
-    private func configureState() {
-        // 使用するUserの定義
-        let users: [UserList] = [.takahashi, .watanabe]
-
-        // UserLisetを元にDomainを作成する。
-        self.domain = PDSDomain(users: users)
-
-
-        // subscribe to state changes
-        RSStore.subscribe(self)
-    }
-
     /// ボタン押下時のアクションを設定する。
     private func addAction() {
         self.subview.transferButton.addTarget(self, action: #selector(self.transfer), for: .touchUpInside)
@@ -90,45 +92,71 @@ extension RSViewController {
     }
 }
 
-extension RSViewController: ErrorShowable {
-
-    func newState(state: RSState) {
-        // when the state changes, the UI is updated to reflect the current state
-
-        if let error = state.error {
-            self.showAlert(error: error)
-        }
-
-        var dictionary: Dictionary<String, Any> = Dictionary()
-        dictionary[state.from.user.rawValue] = state.from.balance
-        dictionary[state.to.user.rawValue] = state.to.balance
-        self.update(dictionary)
-    }
-
-    // when either button is tapped, an action is dispatched to the store
-    // in order to update the application state
-
+extension RSViewController {
     /// 送金を行う
-    @IBAction func transfer() {
-        RSStore.dispatch(RSActionTransfer())
+    @IBAction private func transfer() {
+        self.store.dispatch(RSActionTransfer())
     }
 
     /// リセットを行う
-    @IBAction func reset() {
-        RSStore.dispatch(RSActionReset())
+    @IBAction private func reset() {
+        self.store.dispatch(RSActionReset())
+    }
+}
+
+extension RSViewController: StoreSubscriber, ErrorShowable {
+    /// when the state changes, the UI is updated to reflect the current state
+    func newState(state: RSState) {
+        if let error = state.error {
+            self.showAlert(error: error)
+            return
+        }
+
+        self.updateView(state)
+        self.update(state)
+    }
+}
+
+extension RSViewController {
+    /// Viewの更新を行う。
+    private func updateView(_ state: RSState) {
+        DispatchQueue.main.async {
+            // Viewに表示されるラベルの名前を設定する。
+            self.subview.toView.nameLabel.text = "\(state.to?.user.rawValue ?? ""): "
+            self.subview.fromView.nameLabel.text = "\(state.from?.user.rawValue ?? ""): "
+
+            // Viewに表示されるラベルの残高を設定する。
+            self.subview.fromView.valueLabel.text = "\(state.from?.balance ?? 0)"
+            self.subview.toView.valueLabel.text = "\(state.to?.balance ?? 0)"
+        }
+    }
+}
+
+extension RSViewController {
+    private func fetch() {
+        if let dictionary = self.fetchDictionary() {
+            self.store.state.from?.balance = (dictionary[self.store.state.from!.user.rawValue] as? Int) ?? self.store.state.from!.user.initValue
+            self.store.state.to?.balance = (dictionary[self.store.state.to!.user.rawValue] as? Int) ?? self.store.state.to!.user.initValue
+        }
     }
 
+    private func update(_ state: RSState) {
+        var dictionary: Dictionary<String, Any> = self.fetchDictionary() ?? Dictionary()
+        dictionary[state.from!.user.rawValue] = state.from!.balance
+        dictionary[state.to!.user.rawValue] = state.to!.balance
+        self.updateDictionary(dictionary)
+    }
 }
 
 // MARK:- Private methods about userdefaults
-extension RSViewController {
+fileprivate extension UIViewController {
         /**
          UserDefaultsからデータを取得する。
 
          - returns:
          Dictionary型のユーザー情報
          */
-        private func fetch() -> Dictionary<String, Any>? {
+        func fetchDictionary() -> Dictionary<String, Any>? {
             let userDefaults: UserDefaults = UserDefaults.standard
             let key = UserDefaultsKeys.account.rawValue
 
@@ -142,7 +170,7 @@ extension RSViewController {
          - Parameters:
          - dictionary: Dictionary型のユーザー情報
          */
-        private func update(_ dictionary: Dictionary<String, Any>) {
+        func updateDictionary(_ dictionary: Dictionary<String, Any>) {
             let userDefaults: UserDefaults = UserDefaults.standard
             let key = UserDefaultsKeys.account.rawValue
 

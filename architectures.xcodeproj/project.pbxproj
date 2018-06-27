@@ -75,6 +75,11 @@
 		9940CF3120C7F59F00260A36 /* VIPER-Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CF2B20C7F59F00260A36 /* VIPER-Protocols.swift */; };
 		9940CF3220C7F59F00260A36 /* VIPER-Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CF2C20C7F59F00260A36 /* VIPER-Interactor.swift */; };
 		9940CF3520C7F69300260A36 /* VIPER-Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CF3420C7F69300260A36 /* VIPER-Entity.swift */; };
+		99FC2CCD20E236AE00153F52 /* RS-Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC2CCC20E236AE00153F52 /* RS-Builder.swift */; };
+		99FC2CCF20E2388F00153F52 /* RS-ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC2CCE20E2388F00153F52 /* RS-ViewController.swift */; };
+		99FC2CD220E240F400153F52 /* RS-Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC2CD120E240F400153F52 /* RS-Reducer.swift */; };
+		99FC2CD420E2410D00153F52 /* RS-State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC2CD320E2410D00153F52 /* RS-State.swift */; };
+		99FC2CD620E2412000153F52 /* RS-Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC2CD520E2412000153F52 /* RS-Actions.swift */; };
 		EA9D3F9839DF9177A8F4B530 /* Pods_architectures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */; };
 /* End PBXBuildFile section */
 
@@ -172,6 +177,11 @@
 		9940CF2B20C7F59F00260A36 /* VIPER-Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VIPER-Protocols.swift"; sourceTree = "<group>"; };
 		9940CF2C20C7F59F00260A36 /* VIPER-Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VIPER-Interactor.swift"; sourceTree = "<group>"; };
 		9940CF3420C7F69300260A36 /* VIPER-Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VIPER-Entity.swift"; sourceTree = "<group>"; };
+		99FC2CCC20E236AE00153F52 /* RS-Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RS-Builder.swift"; sourceTree = "<group>"; };
+		99FC2CCE20E2388F00153F52 /* RS-ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RS-ViewController.swift"; sourceTree = "<group>"; };
+		99FC2CD120E240F400153F52 /* RS-Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RS-Reducer.swift"; sourceTree = "<group>"; };
+		99FC2CD320E2410D00153F52 /* RS-State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RS-State.swift"; sourceTree = "<group>"; };
+		99FC2CD520E2412000153F52 /* RS-Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RS-Actions.swift"; sourceTree = "<group>"; };
 		9C18743FDDD1E934AE19EBF6 /* Pods_architectures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_architectures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C26A8A79362503D7C6040E3 /* Pods-architecturesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesTests/Pods-architecturesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB1C98A2DB87E9322CF21174 /* Pods-architecturesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-architecturesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-architecturesUITests/Pods-architecturesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -362,6 +372,7 @@
 		99178B5420AFEEC0008E7407 /* Architectures */ = {
 			isa = PBXGroup;
 			children = (
+				99FC2CCB20E2327600153F52 /* ReSwift */,
 				9940CF2720C7F51700260A36 /* TEST */,
 				9940CEF520C5475800260A36 /* PDS */,
 				9940CEE320BD64E200260A36 /* RxFeedback */,
@@ -612,6 +623,18 @@
 			path = TEST;
 			sourceTree = "<group>";
 		};
+		99FC2CCB20E2327600153F52 /* ReSwift */ = {
+			isa = PBXGroup;
+			children = (
+				99FC2CCC20E236AE00153F52 /* RS-Builder.swift */,
+				99FC2CCE20E2388F00153F52 /* RS-ViewController.swift */,
+				99FC2CD120E240F400153F52 /* RS-Reducer.swift */,
+				99FC2CD320E2410D00153F52 /* RS-State.swift */,
+				99FC2CD520E2412000153F52 /* RS-Actions.swift */,
+			);
+			path = ReSwift;
+			sourceTree = "<group>";
+		};
 		BEF3CDA49603687D9C024AD6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -764,6 +787,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-architectures/Pods-architectures-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxFeedback/RxFeedback.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -771,6 +795,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxFeedback.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -899,6 +924,7 @@
 				99178BCD20B01792008E7407 /* CA-DataStore.swift in Sources */,
 				99178BE020B04C2A008E7407 /* View.swift in Sources */,
 				99178B1F20AFE8F3008E7407 /* ViewController.swift in Sources */,
+				99FC2CD620E2412000153F52 /* RS-Actions.swift in Sources */,
 				9940CEBF20B16BF400260A36 /* RVC-Builder.swift in Sources */,
 				99178B5F20AFFC1D008E7407 /* MVC-Controller.swift in Sources */,
 				99178BD220B01792008E7407 /* CA-UseCase.swift in Sources */,
@@ -921,14 +947,18 @@
 				9940CEE720BD66CF00260A36 /* RF-View.swift in Sources */,
 				9915FCD520B0FF4800DEE8A1 /* Error.swift in Sources */,
 				99178BCB20B01792008E7407 /* CA-Repository.swift in Sources */,
+				99FC2CCD20E236AE00153F52 /* RS-Builder.swift in Sources */,
+				99FC2CD220E240F400153F52 /* RS-Reducer.swift in Sources */,
 				99178B6120AFFC33008E7407 /* MVC-Model.swift in Sources */,
 				9940CF3520C7F69300260A36 /* VIPER-Entity.swift in Sources */,
 				99178B5D20AFFC0E008E7407 /* MVC-View.swift in Sources */,
+				99FC2CD420E2410D00153F52 /* RS-State.swift in Sources */,
 				99178B7920B001FD008E7407 /* MVP-View.swift in Sources */,
 				9940CEFD20C5612E00260A36 /* RF-Builder.swift in Sources */,
 				9915FCE320B1591900DEE8A1 /* ErrorHandring.swift in Sources */,
 				99178B7A20B001FD008E7407 /* MVP-Model.swift in Sources */,
 				99178B7820B001FD008E7407 /* MVP-Presenter.swift in Sources */,
+				99FC2CCF20E2388F00153F52 /* RS-ViewController.swift in Sources */,
 				99178B7720B001FD008E7407 /* MVP-Builder.swift in Sources */,
 				99178B7B20B001FD008E7407 /* MVVM-ViewModel.swift in Sources */,
 				99178BCF20B01792008E7407 /* CA-Builder.swift in Sources */,

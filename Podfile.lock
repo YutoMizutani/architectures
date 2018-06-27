@@ -1,14 +1,16 @@
 PODS:
   - Eureka (4.1.1)
-  - RxCocoa (4.1.2):
+  - ReSwift (4.0.1)
+  - RxCocoa (4.2.0):
     - RxSwift (~> 4.0)
-  - RxFeedback (1.0.2):
+  - RxFeedback (1.0.3):
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
-  - RxSwift (4.1.2)
+  - RxSwift (4.2.0)
 
 DEPENDENCIES:
   - Eureka
+  - ReSwift
   - RxCocoa
   - RxFeedback
   - RxSwift
@@ -16,16 +18,18 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Eureka
+    - ReSwift
     - RxCocoa
     - RxFeedback
     - RxSwift
 
 SPEC CHECKSUMS:
   Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
-  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
-  RxFeedback: 10a567c755e59a1897daf760578c6bae8c546bd4
-  RxSwift: e49536837d9901277638493ea537394d4b55f570
+  ReSwift: f4012c613e13da7398827fe5aebdb938eaed40a3
+  RxCocoa: 0b54909c902e1e581212a03e690bbd94032d8baa
+  RxFeedback: 0b032eb82a4cf858b3b97fb8eb30a895f837fbda
+  RxSwift: 99e10317ddfcc7fbe01356aafd118fde4a0be104
 
-PODFILE CHECKSUM: 8ffafce96eea5dce330e8194deeabfefd51d0132
+PODFILE CHECKSUM: f7b694ffce44debfb927c9aebb8b46dddd12092d
 
 COCOAPODS: 1.5.3

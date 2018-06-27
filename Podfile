@@ -9,6 +9,7 @@ target 'architectures' do
 pod 'RxSwift'
 pod 'RxCocoa'
 pod 'RxFeedback'
+pod 'ReSwift'
 pod 'Eureka'
 
   target 'architecturesTests' do

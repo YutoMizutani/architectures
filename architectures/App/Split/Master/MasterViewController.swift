@@ -88,23 +88,28 @@ extension MasterViewController {
                 nextViewController = DDDBuilder().build()
                 nextViewController.navigationItem.title = MasterViewControllerEurekaTags.ddd.short
                 break
-            // VIPER
+            // ReSwift
             case 5:
+                nextViewController = RSBuilder().build()
+                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.re.short
+                break
+            // VIPER
+            case 6:
                 nextViewController = VIPERBuilder().build()
                 nextViewController.navigationItem.title = MasterViewControllerEurekaTags.viper.short
                 break
             // Clean Architecture
-            case 6:
+            case 7:
                 nextViewController = CABuilder().build()
                 nextViewController.navigationItem.title = MasterViewControllerEurekaTags.ca.short
                 break
             // RxFeedback
-            case 7:
+            case 8:
                 nextViewController = RFBuilder().build()
                 nextViewController.navigationItem.title = MasterViewControllerEurekaTags.rf.short
                 break
             // RVC
-            case 8:
+            case 9:
                 nextViewController = RVCBuilder().build()
                 nextViewController.navigationItem.title = MasterViewControllerEurekaTags.rvc.short
                 break

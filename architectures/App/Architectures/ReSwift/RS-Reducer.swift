@@ -34,6 +34,7 @@ func transferReducer(action: RSAction, state: RSState?) -> RSState {
     return state
 }
 
+/// 送金を行う
 fileprivate func transfer(_ state: inout RSState) -> RSState {
     let amount: Int = Assets.amount
 
@@ -48,13 +49,16 @@ fileprivate func transfer(_ state: inout RSState) -> RSState {
         return state
     }
 
+    // 送金処理
     state.from!.balance -= amount
     state.to!.balance += amount
 
     return state
 }
 
+/// リセットを行う
 fileprivate func reset(_ state: inout RSState) -> RSState {
+    // UserListに登録された情報を元に初期化する。
     state.to!.balance = state.to!.user.initValue
     state.from!.balance = state.from!.user.initValue
 

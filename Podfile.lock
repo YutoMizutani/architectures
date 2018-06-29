@@ -1,5 +1,5 @@
 PODS:
-  - Eureka (4.1.1)
+  - Eureka (4.2.0)
   - ReSwift (4.0.1)
   - RxCocoa (4.2.0):
     - RxSwift (~> 4.0)
@@ -24,7 +24,7 @@ SPEC REPOS:
     - RxSwift
 
 SPEC CHECKSUMS:
-  Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
+  Eureka: 0748c7bbb2560130e43c7bfa83e99c98854a1f42
   ReSwift: f4012c613e13da7398827fe5aebdb938eaed40a3
   RxCocoa: 0b54909c902e1e581212a03e690bbd94032d8baa
   RxFeedback: 0b032eb82a4cf858b3b97fb8eb30a895f837fbda

@@ -10,6 +10,7 @@ pod 'RxSwift'
 pod 'RxCocoa'
 pod 'RxFeedback'
 pod 'ReSwift'
+pod 'ReactorKit'
 pod 'Eureka'
 
   target 'architecturesTests' do

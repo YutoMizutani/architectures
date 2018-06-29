@@ -75,6 +75,9 @@
 		9940CF3120C7F59F00260A36 /* VIPER-Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CF2B20C7F59F00260A36 /* VIPER-Protocols.swift */; };
 		9940CF3220C7F59F00260A36 /* VIPER-Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CF2C20C7F59F00260A36 /* VIPER-Interactor.swift */; };
 		9940CF3520C7F69300260A36 /* VIPER-Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940CF3420C7F69300260A36 /* VIPER-Entity.swift */; };
+		995A0DF620E5D61200DBD6C3 /* RK-Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A0DF520E5D61200DBD6C3 /* RK-Builder.swift */; };
+		995A0DF820E5D64900DBD6C3 /* RK-ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A0DF720E5D64900DBD6C3 /* RK-ViewController.swift */; };
+		995A0DFA20E5D67E00DBD6C3 /* RK-Reactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995A0DF920E5D67E00DBD6C3 /* RK-Reactor.swift */; };
 		99FC2CCD20E236AE00153F52 /* RS-Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC2CCC20E236AE00153F52 /* RS-Builder.swift */; };
 		99FC2CCF20E2388F00153F52 /* RS-ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC2CCE20E2388F00153F52 /* RS-ViewController.swift */; };
 		99FC2CD220E240F400153F52 /* RS-Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC2CD120E240F400153F52 /* RS-Reducer.swift */; };
@@ -177,6 +180,9 @@
 		9940CF2B20C7F59F00260A36 /* VIPER-Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VIPER-Protocols.swift"; sourceTree = "<group>"; };
 		9940CF2C20C7F59F00260A36 /* VIPER-Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VIPER-Interactor.swift"; sourceTree = "<group>"; };
 		9940CF3420C7F69300260A36 /* VIPER-Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VIPER-Entity.swift"; sourceTree = "<group>"; };
+		995A0DF520E5D61200DBD6C3 /* RK-Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RK-Builder.swift"; sourceTree = "<group>"; };
+		995A0DF720E5D64900DBD6C3 /* RK-ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RK-ViewController.swift"; sourceTree = "<group>"; };
+		995A0DF920E5D67E00DBD6C3 /* RK-Reactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RK-Reactor.swift"; sourceTree = "<group>"; };
 		99FC2CCC20E236AE00153F52 /* RS-Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RS-Builder.swift"; sourceTree = "<group>"; };
 		99FC2CCE20E2388F00153F52 /* RS-ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RS-ViewController.swift"; sourceTree = "<group>"; };
 		99FC2CD120E240F400153F52 /* RS-Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RS-Reducer.swift"; sourceTree = "<group>"; };
@@ -372,8 +378,8 @@
 		99178B5420AFEEC0008E7407 /* Architectures */ = {
 			isa = PBXGroup;
 			children = (
+				995A0DF420E5D5F700DBD6C3 /* ReactorKit */,
 				99FC2CCB20E2327600153F52 /* ReSwift */,
-				9940CF2720C7F51700260A36 /* TEST */,
 				9940CEF520C5475800260A36 /* PDS */,
 				9940CEE320BD64E200260A36 /* RxFeedback */,
 				9915FCD920B1474100DEE8A1 /* RealisticViewController */,
@@ -616,11 +622,14 @@
 			path = VIPER;
 			sourceTree = "<group>";
 		};
-		9940CF2720C7F51700260A36 /* TEST */ = {
+		995A0DF420E5D5F700DBD6C3 /* ReactorKit */ = {
 			isa = PBXGroup;
 			children = (
+				995A0DF520E5D61200DBD6C3 /* RK-Builder.swift */,
+				995A0DF720E5D64900DBD6C3 /* RK-ViewController.swift */,
+				995A0DF920E5D67E00DBD6C3 /* RK-Reactor.swift */,
 			);
-			path = TEST;
+			path = ReactorKit;
 			sourceTree = "<group>";
 		};
 		99FC2CCB20E2327600153F52 /* ReSwift */ = {
@@ -788,6 +797,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-architectures/Pods-architectures-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactorKit/ReactorKit.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxFeedback/RxFeedback.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -796,6 +806,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactorKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxFeedback.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -930,6 +941,7 @@
 				99178BD220B01792008E7407 /* CA-UseCase.swift in Sources */,
 				9940CEFB20C5475900260A36 /* PDS-Builder.swift in Sources */,
 				99178B1D20AFE8F3008E7407 /* AppDelegate.swift in Sources */,
+				995A0DFA20E5D67E00DBD6C3 /* RK-Reactor.swift in Sources */,
 				9940CF2F20C7F59F00260A36 /* VIPER-Router.swift in Sources */,
 				99178BD120B01792008E7407 /* CA-Model.swift in Sources */,
 				99178B7D20B001FD008E7407 /* MVVM-View.swift in Sources */,
@@ -955,6 +967,7 @@
 				99FC2CD420E2410D00153F52 /* RS-State.swift in Sources */,
 				99178B7920B001FD008E7407 /* MVP-View.swift in Sources */,
 				9940CEFD20C5612E00260A36 /* RF-Builder.swift in Sources */,
+				995A0DF820E5D64900DBD6C3 /* RK-ViewController.swift in Sources */,
 				9915FCE320B1591900DEE8A1 /* ErrorHandring.swift in Sources */,
 				99178B7A20B001FD008E7407 /* MVP-Model.swift in Sources */,
 				99178B7820B001FD008E7407 /* MVP-Presenter.swift in Sources */,
@@ -964,6 +977,7 @@
 				99178BCF20B01792008E7407 /* CA-Builder.swift in Sources */,
 				99178BCE20B01792008E7407 /* CA-Wireframe.swift in Sources */,
 				9940CEEB20BD671700260A36 /* RF-Event.swift in Sources */,
+				995A0DF620E5D61200DBD6C3 /* RK-Builder.swift in Sources */,
 				99178BDC20B04BAA008E7407 /* DDD-Domain.swift in Sources */,
 				9915FCDB20B1474D00DEE8A1 /* RVC-ViewController.swift in Sources */,
 				99178BD820B04B8C008E7407 /* DDD-UserInterface.swift in Sources */,

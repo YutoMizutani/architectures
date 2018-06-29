@@ -150,30 +150,30 @@ extension RSViewController {
 
 // MARK:- Private methods about userdefaults
 fileprivate extension UIViewController {
-        /**
-         UserDefaultsからデータを取得する。
+    /**
+     UserDefaultsからデータを取得する。
 
-         - returns:
-         Dictionary型のユーザー情報
-         */
-        func fetchDictionary() -> Dictionary<String, Any>? {
-            let userDefaults: UserDefaults = UserDefaults.standard
-            let key = UserDefaultsKeys.account.rawValue
+     - returns:
+     Dictionary型のユーザー情報
+     */
+    func fetchDictionary() -> Dictionary<String, Any>? {
+        let userDefaults: UserDefaults = UserDefaults.standard
+        let key = UserDefaultsKeys.account.rawValue
 
-            return userDefaults.dictionary(forKey: key)
-        }
+        return userDefaults.dictionary(forKey: key)
+    }
 
 
-        /**
-         UserDefaultsへデータを保存する。
+    /**
+     UserDefaultsへデータを保存する。
 
-         - Parameters:
-         - dictionary: Dictionary型のユーザー情報
-         */
-        func updateDictionary(_ dictionary: Dictionary<String, Any>) {
-            let userDefaults: UserDefaults = UserDefaults.standard
-            let key = UserDefaultsKeys.account.rawValue
+     - Parameters:
+     - dictionary: Dictionary型のユーザー情報
+     */
+    func updateDictionary(_ dictionary: Dictionary<String, Any>) {
+        let userDefaults: UserDefaults = UserDefaults.standard
+        let key = UserDefaultsKeys.account.rawValue
 
-            userDefaults.set(dictionary, forKey: key)
-        }
+        userDefaults.set(dictionary, forKey: key)
+    }
 }

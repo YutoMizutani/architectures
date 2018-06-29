@@ -93,23 +93,28 @@ extension MasterViewController {
                 nextViewController = RSBuilder().build()
                 nextViewController.navigationItem.title = MasterViewControllerEurekaTags.re.short
                 break
-            // VIPER
+            // ReactorKit
             case 6:
+                nextViewController = RKBuilder().build()
+                nextViewController.navigationItem.title = MasterViewControllerEurekaTags.rk.short
+                break
+            // VIPER
+            case 7:
                 nextViewController = VIPERBuilder().build()
                 nextViewController.navigationItem.title = MasterViewControllerEurekaTags.viper.short
                 break
             // Clean Architecture
-            case 7:
+            case 8:
                 nextViewController = CABuilder().build()
                 nextViewController.navigationItem.title = MasterViewControllerEurekaTags.ca.short
                 break
             // RxFeedback
-            case 8:
+            case 9:
                 nextViewController = RFBuilder().build()
                 nextViewController.navigationItem.title = MasterViewControllerEurekaTags.rf.short
                 break
             // RVC
-            case 9:
+            case 10:
                 nextViewController = RVCBuilder().build()
                 nextViewController.navigationItem.title = MasterViewControllerEurekaTags.rvc.short
                 break

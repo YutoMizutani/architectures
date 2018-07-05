@@ -44,11 +44,13 @@ Presentation Domain Separationの略。プレゼンテーションロジック�
 
 #### 依存関係
 
-#### 参考リンク
+#### 参考
 
 - [プレゼンテーションとドメインの分離 - Martin Fowler's Bliki (ja)](http://bliki-ja.github.io/PresentationDomainSeparation/)
 - [MVCとかMVVMの前の自分まとめ - メモを揉め](http://memowomome.hatenablog.com/entry/2014/04/13/102736)
 - [MOVEは望まれなかった子 - the sea of fertility](http://ugaya40.hateblo.jp/entry/dis-move)
+
+#### 議論
 
 ## MVC
 
@@ -62,7 +64,9 @@ Presentation Domain Separationの略。プレゼンテーションロジック�
 
 #### 依存関係
 
-#### 参考リンク
+#### 参考
+
+#### 議論
 
 ## MVP
 
@@ -76,7 +80,9 @@ Presentation Domain Separationの略。プレゼンテーションロジック�
 
 #### 依存関係
 
-#### 参考リンク
+#### 参考
+
+#### 議論
 
 ## MVVM
 
@@ -92,7 +98,9 @@ Presentation Domain Separationの略。プレゼンテーションロジック�
 
 - [RxSwift](https://github.com/ReactiveX/RxSwift)
 
-#### 参考リンク
+#### 参考
+
+#### 議論
 
 ## DDD
 
@@ -108,7 +116,9 @@ Presentation Domain Separationの略。プレゼンテーションロジック�
 
 #### 依存関係
 
-#### 参考リンク
+#### 参考
+
+#### 議論
 
 ## ReSwift
 
@@ -125,7 +135,9 @@ Presentation Domain Separationの略。プレゼンテーションロジック�
 
 - [ReSwift](https://github.com/ReSwift/ReSwift)
 
-#### 参考リンク
+#### 参考
+
+#### 議論
 
 ## ReactorKit
 
@@ -141,7 +153,9 @@ Presentation Domain Separationの略。プレゼンテーションロジック�
 - [ReactorKit](https://github.com/ReactorKit/ReactorKit)
 - [RxSwift](https://github.com/ReactiveX/RxSwift)
 
-#### 参考リンク
+#### 参考
+
+#### 議論
 
 ## VIPER
 
@@ -158,10 +172,12 @@ Presentation Domain Separationの略。プレゼンテーションロジック�
 
 #### 依存関係
 
-#### 参考リンク
+#### 参考
 
 - [iOS Project Architecture : Using VIPER [和訳]](https://qiita.com/YKEI_mrn/items/67735d8ebc9a83fffd29)
 - [Juanpe/Swift-VIPER-Module](https://github.com/Juanpe/Swift-VIPER-Module)
+
+#### 議論
 
 ## Clean Architecture
 
@@ -190,7 +206,9 @@ Presentation Domain Separationの略。プレゼンテーションロジック�
 
 - [RxSwift](https://github.com/ReactiveX/RxSwift)
 
-#### 参考リンク
+#### 参考
+
+#### 議論
 
 ## RxFeedback
 
@@ -208,7 +226,9 @@ Presentation Domain Separationの略。プレゼンテーションロジック�
 - [RxFeedback](https://github.com/NoTests/RxFeedback.swift)
 - [RxSwift](https://github.com/ReactiveX/RxSwift)
 
-#### 参考リンク
+#### 参考
+
+#### 議論
 
 ## Realistic ViewController
 
@@ -227,4 +247,10 @@ Presentation Domain Separationの略。プレゼンテーションロジック�
 
 - [RxSwift](https://github.com/ReactiveX/RxSwift)
 
-#### 参考リンク
+#### 参考
+
+#### 議論
+
+## 終わりに
+
+本リポジトリは，ソフトウェア設計における情報を統一しようと試みるものであり，設計そのもの及び歴史に関する誤謬を含んだものであることを断っておきます。本記事及びコードが正確であることを保証するものではありません。本リポジトリは全てのアーキテクチャを網羅するものではなく，どれかを比較したり，優劣をつける意図はありません。

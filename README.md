@@ -46,6 +46,7 @@ Presentation Domain Separationの略。プレゼンテーションロジック�
 
 #### 参考
 
+- [PresentationDomainSeparation - Martin Fowler](https://martinfowler.com/bliki/PresentationDomainSeparation.html)
 - [プレゼンテーションとドメインの分離 - Martin Fowler's Bliki (ja)](http://bliki-ja.github.io/PresentationDomainSeparation/)
 - [MVCとかMVVMの前の自分まとめ - メモを揉め](http://memowomome.hatenablog.com/entry/2014/04/13/102736)
 - [MOVEは望まれなかった子 - the sea of fertility](http://ugaya40.hateblo.jp/entry/dis-move)
@@ -55,6 +56,19 @@ Presentation Domain Separationの略。プレゼンテーションロジック�
 ## MVC
 
 #### 概要
+
+Viewはアプリケーションの表示に関わるオブジェクトを定義し，ControllerはViewにおけるアクションの定義および遷移に関わる処理を，Modelにはデータおよびその処理を担う。
+この時，ViewとModelはControllerを必ず経由し，ModelにはUIに関わるロジックは含まれない。
+
+![model_view_controller_2x.png](https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/Art/model_view_controller_2x.png)
+[https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/Art/model_view_controller_2x.png](https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/Art/model_view_controller_2x.png)
+
+ちなみに，
+
+[MVC - Apple Developer](https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/MVC.html)
+> MVC is central to a good design for a Cocoa application. The benefits of adopting this pattern are numerous. Many objects in these applications tend to be more reusable, and their interfaces tend to be better defined. Applications having an MVC design are also more easily extensible than other applications. Moreover, many Cocoa technologies and architectures are based on MVC and require that your custom objects play one of the MVC roles.
+
+と，Apple側の多くの設計はMVCに基づいていることが明記されている。
 
 #### (本リポジトリにおける) ディレクトリ構成
 
@@ -66,7 +80,17 @@ Presentation Domain Separationの略。プレゼンテーションロジック�
 
 #### 参考
 
+- [MVC - Apple Developer](https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/MVC.html)
+- [iOS開発でのMVCとは - スタック・オーバーフロー](https://ja.stackoverflow.com/questions/25253/ios%E9%96%8B%E7%99%BA%E3%81%A7%E3%81%AEmvc%E3%81%A8%E3%81%AF)
+- [これが最強のMVC(iOS) - Qiita](https://qiita.com/koitaro/items/b3a924245fd72f22871a)
+- [iOS Architecture Patterns; Demystifying MVC, MVP, MVVM and VIPER – Medium](https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52)
+- [MOVEは望まれなかった子 - the sea of fertility](http://ugaya40.hateblo.jp/entry/dis-move)
+
 #### 議論
+
+- [やはりお前らのMVCは間違っている - SlideShare](https://www.slideshare.net/MugeSo/mvc-14469802)
+- [Ruby on Railsの「えせMVC」の弊害 - Life is beautiful](http://satoshi.blogs.com/life/2009/10/rails_mvc.html)
+- [やはりおまえらの MVC は間違えている in バックボーンジェーエス - 猫型の蓄音機は 1 分間に 45 回にゃあと鳴く](https://nekogata.hatenablog.com/entry/2013/11/11/075234)
 
 ## MVP
 
@@ -81,6 +105,8 @@ Presentation Domain Separationの略。プレゼンテーションロジック�
 #### 依存関係
 
 #### 参考
+
+- [iOS Architecture Patterns; Demystifying MVC, MVP, MVVM and VIPER – Medium](https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52)
 
 #### 議論
 
@@ -253,4 +279,4 @@ Presentation Domain Separationの略。プレゼンテーションロジック�
 
 ## 終わりに
 
-本リポジトリは，ソフトウェア設計における情報を統一しようと試みるものであり，設計そのもの及び歴史に関する誤謬を含んだものであることを断っておきます。本記事及びコードが正確であることを保証するものではありません。本リポジトリは全てのアーキテクチャを網羅するものではなく，どれかを比較したり，優劣をつける意図はありません。
+本リポジトリは，ソフトウェア設計における情報を統一しようと試みるものであり，設計そのもの及び歴史に関する誤謬を含んだものであることを断っておきます。本記事及びコードが正確であることを保証するものではありません。そもそも設計方針であって，単体で1アーキテクチャとして成立するとは言い難いものもあります。本リポジトリは全てのアーキテクチャを網羅するものではなく，それぞれを比較し，優劣をつけるような意図はありません。

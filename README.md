@@ -63,6 +63,7 @@ Presentation Domain Separationの略。プレゼンテーションロジック�
 
 Viewはアプリケーションの表示に関わるオブジェクトを定義し，ControllerはViewにおけるアクションの定義および遷移に関わる処理を，Modelにはデータおよびその処理を担う。
 この時，ViewとModelはControllerを必ず経由し，ModelにはUIに関わるロジックは含まれない。
+プレゼンテーションロジックとドメインロジックの分離に適した設計。
 
 ![model_view_controller_2x.png](https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/Art/model_view_controller_2x.png)
 [https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/Art/model_view_controller_2x.png](https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/Art/model_view_controller_2x.png)
@@ -73,6 +74,8 @@ Viewはアプリケーションの表示に関わるオブジェクトを定義�
 > MVC is central to a good design for a Cocoa application. The benefits of adopting this pattern are numerous. Many objects in these applications tend to be more reusable, and their interfaces tend to be better defined. Applications having an MVC design are also more easily extensible than other applications. Moreover, many Cocoa technologies and architectures are based on MVC and require that your custom objects play one of the MVC roles.
 
 と，Apple側の多くの設計はMVCに基づいていることが明記されている。
+
+MVCの理解にはしばしば誤解があると言われる([議論を参照](https://github.com/YutoMizutani/architectures#%E8%AD%B0%E8%AB%96-1))。
 
 #### (本リポジトリにおける) ディレクトリ構成
 

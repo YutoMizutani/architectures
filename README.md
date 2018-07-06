@@ -42,7 +42,9 @@ Presentation Domain Separationの略。プレゼンテーションロジック�
 - Presentation (inherited UIViewController)
 - Domain
 
-#### 依存関係
+#### 依存ライブラリ
+
+(なし)
 
 #### 参考
 
@@ -53,12 +55,15 @@ Presentation Domain Separationの略。プレゼンテーションロジック�
 
 #### 議論
 
+(なし)
+
 ## MVC
 
 #### 概要
 
 Viewはアプリケーションの表示に関わるオブジェクトを定義し，ControllerはViewにおけるアクションの定義および遷移に関わる処理を，Modelにはデータおよびその処理を担う。
 この時，ViewとModelはControllerを必ず経由し，ModelにはUIに関わるロジックは含まれない。
+プレゼンテーションロジックとドメインロジックの分離に適した設計。
 
 ![model_view_controller_2x.png](https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/Art/model_view_controller_2x.png)
 [https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/Art/model_view_controller_2x.png](https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/Art/model_view_controller_2x.png)
@@ -70,13 +75,17 @@ Viewはアプリケーションの表示に関わるオブジェクトを定義�
 
 と，Apple側の多くの設計はMVCに基づいていることが明記されている。
 
+MVCの理解にはしばしば誤解があると言われる([議論を参照](https://github.com/YutoMizutani/architectures#%E8%AD%B0%E8%AB%96-1))。
+
 #### (本リポジトリにおける) ディレクトリ構成
 
 - Model
 - View
 - Controller (inherits UIViewController)
 
-#### 依存関係
+#### 依存ライブラリ
+
+(なし)
 
 #### 参考
 
@@ -102,7 +111,9 @@ Viewはアプリケーションの表示に関わるオブジェクトを定義�
 - View (inherits UIViewController)
 - Presenter
 
-#### 依存関係
+#### 依存ライブラリ
+
+(なし)
 
 #### 参考
 
@@ -110,9 +121,13 @@ Viewはアプリケーションの表示に関わるオブジェクトを定義�
 
 #### 議論
 
+(なし)
+
 ## MVVM
 
 #### 概要
+
+(なし)
 
 #### (本リポジトリにおける) ディレクトリ構成
 
@@ -120,13 +135,17 @@ Viewはアプリケーションの表示に関わるオブジェクトを定義�
 - View
 - ViewModel (inherits UIViewController)
 
-#### 依存関係
+#### 依存ライブラリ
 
 - [RxSwift](https://github.com/ReactiveX/RxSwift)
 
 #### 参考
 
+(なし)
+
 #### 議論
+
+(なし)
 
 ## DDD
 
@@ -140,11 +159,17 @@ Viewはアプリケーションの表示に関わるオブジェクトを定義�
 - Entity
 - Infrastructure
 
-#### 依存関係
+#### 依存ライブラリ
+
+(なし)
 
 #### 参考
 
+(なし)
+
 #### 議論
+
+(なし)
 
 ## ReSwift
 
@@ -157,13 +182,17 @@ Viewはアプリケーションの表示に関わるオブジェクトを定義�
 - State
 - Actions
 
-#### 依存関係
+#### 依存ライブラリ
 
 - [ReSwift](https://github.com/ReSwift/ReSwift)
 
 #### 参考
 
+(なし)
+
 #### 議論
+
+(なし)
 
 ## ReactorKit
 
@@ -174,14 +203,18 @@ Viewはアプリケーションの表示に関わるオブジェクトを定義�
 - ViewController (inherits UIViewController)
 - Reactor
 
-#### 依存関係
+#### 依存ライブラリ
 
 - [ReactorKit](https://github.com/ReactorKit/ReactorKit)
 - [RxSwift](https://github.com/ReactiveX/RxSwift)
 
 #### 参考
 
+(なし)
+
 #### 議論
+
+(なし)
 
 ## VIPER
 
@@ -196,7 +229,9 @@ Viewはアプリケーションの表示に関わるオブジェクトを定義�
 - Router
 - Protocols
 
-#### 依存関係
+#### 依存ライブラリ
+
+(なし)
 
 #### 参考
 
@@ -204,6 +239,8 @@ Viewはアプリケーションの表示に関わるオブジェクトを定義�
 - [Juanpe/Swift-VIPER-Module](https://github.com/Juanpe/Swift-VIPER-Module)
 
 #### 議論
+
+(なし)
 
 ## Clean Architecture
 
@@ -228,13 +265,17 @@ Viewはアプリケーションの表示に関わるオブジェクトを定義�
 		- View
 		- ViewController (inherits UIViewController)
 
-#### 依存関係
+#### 依存ライブラリ
 
 - [RxSwift](https://github.com/ReactiveX/RxSwift)
 
 #### 参考
 
+(なし)
+
 #### 議論
+
+(なし)
 
 ## RxFeedback
 
@@ -247,14 +288,18 @@ Viewはアプリケーションの表示に関わるオブジェクトを定義�
 - State
 - Event
 
-#### 依存関係
+#### 依存ライブラリ
 
 - [RxFeedback](https://github.com/NoTests/RxFeedback.swift)
 - [RxSwift](https://github.com/ReactiveX/RxSwift)
 
 #### 参考
 
+(なし)
+
 #### 議論
+
+(なし)
 
 ## Realistic ViewController
 
@@ -269,13 +314,17 @@ Viewはアプリケーションの表示に関わるオブジェクトを定義�
 
 - ViewController (inherits UIViewController)
 
-#### 依存関係
+#### 依存ライブラリ
 
 - [RxSwift](https://github.com/ReactiveX/RxSwift)
 
 #### 参考
 
+(なし)
+
 #### 議論
+
+(なし)
 
 ## 終わりに
 

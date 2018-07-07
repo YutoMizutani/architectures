@@ -75,8 +75,8 @@ extension RFViewController {
         self.subview = RFView()
 
         // Viewに表示されるラベルの名前を設定する。
-        self.subview.toView.nameLabel.text = "\(UserList.takahashi.rawValue): "
-        self.subview.fromView.nameLabel.text = "\(UserList.watanabe.rawValue): "
+        self.subview.toView.nameLabel.text = "\(self.users.to.rawValue): "
+        self.subview.fromView.nameLabel.text = "\(self.users.from.rawValue): "
 
         // Viewに追加する。
         self.view.addSubview(self.subview)
@@ -101,7 +101,9 @@ extension RFViewController {
                 // Transferボタンのアクションを登録する。
                 me.subview.transferButton.rx.tap
                     .asObservable()
-                    .map { Event.transfer(to: .takahashi, from: .watanabe, amount: Assets.amount) },
+                    .map { [unowned self] _ in
+                        Event.transfer(to: self.users.to, from: self.users.from, amount: Assets.amount)
+                    },
 
                 // Resetボタンのアクションを登録する。
                 me.subview.resetButton.rx.tap

@@ -121,7 +121,7 @@ MVCの理解にはしばしば誤解があると言われる([議論を参照](h
 
 #### 議論
 
-(なし)
+- [AndroidではMVCよりMVPの方がいいかもしれない - Konifar's WIP](http://konifar.hatenablog.com/entry/2015/04/17/010606)
 
 ## MVVM
 
@@ -141,7 +141,7 @@ MVCの理解にはしばしば誤解があると言われる([議論を参照](h
 
 #### 参考
 
-(なし)
+- [Model-View-View Model を利用した汎用性のあるクラス ライブラリの使用 - Microsoft Docs](https://docs.microsoft.com/ja-jp/dotnet/standard/cross-platform/using-portable-class-library-with-model-view-view-model)
 
 #### 議論
 
@@ -220,6 +220,9 @@ MVCの理解にはしばしば誤解があると言われる([議論を参照](h
 
 #### 概要
 
+![viper_architecture-2000x720.jpg](https://s3.amazonaws.com/ckl-website-static/wp-content/uploads/2016/04/viper_architecture-2000x720.jpg)
+[https://s3.amazonaws.com/ckl-website-static/wp-content/uploads/2016/04/viper_architecture-2000x720.jpg](https://s3.amazonaws.com/ckl-website-static/wp-content/uploads/2016/04/viper_architecture-2000x720.jpg)
+
 #### (本リポジトリにおける) ディレクトリ構成
 
 - ViewController (inherits UIViewController)
@@ -233,9 +236,14 @@ MVCの理解にはしばしば誤解があると言われる([議論を参照](h
 
 (なし)
 
+#### テンプレート生成ツール
+
+- [Juanpe/Swift-VIPER-Module - GitHub](https://github.com/Juanpe/Swift-VIPER-Module)
+
 #### 参考
 
 - [iOS Project Architecture : Using VIPER [和訳]](https://qiita.com/YKEI_mrn/items/67735d8ebc9a83fffd29)
+- [iOS Project Architecture: Using VIPER - Cheesecake Labs](https://cheesecakelabs.com/blog/ios-project-architecture-using-viper/)
 - [Juanpe/Swift-VIPER-Module](https://github.com/Juanpe/Swift-VIPER-Module)
 
 #### 議論
@@ -245,6 +253,11 @@ MVCの理解にはしばしば誤解があると言われる([議論を参照](h
 ## Clean Architecture
 
 #### 概要
+
+依存関係逆転の原則(Dependency Inversion Principle)によって
+
+![CleanArchitecture-8d1fe066e8f7fa9c7d8e84c1a6b0e2b74b2c670ff8052828f4a7e73fcbbc698c.jpg](https://8thlight.com/blog/assets/posts/2012-08-13-the-clean-architecture/CleanArchitecture-8d1fe066e8f7fa9c7d8e84c1a6b0e2b74b2c670ff8052828f4a7e73fcbbc698c.jpg)
+[https://8thlight.com/blog/assets/posts/2012-08-13-the-clean-architecture/CleanArchitecture-8d1fe066e8f7fa9c7d8e84c1a6b0e2b74b2c670ff8052828f4a7e73fcbbc698c.jpg](https://8thlight.com/blog/assets/posts/2012-08-13-the-clean-architecture/CleanArchitecture-8d1fe066e8f7fa9c7d8e84c1a6b0e2b74b2c670ff8052828f4a7e73fcbbc698c.jpg)
 
 #### (本リポジトリにおける) ディレクトリ構成
 
@@ -269,9 +282,15 @@ MVCの理解にはしばしば誤解があると言われる([議論を参照](h
 
 - [RxSwift](https://github.com/ReactiveX/RxSwift)
 
+#### テンプレート生成ツール
+
+- [bannzai/Kuri - GitHub](https://github.com/bannzai/Kuri)
+
 #### 参考
 
-(なし)
+- [The Clean Architecture | 8th Light - 8th Light Blog](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html)
+- [クリーンアーキテクチャ(The Clean Architecture翻訳) - blog.tai2.net](https://blog.tai2.net/the_clean_architecture.html)
+- [まだiOS Clean Architecture で消耗してるの？ 爆速開発ツールを作ったのでご紹介 - Qiita](https://qiita.com/bannzai/items/6e8add18b15af235a19f)
 
 #### 議論
 
@@ -280,6 +299,9 @@ MVCの理解にはしばしば誤解があると言われる([議論を参照](h
 ## RxFeedback
 
 #### 概要
+
+![RxFeedback.png](https://github.com/kzaher/rxswiftcontent/raw/master/RxFeedback.png)
+[https://github.com/kzaher/rxswiftcontent/raw/master/RxFeedback.png](https://github.com/kzaher/rxswiftcontent/raw/master/RxFeedback.png)
 
 #### (本リポジトリにおける) ディレクトリ構成
 
@@ -295,7 +317,8 @@ MVCの理解にはしばしば誤解があると言われる([議論を参照](h
 
 #### 参考
 
-(なし)
+- [RxFeedback](https://github.com/NoTests/RxFeedback.swift)
+- [Modern RxSwift Architectures - Realm Academy](https://academy.realm.io/posts/try-swift-nyc-2017-krunoslav-zaher-modern-rxswift-architectures/)
 
 #### 議論
 
@@ -325,6 +348,22 @@ MVCの理解にはしばしば誤解があると言われる([議論を参照](h
 #### 議論
 
 (なし)
+
+## 他，まとめ，歴史，比較記事
+
+#### まとめ
+
+- [開発者が知っておくべき、6つのUIアーキテクチャ・パターン - ＠IT](http://www.atmarkit.co.jp/fdotnet/chushin/greatblogentry_10/greatblogentry_10_01.html)
+- [Androidアーキテクチャことはじめ ― 選定する意味と、MVP、Clean Architecture、MVVM、Fluxの特徴を理解する - エン転職](https://employment.en-japan.com/engineerhub/entry/2018/01/17/110000)
+
+#### 歴史
+
+- [雑把の UI アーキテクチャー史(MVCからMVVMへ) | プログラマーズ雑記帳](http://yohshiy.blog.fc2.com/blog-entry-215.html)
+- [私がMVCフレームワークをもはや使わない理由 - InfoQ](https://www.infoq.com/jp/articles/no-more-mvc-frameworks)
+
+#### 比較
+
+- [Webアプリケーション開発者から見た、MVCとMVP、そしてMVVMの違い - Qiita](https://qiita.com/shinkuFencer/items/f2651073fb71416b6cd7)
 
 ## 終わりに
 

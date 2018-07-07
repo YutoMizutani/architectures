@@ -236,6 +236,10 @@ MVCの理解にはしばしば誤解があると言われる([議論を参照](h
 
 (なし)
 
+#### テンプレート生成ツール
+
+- [Juanpe/Swift-VIPER-Module - GitHub](https://github.com/Juanpe/Swift-VIPER-Module)
+
 #### 参考
 
 - [iOS Project Architecture : Using VIPER [和訳]](https://qiita.com/YKEI_mrn/items/67735d8ebc9a83fffd29)
@@ -249,6 +253,11 @@ MVCの理解にはしばしば誤解があると言われる([議論を参照](h
 ## Clean Architecture
 
 #### 概要
+
+依存関係逆転の原則(Dependency Inversion Principle)によって
+
+![CleanArchitecture-8d1fe066e8f7fa9c7d8e84c1a6b0e2b74b2c670ff8052828f4a7e73fcbbc698c.jpg](https://8thlight.com/blog/assets/posts/2012-08-13-the-clean-architecture/CleanArchitecture-8d1fe066e8f7fa9c7d8e84c1a6b0e2b74b2c670ff8052828f4a7e73fcbbc698c.jpg)
+[https://8thlight.com/blog/assets/posts/2012-08-13-the-clean-architecture/CleanArchitecture-8d1fe066e8f7fa9c7d8e84c1a6b0e2b74b2c670ff8052828f4a7e73fcbbc698c.jpg](https://8thlight.com/blog/assets/posts/2012-08-13-the-clean-architecture/CleanArchitecture-8d1fe066e8f7fa9c7d8e84c1a6b0e2b74b2c670ff8052828f4a7e73fcbbc698c.jpg)
 
 #### (本リポジトリにおける) ディレクトリ構成
 
@@ -273,9 +282,15 @@ MVCの理解にはしばしば誤解があると言われる([議論を参照](h
 
 - [RxSwift](https://github.com/ReactiveX/RxSwift)
 
+#### テンプレート生成ツール
+
+- [bannzai/Kuri - GitHub](https://github.com/bannzai/Kuri)
+
 #### 参考
 
-(なし)
+- [The Clean Architecture | 8th Light - 8th Light Blog](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html)
+- [クリーンアーキテクチャ(The Clean Architecture翻訳) - blog.tai2.net](https://blog.tai2.net/the_clean_architecture.html)
+- [まだiOS Clean Architecture で消耗してるの？ 爆速開発ツールを作ったのでご紹介 - Qiita](https://qiita.com/bannzai/items/6e8add18b15af235a19f)
 
 #### 議論
 
